@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Music2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, siteConfig } from "@/lib/site";
 import Button from "./ui/Button";
@@ -37,11 +37,13 @@ export default function Navbar() {
       >
         <Link
           href="/"
-          className="group flex items-center gap-2.5"
+          className="group flex items-baseline gap-2.5"
           aria-label={`${siteConfig.name} home`}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy text-gold transition-colors group-hover:bg-navy-600">
-            <Music2 className="h-5 w-5" aria-hidden />
+          {/* Note-head mark with a stem — a wordmark, not an icon-in-a-box. */}
+          <span className="relative flex-none translate-y-[1px]" aria-hidden>
+            <span className="block h-2.5 w-2.5 rotate-[-20deg] rounded-full bg-gold transition-colors group-hover:bg-gold-dark" />
+            <span className="absolute right-[0.5px] top-[-9px] h-[11px] w-[1.5px] rounded-full bg-gold transition-colors group-hover:bg-gold-dark" />
           </span>
           <span className="heading-serif text-lg leading-none sm:text-xl">
             {siteConfig.name}

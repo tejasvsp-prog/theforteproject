@@ -32,8 +32,8 @@ const config: Config = {
           soft: "#f2e9d4",
           dark: "#a17f36",
         },
-        cream: "#faf9f6",
-        paper: "#ffffff",
+        cream: "#f5f1e8",
+        paper: "#fffdf7",
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],

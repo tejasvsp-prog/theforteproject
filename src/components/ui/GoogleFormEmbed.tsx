@@ -46,9 +46,11 @@ export default function GoogleFormEmbed({
       className={`flex flex-col items-center justify-center gap-5 rounded-3xl border border-dashed border-navy/20 bg-white/70 px-6 py-16 text-center shadow-soft ${className}`}
       style={{ minHeight: Math.min(height, 420) }}
     >
-      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-soft text-gold-dark">
-        <FileText className="h-6 w-6" aria-hidden />
-      </span>
+      <FileText
+        className="h-8 w-8 text-gold-dark"
+        strokeWidth={1.4}
+        aria-hidden
+      />
       <div className="space-y-1.5">
         <p className="heading-serif text-xl">{form.label}</p>
         <p className="mx-auto max-w-md text-sm leading-relaxed text-charcoal-muted">

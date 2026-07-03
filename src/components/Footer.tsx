@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Youtube, Linkedin, Mail, Music2 } from "lucide-react";
+import { Instagram, Youtube, Linkedin, Mail } from "lucide-react";
 import { footerLinks, siteConfig } from "@/lib/site";
 
 const socials = [
@@ -14,9 +14,10 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-navy text-white">
       <div className="container-content grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="max-w-sm space-y-4">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-gold">
-              <Music2 className="h-5 w-5" aria-hidden />
+          <Link href="/" className="flex items-baseline gap-2.5">
+            <span className="relative flex-none translate-y-[1px]" aria-hidden>
+              <span className="block h-2.5 w-2.5 rotate-[-20deg] rounded-full bg-gold" />
+              <span className="absolute right-[0.5px] top-[-9px] h-[11px] w-[1.5px] rounded-full bg-gold" />
             </span>
             <span className="font-serif text-xl">{siteConfig.name}</span>
           </Link>

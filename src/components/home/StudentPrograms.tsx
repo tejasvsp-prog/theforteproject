@@ -58,45 +58,46 @@ export default function StudentPrograms() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
-        className="mt-14 grid gap-6 lg:grid-cols-2"
+        className="mt-14 grid gap-x-16 gap-y-12 lg:grid-cols-2"
       >
         {programs.map((program) => (
           <motion.article
             key={program.title}
             variants={fadeUp}
-            className="group relative flex flex-col rounded-3xl border border-navy/10 bg-cream p-8 transition-colors duration-300 hover:border-gold/40 sm:p-10"
+            className="group relative flex flex-col border-t-2 border-navy/15 pt-7 transition-colors duration-500 hover:border-gold sm:pt-8"
           >
-            {/* Gold rule that grows on hover — a small, deliberate detail. */}
-            <span
-              className="absolute left-8 right-8 top-0 h-0.5 origin-left scale-x-0 rounded-full bg-gold transition-transform duration-500 group-hover:scale-x-100 sm:left-10 sm:right-10"
-              aria-hidden
-            />
-            <div className="flex items-start justify-between">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy text-gold">
-                <program.icon className="h-6 w-6" aria-hidden />
-              </span>
-              <span className="font-serif text-5xl text-navy/10">
+            {/* Oversized index numeral set like a chapter opener. */}
+            <div className="flex items-baseline gap-4">
+              <span className="font-serif text-[2.75rem] font-medium leading-none text-gold">
                 {program.index}
               </span>
+              <program.icon
+                className="h-5 w-5 translate-y-[-0.15rem] text-navy/40"
+                aria-hidden
+              />
             </div>
 
-            <h3 className="mt-7 font-serif text-2xl text-navy">
+            <h3 className="mt-6 font-serif text-[1.6rem] leading-tight text-navy">
               {program.title}
             </h3>
-            <p className="mt-3 leading-relaxed text-charcoal-light">
+            <p className="mt-3 max-w-md leading-relaxed text-charcoal-light">
               {program.description}
             </p>
 
-            <div className="mt-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
+            <div className="mt-7 border-t border-navy/10 pt-5">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-gold-dark">
                 What we focus on
               </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
+              <ul className="mt-4 flex flex-col gap-2.5">
                 {program.focus.map((item) => (
                   <li
                     key={item}
-                    className="rounded-full border border-navy/10 bg-white px-3.5 py-1.5 text-sm text-charcoal"
+                    className="flex items-baseline gap-3 text-[0.95rem] text-charcoal"
                   >
+                    <span
+                      className="h-1.5 w-1.5 flex-none translate-y-[-0.1rem] rotate-45 bg-gold/70"
+                      aria-hidden
+                    />
                     {item}
                   </li>
                 ))}
