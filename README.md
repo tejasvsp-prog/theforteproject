@@ -81,7 +81,11 @@ placeholder — no component changes required. `shareUrl` powers the CTA buttons
 
 1. Push this repository to GitHub.
 2. Import the repo at [vercel.com/new](https://vercel.com/new).
-3. Vercel auto-detects Next.js — no configuration needed. Deploy.
+3. Vercel auto-detects Next.js. A `vercel.json` also pins the framework preset
+   (`"framework": "nextjs"`) so the build never falls back to static-site mode.
+
+The **production branch is `main`** — commits landing on `main` publish to the
+production domain; every other branch produces a preview deployment.
 
 > Set `siteConfig.url` in `src/lib/site.ts` to your production domain so
 > canonical URLs, Open Graph tags, and the sitemap point to the right place.
