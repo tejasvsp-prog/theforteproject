@@ -44,12 +44,12 @@ const values: Value[] = [
 export default function Values() {
   return (
     <Section id="values" className="bg-cream" staff>
-      <div className="flex flex-col items-center">
-        <SectionHeading
-          eyebrow="What We Believe"
-          title="The values behind every lesson"
-        />
-      </div>
+      <SectionHeading
+        eyebrow="What We Believe"
+        title="The values behind every lesson"
+        align="left"
+        className="max-w-xl"
+      />
 
       <motion.div
         variants={stagger}

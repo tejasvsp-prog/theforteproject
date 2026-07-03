@@ -1,75 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Sparkles, GraduationCap, type LucideIcon } from "lucide-react";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 import { stagger, fadeUp } from "@/lib/motion";
 
 interface Step {
-  icon: LucideIcon;
+  n: string;
   title: string;
   text: string;
 }
 
 const steps: Step[] = [
   {
-    icon: Users,
+    n: "01",
     title: "Volunteer",
-    text: "High school musicians volunteer to teach students based on their musical experience.",
+    text: "High school musicians sign up to teach in the areas they know best, from strings to songwriting.",
   },
   {
-    icon: Sparkles,
+    n: "02",
     title: "Match",
-    text: "Students are paired with volunteers according to their musical background and access to an instrument.",
+    text: "We pair each student with a volunteer by musical background and their access to an instrument.",
   },
   {
-    icon: GraduationCap,
+    n: "03",
     title: "Learn",
-    text: "Students receive free live Zoom lessons that build musical skills and confidence.",
+    text: "Free, live lessons on Zoom build real skill, steady confidence, and a lasting love of music.",
   },
 ];
 
 export default function HowItWorks() {
   return (
     <Section id="how-it-works" className="bg-cream">
-      <div className="flex flex-col items-center">
-        <SectionHeading
-          eyebrow="How It Works"
-          title="A simple path from passion to progress"
-          description="Three steps connect a willing teacher with an eager student — anywhere in the world."
-        />
-      </div>
+      <SectionHeading
+        eyebrow="How It Works"
+        title="Three steps, one connection"
+        description="A willing teacher, an eager student, and a standing lesson on the calendar — anywhere in the world."
+        align="left"
+        className="max-w-xl"
+      />
 
-      <motion.div
+      <motion.ol
         variants={stagger}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="mt-14 grid gap-6 md:grid-cols-3"
+        className="mt-16 grid gap-x-10 gap-y-12 md:grid-cols-3"
       >
         {steps.map((step, i) => (
-          <motion.div key={step.title} variants={fadeUp}>
-            <Card interactive className="h-full">
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy text-gold">
-                  <step.icon className="h-5 w-5" aria-hidden />
-                </span>
-                <span className="font-serif text-3xl text-navy/10">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="mt-6 font-serif text-xl text-navy">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-charcoal-light">
-                {step.text}
-              </p>
-            </Card>
-          </motion.div>
+          <motion.li key={step.n} variants={fadeUp} className="relative">
+            {/* Hairline connector between steps on desktop. */}
+            {i < steps.length - 1 ? (
+              <span
+                className="absolute right-[-1.25rem] top-5 hidden h-px w-10 bg-gradient-to-r from-gold/50 to-transparent md:block"
+                aria-hidden
+              />
+            ) : null}
+            <div className="flex items-baseline gap-4">
+              <span className="font-serif text-4xl font-medium text-gold">
+                {step.n}
+              </span>
+              <span className="h-px flex-1 translate-y-[-0.4rem] bg-navy/10" aria-hidden />
+            </div>
+            <h3 className="mt-5 font-serif text-2xl text-navy">{step.title}</h3>
+            <p className="mt-3 leading-relaxed text-charcoal-light">
+              {step.text}
+            </p>
+          </motion.li>
         ))}
-      </motion.div>
+      </motion.ol>
     </Section>
   );
 }

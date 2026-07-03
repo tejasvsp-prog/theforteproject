@@ -17,6 +17,7 @@ export const siteConfig = {
   name: "The Forte Project",
   shortName: "Forte",
   tagline: "Music Education Without Borders",
+  founded: "2023",
   description:
     "The Forte Project connects talented high school musicians with underprivileged youth around the world through free virtual music education.",
   url: "https://theforteproject.org",
@@ -27,6 +28,19 @@ export const siteConfig = {
     linkedin: "#",
   },
 } as const;
+
+/**
+ * Impact figures shown in the hero and stats band.
+ * These are illustrative placeholders — replace the `value` fields with your
+ * real numbers before launch (grant reviewers and admissions officers will
+ * read them as fact).
+ */
+export const stats = [
+  { value: "120+", label: "Volunteer instructors" },
+  { value: "30+", label: "Countries reached" },
+  { value: "1,500+", label: "Free lessons taught" },
+  { value: "100%", label: "Free, always" },
+] as const;
 
 export type FormKey = "volunteer" | "performance" | "theory" | "contact";
 

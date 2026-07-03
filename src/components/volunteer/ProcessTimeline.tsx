@@ -50,20 +50,20 @@ const stages: Stage[] = [
 export default function ProcessTimeline() {
   return (
     <Section id="process" className="bg-cream" staff>
-      <div className="flex flex-col items-center">
-        <SectionHeading
-          eyebrow="Volunteer Process"
-          title="From application to first lesson"
-          description="A clear, supportive path — we guide you through every step."
-        />
-      </div>
+      <SectionHeading
+        eyebrow="Volunteer Process"
+        title="From application to first lesson"
+        description="A clear, supportive path — we guide you through every step."
+        align="left"
+        className="max-w-xl"
+      />
 
       <motion.ol
         variants={stagger}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
-        className="relative mx-auto mt-16 max-w-2xl"
+        className="relative mt-16 max-w-2xl"
       >
         {/* Vertical connecting line */}
         <span

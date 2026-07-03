@@ -27,13 +27,13 @@ const requirements: Requirement[] = [
 export default function Requirements() {
   return (
     <Section id="requirements" className="bg-white">
-      <div className="flex flex-col items-center">
-        <SectionHeading
-          eyebrow="Who Can Volunteer"
-          title="What we look for"
-          description="If this sounds like you, we would love to have you on the team."
-        />
-      </div>
+      <SectionHeading
+        eyebrow="Who Can Volunteer"
+        title="What we look for"
+        description="If this sounds like you, we would love to have you on the team."
+        align="left"
+        className="max-w-xl"
+      />
 
       <motion.ul
         variants={stagger}

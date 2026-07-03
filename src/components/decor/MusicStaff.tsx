@@ -3,12 +3,25 @@
 import { motion } from "framer-motion";
 import { easeOut } from "@/lib/motion";
 
+interface MusicStaffProps {
+  className?: string;
+  /** "light" for dark backgrounds, "dark" for light backgrounds. */
+  tone?: "light" | "dark";
+}
+
 /**
- * Abstract musical-staff illustration used in the hero.
- * Pure SVG — no stock imagery. Draws five staff lines, a treble
- * clef, and a scattering of notes that animate gently on mount.
+ * Abstract musical-staff illustration. Draws five staff lines, a treble
+ * clef, and a rising phrase of notes that animate in on mount. Pure SVG —
+ * no stock imagery.
  */
-export default function MusicStaff({ className = "" }: { className?: string }) {
+export default function MusicStaff({
+  className = "",
+  tone = "dark",
+}: MusicStaffProps) {
+  const lineColor = tone === "light" ? "#ffffff" : "#12233f";
+  const noteColor = tone === "light" ? "#f5eede" : "#12233f";
+  const lineOpacity = tone === "light" ? 0.28 : 0.3;
+
   const lines = [20, 40, 60, 80, 100];
   const notes = [
     { cx: 150, cy: 80, delay: 0.1 },
@@ -24,7 +37,7 @@ export default function MusicStaff({ className = "" }: { className?: string }) {
       viewBox="0 0 640 160"
       fill="none"
       role="img"
-      aria-label="An illustrated musical staff with notes"
+      aria-label="An illustrated musical staff with a rising phrase of notes"
       className={className}
     >
       {lines.map((y) => (
@@ -34,16 +47,16 @@ export default function MusicStaff({ className = "" }: { className?: string }) {
           x2="600"
           y1={y}
           y2={y}
-          stroke="currentColor"
+          stroke={lineColor}
           strokeWidth="1.5"
-          strokeOpacity="0.35"
+          strokeOpacity={lineOpacity}
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: easeOut, delay: 0.1 }}
         />
       ))}
 
-      {/* Simplified treble clef */}
+      {/* Simplified treble clef in gold */}
       <motion.path
         d="M78 118c-8-2-12-9-9-17 3-9 15-14 20-30 4-13-1-27-11-27-9 0-14 9-12 20 2 12 12 22 24 34 9 9 14 17 12 27-2 9-11 14-19 12-6-2-9-8-7-13 2-4 7-6 11-4"
         stroke="#c19a4b"
@@ -68,14 +81,14 @@ export default function MusicStaff({ className = "" }: { className?: string }) {
             rx="9"
             ry="6.5"
             transform={`rotate(-20 ${n.cx} ${n.cy})`}
-            fill="#12233f"
+            fill={noteColor}
           />
           <line
             x1={n.cx + 8}
             y1={n.cy - 2}
             x2={n.cx + 8}
             y2={n.cy - 42}
-            stroke="#12233f"
+            stroke={noteColor}
             strokeWidth="2"
           />
         </motion.g>
