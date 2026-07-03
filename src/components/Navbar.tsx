@@ -51,10 +51,7 @@ export default function Navbar() {
         {/* Desktop links */}
         <div className="hidden items-center gap-8 md:flex">
           {nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
+            const active = pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}
@@ -75,8 +72,8 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Button href="/volunteer" size="md">
-            Get Involved
+          <Button href="/contact" size="md">
+            Contact Us
           </Button>
         </div>
 
@@ -113,8 +110,8 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Button href="/volunteer" className="mt-2">
-                Get Involved
+              <Button href="/contact" className="mt-2">
+                Contact Us
               </Button>
             </div>
           </motion.div>

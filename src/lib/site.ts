@@ -28,7 +28,7 @@ export const siteConfig = {
   },
 } as const;
 
-export type FormKey = "volunteer" | "performance" | "theory";
+export type FormKey = "volunteer" | "performance" | "theory" | "contact";
 
 export interface FormConfig {
   /** Human label for the form. */
@@ -55,10 +55,25 @@ export const forms: Record<FormKey, FormConfig> = {
     embedUrl: "",
     shareUrl: "",
   },
+  contact: {
+    label: "Contact Form",
+    embedUrl: "",
+    shareUrl: "",
+  },
 };
 
+/** Primary links shown in the center of the navbar (logo covers Home). */
 export const nav = [
-  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
   { href: "/volunteer", label: "Volunteer" },
-  { href: "/apply", label: "Apply for Lessons" },
+  { href: "/apply", label: "Enroll" },
+] as const;
+
+/** Full link list for the footer, including Home and Contact. */
+export const footerLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/volunteer", label: "Volunteer" },
+  { href: "/apply", label: "Enroll" },
+  { href: "/contact", label: "Contact Us" },
 ] as const;

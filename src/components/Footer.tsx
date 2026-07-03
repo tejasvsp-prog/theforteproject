@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Youtube, Linkedin, Mail, Music2 } from "lucide-react";
-import { nav, siteConfig } from "@/lib/site";
+import { footerLinks, siteConfig } from "@/lib/site";
 
 const socials = [
   { href: siteConfig.social.instagram, label: "Instagram", Icon: Instagram },
@@ -31,7 +31,7 @@ export default function Footer() {
             Explore
           </h3>
           <ul className="space-y-2.5">
-            {nav.map((item) => (
+            {footerLinks.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
