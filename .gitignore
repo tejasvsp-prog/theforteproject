@@ -34,4 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-shot.mjs
+
+# local screenshot helpers (not part of the app)
+shot*.mjs
