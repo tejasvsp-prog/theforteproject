@@ -56,17 +56,23 @@ export default function Values() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
       >
-        {values.map((v) => (
+        {values.map((v, i) => (
           <motion.div
             key={v.title}
             variants={fadeUp}
-            className="flex flex-col gap-4 rounded-3xl border border-navy/5 bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
+            className="group flex flex-col gap-4 border-t border-navy/15 pt-6 transition-colors duration-500 hover:border-gold"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy text-gold">
-              <v.icon className="h-5 w-5" aria-hidden />
-            </span>
+            <div className="flex items-center justify-between">
+              <v.icon
+                className="h-5 w-5 text-gold-dark"
+                aria-hidden
+              />
+              <span className="font-serif text-sm text-navy/25">
+                0{i + 1}
+              </span>
+            </div>
             <h3 className="font-serif text-xl text-navy">{v.title}</h3>
             <p className="text-sm leading-relaxed text-charcoal-light">
               {v.text}

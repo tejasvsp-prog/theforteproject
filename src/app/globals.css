@@ -11,10 +11,25 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Fraunces ligatures + kerning for a warm, printed feel. */
+    font-feature-settings: "liga", "kern";
   }
 
   body {
     @apply bg-cream text-charcoal font-sans antialiased;
+  }
+
+  /* Tactile paper grain — the single detail that stops a flat cream page
+     from reading as a template. Fixed, faint, and never interactive. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   ::selection {
@@ -53,6 +68,38 @@
   .heading-serif {
     @apply font-serif font-medium tracking-tight text-navy;
   }
+
+  /* Display headline: heavier optical weight + tighter set for the hero and
+     interior page titles. Uses Fraunces' higher optical-size axis. */
+  .display {
+    @apply font-serif tracking-tight text-navy;
+    font-weight: 560;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.015em;
+  }
+
+  /* A drawn accent under a headline word — replaces the generic "AI swoosh"
+     with a straight, hand-inked underline offset like a proof-mark. */
+  .ink-underline {
+    background-image: linear-gradient(transparent 62%, rgba(193, 154, 75, 0.32) 62%);
+    background-repeat: no-repeat;
+  }
+}
+
+/* Notation divider: a hairline rule interrupted by a small centered glyph,
+   used between sections instead of empty whitespace. */
+.rule-note {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: rgba(18, 35, 63, 0.18);
+}
+.rule-note::before,
+.rule-note::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: currentColor;
 }
 
 /* Subtle staff-line background used behind select sections. */
