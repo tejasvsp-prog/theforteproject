@@ -49,23 +49,24 @@ export default function ApplyOptions() {
       viewport={{ once: true, amount: 0.15 }}
       className="grid gap-6 lg:grid-cols-2"
     >
-      {options.map((opt) => {
+      {options.map((opt, i) => {
         const share = forms[opt.formKey].shareUrl;
         return (
           <motion.article
             key={opt.id}
             id={opt.id}
             variants={fadeUp}
-            className="group relative flex scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-navy/5 bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg sm:p-10"
+            className="group relative flex scroll-mt-28 flex-col rounded-2xl border border-navy/10 bg-paper p-8 transition-colors duration-500 hover:border-gold/50 sm:p-10"
           >
-            <div
-              className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gold/10 blur-2xl"
-              aria-hidden
-            />
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy text-gold">
-              <opt.icon className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-6 font-serif text-2xl text-navy">{opt.title}</h2>
+            <div className="flex items-baseline justify-between border-b border-navy/10 pb-6">
+              <span className="font-serif text-[2.5rem] font-medium leading-none text-gold">
+                0{i + 1}
+              </span>
+              <opt.icon className="h-5 w-5 text-navy/40" aria-hidden />
+            </div>
+            <h2 className="mt-7 font-serif text-[1.7rem] leading-tight text-navy">
+              {opt.title}
+            </h2>
             <p className="mt-3 leading-relaxed text-charcoal-light">
               {opt.description}
             </p>

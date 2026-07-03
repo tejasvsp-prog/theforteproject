@@ -40,17 +40,18 @@ export default function Requirements() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
       >
-        {requirements.map((req) => (
+        {requirements.map((req, i) => (
           <motion.li
             key={req.title}
             variants={fadeUp}
-            className="flex flex-col items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
+            className="group flex flex-col gap-4 border-t border-navy/15 pt-6 transition-colors duration-500 hover:border-gold"
           >
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-soft text-gold-dark">
-              <req.icon className="h-6 w-6" aria-hidden />
-            </span>
+            <div className="flex items-center justify-between">
+              <req.icon className="h-5 w-5 text-gold-dark" aria-hidden />
+              <span className="font-serif text-sm text-navy/25">0{i + 1}</span>
+            </div>
             <span className="font-serif text-lg leading-snug text-navy">
               {req.title}
             </span>

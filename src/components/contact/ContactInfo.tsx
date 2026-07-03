@@ -26,14 +26,12 @@ export default function ContactInfo() {
         </p>
       </div>
 
-      <div className="space-y-5">
+      <div className="divide-y divide-navy/10 border-y border-navy/10">
         <a
           href={`mailto:${siteConfig.email}`}
-          className="flex items-start gap-4 text-charcoal transition-colors hover:text-navy"
+          className="flex items-center gap-4 py-4 text-charcoal transition-colors hover:text-gold-dark"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold-soft text-gold-dark">
-            <Mail className="h-5 w-5" aria-hidden />
-          </span>
+          <Mail className="h-5 w-5 shrink-0 text-gold-dark" aria-hidden />
           <span>
             <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-gold-dark">
               Email
@@ -42,10 +40,8 @@ export default function ContactInfo() {
           </span>
         </a>
 
-        <div className="flex items-start gap-4">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold-soft text-gold-dark">
-            <Clock className="h-5 w-5" aria-hidden />
-          </span>
+        <div className="flex items-center gap-4 py-4">
+          <Clock className="h-5 w-5 shrink-0 text-gold-dark" aria-hidden />
           <span>
             <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-gold-dark">
               Response time
