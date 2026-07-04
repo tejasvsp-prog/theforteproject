@@ -1,87 +1,84 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Guitar, PenLine, ArrowRight, type LucideIcon } from "lucide-react";
-import Button from "@/components/ui/Button";
-import { stagger, fadeUp } from "@/lib/motion";
-import { forms, type FormKey } from "@/lib/site";
+import Link from "next/link";
 
-interface Option {
-  id: string;
-  icon: LucideIcon;
+interface Path {
+  tag: string;
   title: string;
   description: string;
   cta: string;
-  formKey: FormKey;
-  /** Anchor of the embedded form to scroll to as a fallback. */
-  formAnchor: string;
+  anchor: string;
+  tone: "paper" | "ink";
 }
 
-const options: Option[] = [
+const paths: Path[] = [
   {
-    id: "performance",
-    icon: Guitar,
-    title: "I Have an Instrument",
+    tag: "Path A",
+    title: "I have an instrument",
     description:
-      "Students with access to an instrument can receive individualized performance-focused instruction.",
+      "Receive individualized, performance-focused instruction from a musician who plays what you play.",
     cta: "Apply for Performance Lessons",
-    formKey: "performance",
-    formAnchor: "#performance-form",
+    anchor: "#performance",
+    tone: "paper",
   },
   {
-    id: "theory",
-    icon: PenLine,
-    title: "I Don't Have an Instrument",
+    tag: "Path B",
+    title: "I don't have an instrument",
     description:
-      "Students without an instrument can receive lessons in music theory, composition, rhythm, and ear training.",
+      "Learn music theory, composition, rhythm, and ear training — no instrument required to begin.",
     cta: "Apply for Theory Lessons",
-    formKey: "theory",
-    formAnchor: "#theory-form",
+    anchor: "#theory",
+    tone: "ink",
   },
 ];
 
+/**
+ * The two-path selector — one of the two sanctioned ink-inverted moments.
+ * On desktop the hovered half expands (~58/42) via a flex-grow transition;
+ * on mobile the halves stack full-width.
+ */
 export default function ApplyOptions() {
   return (
-    <motion.div
-      variants={stagger}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
-      className="grid gap-6 lg:grid-cols-2"
-    >
-      {options.map((opt) => {
-        const share = forms[opt.formKey].shareUrl;
+    <div className="flex flex-col border-y border-ink lg:min-h-[64vh] lg:flex-row">
+      {paths.map((p, i) => {
+        const dark = p.tone === "ink";
         return (
-          <motion.article
-            key={opt.id}
-            id={opt.id}
-            variants={fadeUp}
-            className="group relative flex scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-navy/5 bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg sm:p-10"
+          <Link
+            key={p.anchor}
+            href={p.anchor}
+            className={`group relative flex grow flex-col justify-between gap-16 px-8 py-14 transition-[flex-grow] duration-500 ease-signal md:px-12 md:py-20 lg:hover:grow-[1.45] ${
+              dark ? "bg-ink text-paper" : "bg-paper text-ink"
+            } ${i === 1 ? "border-t border-ink lg:border-l lg:border-t-0" : ""}`}
           >
-            <div
-              className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gold/10 blur-2xl"
-              aria-hidden
-            />
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy text-gold">
-              <opt.icon className="h-6 w-6" aria-hidden />
-            </span>
-            <h2 className="mt-6 font-serif text-2xl text-navy">{opt.title}</h2>
-            <p className="mt-3 leading-relaxed text-charcoal-light">
-              {opt.description}
-            </p>
-            <div className="mt-8">
-              <Button
-                href={share || opt.formAnchor}
-                external={Boolean(share)}
-                size="lg"
+            <div>
+              <p className={`t-kicker ${dark ? "text-paper/80" : "text-accent"}`}>
+                {p.tag}
+              </p>
+              <h2 className="t-display mt-6 max-w-[12ch]">{p.title}</h2>
+              <p
+                className={`t-lead mt-6 max-w-measure ${
+                  dark ? "text-paper/75" : "text-ink/75"
+                }`}
               >
-                {opt.cta}
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
+                {p.description}
+              </p>
             </div>
-          </motion.article>
+            <span
+              className={`inline-flex items-center gap-3 t-button ${
+                dark ? "text-paper" : "text-accent"
+              }`}
+            >
+              {p.cta}
+              <span
+                aria-hidden
+                className="transition-transform duration-300 ease-signal group-hover:translate-x-1.5"
+              >
+                →
+              </span>
+            </span>
+          </Link>
         );
       })}
-    </motion.div>
+    </div>
   );
 }

@@ -1,21 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Archivo, Newsreader } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const serif = Fraunces({
+// Display voice — engineered grotesque, used expanded (font-stretch: 125%)
+// via the width axis for the Swiss / concert-program headline register.
+const display = Archivo({
   subsets: ["latin"],
+  axes: ["wdth"],
   display: "swap",
-  variable: "--font-serif",
-  axes: ["opsz"],
+  variable: "--font-display",
 });
 
-const sans = Inter({
+// Text voice — humanist literary serif for body, lead, and pull-quotes.
+const text = Newsreader({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-text",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#12233f",
+  themeColor: "#141210",
   width: "device-width",
   initialScale: 1,
 };
@@ -63,11 +67,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      <body className="min-h-screen bg-cream">
+    <html lang="en" className={`${display.variable} ${text.variable}`}>
+      <body className="min-h-screen bg-paper text-ink">
+        {/* Without JS, framer never runs — force all animated content visible. */}
+        <noscript>
+          <style>{`[data-anim]{opacity:1 !important;transform:none !important;}`}</style>
+        </noscript>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
         >
           Skip to content
         </a>

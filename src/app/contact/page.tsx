@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import GoogleFormEmbed from "@/components/ui/GoogleFormEmbed";
 import ContactInfo from "@/components/contact/ContactInfo";
@@ -17,21 +16,26 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Get in Touch"
-        title="Contact Us"
-        description="Have a question about lessons, volunteering, or partnering with us? We would love to hear from you."
+        title="Let's talk."
+        description="Questions about lessons, volunteering, or partnering with us? We would love to hear from you."
       />
 
-      <Section className="bg-cream">
-        <div className="mx-auto grid max-w-5xl items-start gap-8 lg:grid-cols-2">
-          <ContactInfo />
-          <Reveal delay={0.1}>
-            <h2 className="mb-4 text-center font-serif text-xl text-navy lg:text-left">
-              Send us a message
-            </h2>
-            <GoogleFormEmbed formKey="contact" height={640} />
+      <section className="py-16 md:py-24 lg:py-28">
+        <div className="wrap grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <p className="t-kicker text-accent">Reach us directly</p>
+            <div className="mt-8">
+              <ContactInfo />
+            </div>
+          </Reveal>
+          <Reveal>
+            <p className="t-kicker text-accent">Send a message</p>
+            <div className="mt-8">
+              <GoogleFormEmbed formKey="contact" height={620} />
+            </div>
           </Reveal>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

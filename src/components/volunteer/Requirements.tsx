@@ -1,62 +1,34 @@
-"use client";
+import RailSection from "@/components/ui/RailSection";
+import Reveal, { RevealItem } from "@/components/ui/Reveal";
 
-import { motion } from "framer-motion";
-import {
-  School,
-  Music4,
-  HeartHandshake,
-  Wifi,
-  type LucideIcon,
-} from "lucide-react";
-import Section from "@/components/ui/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { stagger, fadeUp } from "@/lib/motion";
-
-interface Requirement {
-  icon: LucideIcon;
-  title: string;
-}
-
-const requirements: Requirement[] = [
-  { icon: School, title: "High school student" },
-  { icon: Music4, title: "Musical experience" },
-  { icon: HeartHandshake, title: "Passion for teaching" },
-  { icon: Wifi, title: "Reliable internet connection" },
+const requirements = [
+  "A current high-school student",
+  "Real musical experience in your instrument or discipline",
+  "A genuine passion for teaching and mentoring",
+  "About one hour a week and a reliable internet connection",
 ];
 
 export default function Requirements() {
   return (
-    <Section id="requirements" className="bg-white">
-      <SectionHeading
-        eyebrow="Who Can Volunteer"
-        title="What we look for"
-        description="If this sounds like you, we would love to have you on the team."
-        align="left"
-        className="max-w-xl"
-      />
-
-      <motion.ul
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {requirements.map((req) => (
-          <motion.li
-            key={req.title}
-            variants={fadeUp}
-            className="flex flex-col items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
+    <RailSection
+      id="requirements"
+      index="01"
+      kicker="Who Can Volunteer"
+      title="What we look for"
+      lead="If this sounds like you, we would love to have you on the team."
+    >
+      <Reveal as="ul" stagger className="border-b hairline">
+        {requirements.map((item) => (
+          <RevealItem
+            key={item}
+            as="li"
+            className="flex items-center gap-5 border-t py-6 hairline"
           >
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-soft text-gold-dark">
-              <req.icon className="h-6 w-6" aria-hidden />
-            </span>
-            <span className="font-serif text-lg leading-snug text-navy">
-              {req.title}
-            </span>
-          </motion.li>
+            <span className="h-2.5 w-2.5 shrink-0 bg-accent" aria-hidden />
+            <span className="t-lead text-ink/85">{item}</span>
+          </RevealItem>
         ))}
-      </motion.ul>
-    </Section>
+      </Reveal>
+    </RailSection>
   );
 }

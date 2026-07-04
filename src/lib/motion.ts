@@ -1,35 +1,41 @@
 import type { Variants } from "framer-motion";
 
-/** Standard easing curve used across the site for a calm, premium feel. */
-export const easeOut = [0.22, 1, 0.36, 1] as const;
+/** The single site-wide easing — a decisive, settled curve. */
+export const signal = [0.16, 1, 0.3, 1] as const;
 
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: easeOut },
-  },
-};
-
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.8, ease: easeOut } },
-};
-
-/** Parent container that staggers its children into view. */
-export const stagger: Variants = {
+/** Master page-load container: staggers its children top-to-bottom. */
+export const loadStagger: Variants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
 };
 
-export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.6, ease: easeOut },
-  },
+/** A headline line rising out of an overflow-hidden mask. */
+export const lineMask: Variants = {
+  hidden: { y: "115%" },
+  show: { y: "0%", transition: { duration: 0.72, ease: signal } },
+};
+
+/** Fade + short rise, used for lead copy, CTAs, captions on load. */
+export const rise: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: signal } },
+};
+
+/** Hairline rule / underline drawing left-to-right. */
+export const drawX: Variants = {
+  hidden: { scaleX: 0 },
+  show: { scaleX: 1, transition: { duration: 0.6, ease: signal } },
+};
+
+/** The one quiet scroll reveal: fade + 12px rise, once. */
+export const reveal: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: signal } },
+};
+
+export const revealStagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.04 } },
 };

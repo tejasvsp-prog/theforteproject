@@ -1,15 +1,9 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { Music, BookOpenText, ArrowRight, type LucideIcon } from "lucide-react";
-import Section from "@/components/ui/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { stagger, fadeUp } from "@/lib/motion";
+import RailSection from "@/components/ui/RailSection";
+import Reveal from "@/components/ui/Reveal";
 
 interface Program {
-  index: string;
-  icon: LucideIcon;
+  tag: string;
   title: string;
   description: string;
   focus: string[];
@@ -18,8 +12,7 @@ interface Program {
 
 const programs: Program[] = [
   {
-    index: "01",
-    icon: Music,
+    tag: "Path A",
     title: "Performance Lessons",
     description:
       "For students who have an instrument but can't afford private instruction.",
@@ -27,8 +20,7 @@ const programs: Program[] = [
     href: "/apply#performance",
   },
   {
-    index: "02",
-    icon: BookOpenText,
+    tag: "Path B",
     title: "Music Theory & Composition",
     description: "For students who don't yet have access to an instrument.",
     focus: [
@@ -42,80 +34,49 @@ const programs: Program[] = [
   },
 ];
 
+function Panel({ program, className = "" }: { program: Program; className?: string }) {
+  return (
+    <div className={className}>
+      <p className="t-kicker text-accent">{program.tag}</p>
+      <h3 className="t-h3 mt-4">{program.title}</h3>
+      <p className="t-body mt-3 max-w-prose text-ink/75">
+        {program.description}
+      </p>
+      <ul className="mt-6 space-y-2.5">
+        {program.focus.map((item) => (
+          <li key={item} className="flex items-center gap-3 t-body text-ink/80">
+            <span className="h-1.5 w-1.5 shrink-0 bg-accent" aria-hidden />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <Link
+        href={program.href}
+        className="group relative mt-8 inline-block t-button text-ink"
+      >
+        Learn more &amp; apply <span aria-hidden>→</span>
+        <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-accent transition-transform duration-200 ease-signal group-hover:scale-x-100" />
+      </Link>
+    </div>
+  );
+}
+
 export default function StudentPrograms() {
   return (
-    <Section id="programs" className="bg-white">
-      <SectionHeading
-        eyebrow="Student Programs"
-        title="Two ways to make music"
-        description="Every student learns differently. We meet them where they are — with or without an instrument in hand."
-        align="left"
-        className="max-w-xl"
-      />
-
-      <motion.div
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-        className="mt-14 grid gap-6 lg:grid-cols-2"
-      >
-        {programs.map((program) => (
-          <motion.article
-            key={program.title}
-            variants={fadeUp}
-            className="group relative flex flex-col rounded-3xl border border-navy/10 bg-cream p-8 transition-colors duration-300 hover:border-gold/40 sm:p-10"
-          >
-            {/* Gold rule that grows on hover — a small, deliberate detail. */}
-            <span
-              className="absolute left-8 right-8 top-0 h-0.5 origin-left scale-x-0 rounded-full bg-gold transition-transform duration-500 group-hover:scale-x-100 sm:left-10 sm:right-10"
-              aria-hidden
-            />
-            <div className="flex items-start justify-between">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-navy text-gold">
-                <program.icon className="h-6 w-6" aria-hidden />
-              </span>
-              <span className="font-serif text-5xl text-navy/10">
-                {program.index}
-              </span>
-            </div>
-
-            <h3 className="mt-7 font-serif text-2xl text-navy">
-              {program.title}
-            </h3>
-            <p className="mt-3 leading-relaxed text-charcoal-light">
-              {program.description}
-            </p>
-
-            <div className="mt-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
-                What we focus on
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {program.focus.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-navy/10 bg-white px-3.5 py-1.5 text-sm text-charcoal"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <Link
-              href={program.href}
-              className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-navy transition-colors group-hover:text-gold-dark"
-            >
-              Learn more &amp; apply
-              <ArrowRight
-                className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                aria-hidden
-              />
-            </Link>
-          </motion.article>
-        ))}
-      </motion.div>
-    </Section>
+    <RailSection
+      id="programs"
+      index="03"
+      kicker="Student Programs"
+      title="Two ways to make music"
+      lead="Every student learns differently. We meet them where they are — with or without an instrument in hand."
+    >
+      <Reveal className="grid md:grid-cols-2">
+        <Panel program={programs[0]} className="pb-12 md:pb-0 md:pr-12" />
+        <Panel
+          program={programs[1]}
+          className="border-t pt-12 hairline md:border-l md:border-t-0 md:pl-12 md:pt-0"
+        />
+      </Reveal>
+    </RailSection>
   );
 }
