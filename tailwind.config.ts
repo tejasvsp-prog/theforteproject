@@ -12,7 +12,7 @@ const config: Config = {
       current: "currentColor",
       paper: "#F4EFE6",
       ink: "#141210",
-      accent: "#E8380D",
+      accent: "#C7300B",
     },
     extend: {
       fontFamily: {

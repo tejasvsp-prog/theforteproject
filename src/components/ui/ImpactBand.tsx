@@ -28,13 +28,13 @@ export default function ImpactBand({
       <div className="wrap py-16 md:py-24 lg:py-28">
         <Reveal>
           {eyebrow ? (
-            <p className="t-kicker mb-6 text-ink/70">{eyebrow}</p>
+            <p className="t-kicker mb-6 text-paper">{eyebrow}</p>
           ) : null}
-          <p className="t-display max-w-[18ch]">{children}</p>
+          <p className="t-display max-w-[18ch] text-ink">{children}</p>
           {actions && actions.length ? (
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               {actions.map((a) => (
-                <Button key={a.href} href={a.href} variant="secondary">
+                <Button key={a.href} href={a.href} variant="onAccent">
                   {a.label}
                 </Button>
               ))}

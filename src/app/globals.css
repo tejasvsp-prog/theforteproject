@@ -22,12 +22,12 @@
   }
 
   ::selection {
-    background-color: #e8380d;
+    background-color: #c7300b;
     color: #f4efe6;
   }
 
   :focus-visible {
-    outline: 2px solid #e8380d;
+    outline: 2px solid #c7300b;
     outline-offset: 2px;
   }
 
@@ -93,7 +93,7 @@
     font-variant-numeric: tabular-nums;
     font-size: clamp(3rem, 6.5vw, 6.5rem);
     line-height: 0.9;
-    color: #e8380d;
+    color: #c7300b;
   }
   .t-lead {
     font-family: var(--font-text);

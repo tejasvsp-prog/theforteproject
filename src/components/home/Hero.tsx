@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { signal } from "@/lib/motion";
@@ -7,14 +8,18 @@ import { siteConfig } from "@/lib/site";
 
 export default function Hero() {
   const rm = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  // Gate reduced-motion behind mount so SSR and first client render agree.
+  const reduce = mounted && rm;
 
   // One master timeline: kicker → hairline draw → H1 lines → underline →
   // lead → CTAs. Explicit delays keep the curtain-lift precise.
   const t = (delay: number, duration = 0.6) =>
-    rm ? { duration: 0 } : { delay, duration, ease: signal };
+    reduce ? { duration: 0 } : { delay, duration, ease: signal };
 
   const line = (delay: number) =>
-    rm
+    reduce
       ? { initial: { y: "0%" }, animate: { y: "0%" } }
       : {
           initial: { y: "115%" },
@@ -23,7 +28,7 @@ export default function Hero() {
         };
 
   const fade = (delay: number, y = 14) =>
-    rm
+    reduce
       ? { initial: { opacity: 1 }, animate: { opacity: 1 } }
       : {
           initial: { opacity: 0, y },
@@ -35,7 +40,7 @@ export default function Hero() {
     <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40 lg:pt-44">
       <div className="wrap">
         {/* Kicker */}
-        <motion.p className="t-kicker text-accent" {...fade(0)}>
+        <motion.p data-anim className="t-kicker text-accent" {...fade(0)}>
           Est. {siteConfig.founded} — A student-led music nonprofit
         </motion.p>
 
@@ -51,19 +56,20 @@ export default function Hero() {
         {/* Hero headline — masked line reveal */}
         <h1 className="t-hero mt-8 max-w-[16ch]">
           <span className="block overflow-hidden pb-[0.08em]">
-            <motion.span className="block" {...line(0.3)}>
+            <motion.span data-anim className="block" {...line(0.3)}>
               Music education,
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-[0.08em]">
-            <motion.span className="block" {...line(0.4)}>
+            <motion.span data-anim className="block" {...line(0.4)}>
               without{" "}
               <span className="relative inline-block">
                 borders.
                 <motion.span
+                  data-anim
                   aria-hidden
                   className="absolute -bottom-[0.06em] left-0 h-[0.09em] w-full origin-left bg-accent"
-                  initial={rm ? { scaleX: 1 } : { scaleX: 0 }}
+                  initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={t(1.0, 0.5)}
                 />
@@ -74,6 +80,7 @@ export default function Hero() {
 
         {/* Lead */}
         <motion.p
+          data-anim
           className="t-lead mt-8 max-w-measure text-ink/80"
           {...fade(0.72)}
         >
@@ -84,6 +91,7 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
+          data-anim
           className="mt-10 flex flex-col gap-4 sm:flex-row"
           {...fade(0.86)}
         >

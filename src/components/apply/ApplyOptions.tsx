@@ -51,7 +51,9 @@ export default function ApplyOptions() {
             } ${i === 1 ? "border-t border-ink lg:border-l lg:border-t-0" : ""}`}
           >
             <div>
-              <p className="t-kicker text-accent">{p.tag}</p>
+              <p className={`t-kicker ${dark ? "text-paper/80" : "text-accent"}`}>
+                {p.tag}
+              </p>
               <h2 className="t-display mt-6 max-w-[12ch]">{p.title}</h2>
               <p
                 className={`t-lead mt-6 max-w-measure ${
@@ -61,7 +63,11 @@ export default function ApplyOptions() {
                 {p.description}
               </p>
             </div>
-            <span className="inline-flex items-center gap-3 t-button text-accent">
+            <span
+              className={`inline-flex items-center gap-3 t-button ${
+                dark ? "text-paper" : "text-accent"
+              }`}
+            >
               {p.cta}
               <span
                 aria-hidden

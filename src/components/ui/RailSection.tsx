@@ -40,7 +40,7 @@ export default function RailSection({
           {/* Left index rail */}
           <Reveal className="flex items-center gap-5 lg:block lg:self-start lg:pr-8">
             <span className="t-numeral block">{index}</span>
-            <span className="t-kicker text-ink/55 lg:mt-6 lg:block lg:[writing-mode:vertical-rl] lg:rotate-180">
+            <span className="t-kicker text-ink/70 lg:mt-6 lg:block lg:[writing-mode:vertical-rl] lg:rotate-180">
               {kicker}
             </span>
           </Reveal>

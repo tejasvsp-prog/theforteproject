@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "onDark";
+type Variant = "primary" | "secondary" | "onDark" | "onAccent";
 
 interface Common {
   variant?: Variant;
@@ -20,27 +20,36 @@ type AsButton = Common &
   };
 
 const base =
-  "group relative inline-flex select-none items-center justify-center gap-2.5 overflow-hidden px-8 py-4 t-button transition-colors duration-300 ease-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "group relative inline-flex select-none items-center justify-center gap-2.5 overflow-hidden px-8 py-4 t-button transition-colors duration-300 ease-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
-// Each variant: [container classes, sliding-panel bg, label hover color]
-const variants: Record<Variant, { box: string; panel: string; label: string }> =
-  {
-    primary: {
-      box: "bg-accent text-paper",
-      panel: "bg-ink",
-      label: "text-paper",
-    },
-    secondary: {
-      box: "border-[1.5px] border-ink text-ink",
-      panel: "bg-ink",
-      label: "text-ink group-hover:text-paper",
-    },
-    onDark: {
-      box: "border-[1.5px] border-paper/70 text-paper",
-      panel: "bg-paper",
-      label: "text-paper group-hover:text-ink",
-    },
-  };
+const variants: Record<
+  Variant,
+  { box: string; panel: string; label: string }
+> = {
+  primary: {
+    box: "bg-accent text-paper focus-visible:outline-ink",
+    panel: "bg-ink",
+    label: "text-paper",
+  },
+  secondary: {
+    box: "border-[1.5px] border-ink text-ink focus-visible:outline-accent",
+    panel: "bg-ink",
+    label: "text-ink group-hover:text-paper",
+  },
+  // On the ink footer: paper outline, fills paper on hover.
+  onDark: {
+    box: "border-[1.5px] border-paper/70 text-paper focus-visible:outline-paper",
+    panel: "bg-paper",
+    label: "text-paper group-hover:text-ink",
+  },
+  // On the vermilion band: solid ink (small ink-on-accent text would fail AA),
+  // ink focus ring offset onto the accent field so it stays visible.
+  onAccent: {
+    box: "bg-ink text-paper focus-visible:outline-ink",
+    panel: "bg-paper",
+    label: "text-paper group-hover:text-ink",
+  },
+};
 
 function Inner({ variant, children }: { variant: Variant; children: ReactNode }) {
   const v = variants[variant];
@@ -50,7 +59,9 @@ function Inner({ variant, children }: { variant: Variant; children: ReactNode })
         aria-hidden
         className={`absolute inset-0 origin-left scale-x-0 transition-transform duration-[350ms] ease-signal group-hover:scale-x-100 ${v.panel}`}
       />
-      <span className={`relative z-10 inline-flex items-center gap-2.5 transition-colors duration-200 ${v.label}`}>
+      <span
+        className={`relative z-10 inline-flex items-center gap-2.5 transition-colors duration-200 ${v.label}`}
+      >
         {children}
       </span>
     </>

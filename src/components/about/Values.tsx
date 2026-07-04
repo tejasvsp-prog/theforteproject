@@ -40,10 +40,12 @@ export default function Values() {
         {stats.map((s) => (
           <div
             key={s.label}
-            className="border-l py-4 pl-5 pr-4 hairline [&:nth-child(-n+2)]:border-t-0 [&:nth-child(2n+1)]:border-l-0 [&:nth-child(n+3)]:border-t sm:[&:nth-child(-n+4)]:border-t-0 sm:[&:nth-child(2n+1)]:border-l sm:[&:first-child]:border-l-0"
+            className="border-l py-4 pl-5 pr-4 hairline [&:nth-child(n+3)]:border-t [&:nth-child(odd)]:border-l-0 sm:[&:nth-child(n+2)]:border-l sm:[&:nth-child(n+3)]:border-t-0"
           >
-            <p className="t-numeral text-[clamp(2rem,4vw,3.25rem)]">{s.value}</p>
-            <p className="t-kicker mt-3 text-ink/55">{s.label}</p>
+            <p className="t-numeral text-ink text-[clamp(2rem,4vw,3.25rem)]">
+              {s.value}
+            </p>
+            <p className="t-kicker mt-3 text-ink/70">{s.label}</p>
           </div>
         ))}
       </Reveal>

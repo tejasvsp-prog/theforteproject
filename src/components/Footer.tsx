@@ -7,7 +7,7 @@ const groups = [
   {
     heading: "Explore",
     links: footerLinks.filter((l) =>
-      ["/", "/about"].includes(l.href),
+      ["/", "/about", "/contact"].includes(l.href),
     ),
   },
   {

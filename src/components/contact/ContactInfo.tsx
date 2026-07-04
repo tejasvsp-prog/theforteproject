@@ -18,7 +18,7 @@ export default function ContactInfo() {
           className="grid grid-cols-[8rem_1fr] items-baseline gap-4 border-t py-5 hairline"
         >
           <dt className="t-kicker text-accent">{row.label}</dt>
-          <dd className="t-body text-ink/85">
+          <dd className="min-w-0 t-body text-ink/85 [overflow-wrap:anywhere]">
             {row.href ? (
               <a
                 href={row.href}
