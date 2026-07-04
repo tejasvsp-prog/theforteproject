@@ -39,24 +39,11 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="font-serif text-[2.6rem] font-medium leading-[1.05] tracking-tight text-navy sm:text-6xl"
+              className="font-serif text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.02em] text-navy sm:text-6xl lg:text-[4rem]"
             >
               Music education,
-              <span className="relative mt-2 block">
-                <span className="italic text-gold-dark">without borders.</span>
-                <svg
-                  className="absolute -bottom-2 left-0 h-3 w-[15rem] text-gold/70 sm:w-[19rem]"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                  aria-hidden
-                >
-                  <path
-                    d="M2 8C55 3 120 3 168 6C214 8 262 6 298 3"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <span className="mt-1 block italic font-medium text-gold-dark">
+                without borders.
               </span>
             </motion.h1>
 
