@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Music2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, siteConfig } from "@/lib/site";
 import Button from "./ui/Button";
+import Logo from "./ui/Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -37,15 +38,10 @@ export default function Navbar() {
       >
         <Link
           href="/"
-          className="group flex items-center gap-2.5"
+          className="group transition-opacity hover:opacity-80"
           aria-label={`${siteConfig.name} home`}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy text-gold transition-colors group-hover:bg-navy-600">
-            <Music2 className="h-5 w-5" aria-hidden />
-          </span>
-          <span className="heading-serif text-lg leading-none sm:text-xl">
-            {siteConfig.name}
-          </span>
+          <Logo tone="dark" />
         </Link>
 
         {/* Desktop links */}
