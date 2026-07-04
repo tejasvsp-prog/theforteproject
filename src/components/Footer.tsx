@@ -1,83 +1,99 @@
 import Link from "next/link";
-import { Instagram, Youtube, Linkedin, Mail } from "lucide-react";
 import { footerLinks, siteConfig } from "@/lib/site";
 import Logo from "./ui/Logo";
+import Button from "./ui/Button";
 
-const socials = [
-  { href: siteConfig.social.instagram, label: "Instagram", Icon: Instagram },
-  { href: siteConfig.social.youtube, label: "YouTube", Icon: Youtube },
-  { href: siteConfig.social.linkedin, label: "LinkedIn", Icon: Linkedin },
+const groups = [
+  {
+    heading: "Explore",
+    links: footerLinks.filter((l) =>
+      ["/", "/about"].includes(l.href),
+    ),
+  },
+  {
+    heading: "Get Involved",
+    links: footerLinks.filter((l) =>
+      ["/volunteer", "/apply"].includes(l.href),
+    ),
+  },
+  {
+    heading: "Connect",
+    links: [
+      { href: `mailto:${siteConfig.email}`, label: siteConfig.email },
+      { href: siteConfig.social.instagram, label: "Instagram" },
+      { href: siteConfig.social.youtube, label: "YouTube" },
+      { href: siteConfig.social.linkedin, label: "LinkedIn" },
+    ],
+  },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 bg-navy text-white">
-      <div className="container-content grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div className="max-w-sm space-y-4">
-          <Link href="/" className="inline-flex transition-opacity hover:opacity-80">
-            <Logo tone="light" />
-          </Link>
-          <p className="text-sm leading-relaxed text-white/70">
-            {siteConfig.tagline}. A student-led initiative expanding access to
-            quality music education worldwide.
-          </p>
-        </div>
+    <footer className="bg-ink text-paper">
+      <div className="wrap py-16 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-8">
+          <div className="max-w-md">
+            <Link href="/" className="inline-flex transition-opacity hover:opacity-70">
+              <Logo tone="light" />
+            </Link>
+            <p className="t-body mt-6 max-w-measure text-paper/70">
+              {siteConfig.tagline}. A student-led initiative expanding access to
+              quality music education worldwide.
+            </p>
+            <div className="mt-8">
+              <Button href="/apply" variant="primary">
+                Apply for Lessons
+              </Button>
+            </div>
+          </div>
 
-        <nav aria-label="Footer" className="space-y-4">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
-            Explore
-          </h3>
-          <ul className="space-y-2.5">
-            {footerLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-white/70 transition-colors hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="space-y-4">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
-            Connect
-          </h3>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
-          >
-            <Mail className="h-4 w-4" aria-hidden />
-            {siteConfig.email}
-          </a>
-          <div className="flex items-center gap-3 pt-1">
-            {socials.map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/80 transition-colors hover:bg-gold hover:text-navy"
-              >
-                <Icon className="h-4 w-4" aria-hidden />
-              </a>
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {groups.map((group) => (
+              <nav key={group.heading} aria-label={group.heading}>
+                <h3 className="t-kicker text-paper/50">{group.heading}</h3>
+                <ul className="mt-5 space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <FooterLink href={link.href} label={link.label} />
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-content flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/60 sm:flex-row">
-          <p>
+        <div className="mt-16 flex flex-col gap-2 border-t border-paper/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="t-caption text-paper/60">
             © {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p className="text-white/50">
-            Made by students, for students.
-          </p>
+          <p className="t-caption text-paper/50">Made by students, for students.</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ href, label }: { href: string; label: string }) {
+  const external = href.startsWith("mailto:") || href.startsWith("http");
+  const cls =
+    "group relative inline-block t-body text-paper/75 transition-colors duration-200 hover:text-paper";
+  const underline = (
+    <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-accent transition-transform duration-200 ease-signal group-hover:scale-x-100" />
+  );
+  if (external) {
+    return (
+      <a href={href} className={cls}>
+        {label}
+        {underline}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={cls}>
+      {label}
+      {underline}
+    </Link>
   );
 }

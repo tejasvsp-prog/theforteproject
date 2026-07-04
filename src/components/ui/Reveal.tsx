@@ -1,45 +1,64 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { reveal, revealStagger } from "@/lib/motion";
+
+type Tag = "div" | "section" | "ul" | "ol" | "li" | "span" | "p";
 
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  as?: Tag;
+  /** Use the stagger container instead of a single element reveal. */
+  stagger?: boolean;
   variants?: Variants;
-  delay?: number;
-  /** Render as a different element while keeping motion. Defaults to div. */
-  as?: "div" | "section" | "li" | "span";
-  once?: boolean;
 }
 
 /**
- * Scroll-triggered reveal wrapper. Animates its children into view once,
- * respecting the shared easing curve. Reduced-motion users see the content
- * immediately thanks to the global CSS override.
+ * The site's single, quiet scroll behaviour: content fades and rises 12px
+ * once as it first crosses into view. Nothing re-animates on scroll-back.
+ * Reduced-motion users get the content immediately.
  */
 export default function Reveal({
   children,
   className,
   id,
-  variants = fadeUp,
-  delay = 0,
   as = "div",
-  once = true,
+  stagger = false,
+  variants,
 }: RevealProps) {
-  const MotionTag = motion[as];
+  const rm = useReducedMotion();
+  const Tag = motion[as];
   return (
-    <MotionTag
+    <Tag
       id={id}
       className={className}
-      variants={variants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount: 0.2 }}
-      transition={delay ? { delay } : undefined}
+      variants={variants ?? (stagger ? revealStagger : reveal)}
+      initial={rm ? false : "hidden"}
+      whileInView={rm ? undefined : "show"}
+      animate={rm ? "show" : undefined}
+      viewport={{ once: true, amount: 0.25 }}
     >
       {children}
-    </MotionTag>
+    </Tag>
+  );
+}
+
+/** A child item for use inside a `stagger` Reveal. */
+export function RevealItem({
+  children,
+  className,
+  as = "div",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  as?: Tag;
+}) {
+  const Tag = motion[as];
+  return (
+    <Tag className={className} variants={reveal}>
+      {children}
+    </Tag>
   );
 }

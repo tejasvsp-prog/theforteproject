@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import Section from "@/components/ui/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Reveal from "@/components/ui/Reveal";
+import RailSection from "@/components/ui/RailSection";
+import ImpactBand from "@/components/ui/ImpactBand";
 import GoogleFormEmbed from "@/components/ui/GoogleFormEmbed";
 import ApplyOptions from "@/components/apply/ApplyOptions";
 
@@ -18,38 +17,41 @@ export default function ApplyPage() {
     <>
       <PageHero
         eyebrow="For Students"
-        title="Apply for Free Lessons"
-        description="Free virtual lessons are available to underprivileged students everywhere. Choose the path that fits you — whether or not you have an instrument."
+        title="Apply for free lessons."
+        description="Free virtual lessons are available to underprivileged students everywhere. Choose the path that fits you — with or without an instrument."
       />
 
-      <Section className="bg-cream">
-        <ApplyOptions />
-      </Section>
+      <ApplyOptions />
 
-      <Section id="forms" className="bg-white" staff>
-        <div className="flex flex-col items-center">
-          <SectionHeading
-            eyebrow="Application Forms"
-            title="Start your application"
-            description="Complete the form that matches your program. It only takes a few minutes."
-          />
+      <RailSection
+        id="performance"
+        index="01"
+        kicker="Performance Intake"
+        title="Performance Lessons"
+        lead="For students with access to an instrument who want individualized, performance-focused instruction."
+        className="scroll-mt-20"
+      >
+        <div className="max-w-3xl">
+          <GoogleFormEmbed formKey="performance" height={720} />
         </div>
+      </RailSection>
 
-        <div className="mx-auto mt-14 grid max-w-5xl gap-12 lg:grid-cols-2">
-          <Reveal id="performance-form" className="scroll-mt-28">
-            <h3 className="mb-4 text-center font-serif text-xl text-navy">
-              Performance Lessons
-            </h3>
-            <GoogleFormEmbed formKey="performance" height={720} />
-          </Reveal>
-          <Reveal id="theory-form" delay={0.1} className="scroll-mt-28">
-            <h3 className="mb-4 text-center font-serif text-xl text-navy">
-              Music Theory &amp; Composition
-            </h3>
-            <GoogleFormEmbed formKey="theory" height={720} />
-          </Reveal>
+      <RailSection
+        id="theory"
+        index="02"
+        kicker="Theory Intake"
+        title="Music Theory & Composition"
+        lead="For students without an instrument — theory, composition, rhythm, and ear training."
+        className="scroll-mt-20"
+      >
+        <div className="max-w-3xl">
+          <GoogleFormEmbed formKey="theory" height={720} />
         </div>
-      </Section>
+      </RailSection>
+
+      <ImpactBand eyebrow="Questions first?">
+        Every student is welcome. Reach out and we will help you find your path.
+      </ImpactBand>
     </>
   );
 }

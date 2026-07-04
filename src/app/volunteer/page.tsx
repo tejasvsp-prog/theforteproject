@@ -16,8 +16,8 @@ export default function VolunteerPage() {
     <>
       <PageHero
         eyebrow="Get Involved"
-        title="Become a Volunteer"
-        description="Volunteer instructors are high school musicians who teach students in areas aligned with their musical experience through free virtual Zoom lessons."
+        title="Become a volunteer."
+        description="Volunteer instructors are high-school musicians who teach students in areas aligned with their experience — through free, live Zoom lessons."
       />
       <Requirements />
       <ProcessTimeline />

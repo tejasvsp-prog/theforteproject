@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Story from "@/components/about/Story";
 import Values from "@/components/about/Values";
-import CTABand from "@/components/ui/CTABand";
+import ImpactBand from "@/components/ui/ImpactBand";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -16,19 +16,20 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="Our Story"
-        title="About Us"
-        description="The Forte Project is a student-led initiative expanding access to quality music education worldwide — one free lesson at a time."
+        title="A student-led movement for musical access."
+        description="The Forte Project expands access to quality music education worldwide — one free lesson at a time."
       />
       <Story />
       <Values />
-      <CTABand
-        title="Be part of the story"
-        description="Whether you teach or you learn, there's a place for you at The Forte Project."
+      <ImpactBand
+        eyebrow="Be part of the story"
         actions={[
-          { href: "/volunteer", label: "Become a Volunteer", variant: "gold" },
-          { href: "/apply", label: "Enroll for Lessons", variant: "ghost" },
+          { href: "/volunteer", label: "Become a Volunteer" },
+          { href: "/apply", label: "Enroll for Lessons" },
         ]}
-      />
+      >
+        Whether you teach or you learn, there is a place for you here.
+      </ImpactBand>
     </>
   );
 }

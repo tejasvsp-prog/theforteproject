@@ -3,86 +3,103 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, siteConfig } from "@/lib/site";
-import Button from "./ui/Button";
 import Logo from "./ui/Logo";
+import Button from "./ui/Button";
+
+function NavLink({
+  href,
+  label,
+  active,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+  onClick?: () => void;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      aria-current={active ? "page" : undefined}
+      className="group relative t-button text-ink/70 transition-colors duration-200 hover:text-ink"
+    >
+      {label}
+      <span
+        className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left bg-accent transition-transform duration-200 ease-signal ${
+          active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+        }`}
+      />
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Close the mobile menu whenever the route changes.
   useEffect(() => setOpen(false), [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-navy/10 bg-cream/85 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink bg-paper">
       <nav
-        className="container-content flex h-16 items-center justify-between sm:h-20"
+        className="wrap flex h-[72px] items-center justify-between"
         aria-label="Primary"
       >
         <Link
           href="/"
-          className="group transition-opacity hover:opacity-80"
-          aria-label={`${siteConfig.name} home`}
+          className="transition-opacity hover:opacity-70"
+          aria-label={`${siteConfig.name} — home`}
         >
-          <Logo tone="dark" />
+          <Logo />
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => {
-            const active = pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`relative text-sm font-medium transition-colors ${
-                  active
-                    ? "text-navy"
-                    : "text-charcoal-light hover:text-navy"
-                }`}
-              >
-                {item.label}
-                {active ? (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-gold"
-                  />
-                ) : null}
-              </Link>
-            );
-          })}
-          <Button href="/contact" size="md">
+        <div className="hidden items-center gap-9 md:flex">
+          {nav.map((item) => (
+            <NavLink
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              active={pathname.startsWith(item.href)}
+            />
+          ))}
+          <Button href="/contact" className="px-6 py-3">
             Contact Us
           </Button>
         </div>
 
-        {/* Mobile toggle */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy md:hidden"
+          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px] md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <span
+            className={`block h-[2px] w-6 bg-ink transition-transform duration-300 ease-signal ${
+              open ? "translate-y-[8px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-6 bg-ink transition-opacity duration-200 ${
+              open ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-6 bg-ink transition-transform duration-300 ease-signal ${
+              open ? "-translate-y-[8px] -rotate-45" : ""
+            }`}
+          />
         </button>
       </nav>
 
@@ -90,25 +107,38 @@ export default function Navbar() {
         {open ? (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-navy/10 bg-cream/95 backdrop-blur-md md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 top-[72px] z-40 flex flex-col bg-paper md:hidden"
           >
-            <div className="container-content flex flex-col gap-1 py-4">
-              {nav.map((item) => (
-                <Link
+            <div className="wrap flex flex-1 flex-col justify-center gap-2 pb-24">
+              {nav.map((item, i) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-charcoal-light hover:bg-white hover:text-navy"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 * i + 0.05, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className="t-display block border-b py-5 hairline"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <Button href="/contact" className="mt-2">
-                Contact Us
-              </Button>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.06 * nav.length + 0.05 }}
+                className="mt-8"
+              >
+                <Button href="/contact" className="w-full">
+                  Contact Us
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         ) : null}
