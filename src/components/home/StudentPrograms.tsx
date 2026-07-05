@@ -36,7 +36,9 @@ const programs: Program[] = [
 
 function Panel({ program, className = "" }: { program: Program; className?: string }) {
   return (
-    <div className={className}>
+    <div
+      className={`flex flex-col rounded-3xl border border-ink/10 bg-cream p-8 shadow-card transition-transform duration-300 ease-signal hover:-translate-y-1 sm:p-10 ${className}`}
+    >
       <p className="t-kicker text-accent">{program.tag}</p>
       <h3 className="t-h3 mt-4">{program.title}</h3>
       <p className="t-body mt-3 max-w-prose text-ink/75">
@@ -70,12 +72,9 @@ export default function StudentPrograms() {
       title="Two ways to make music"
       lead="Every student learns differently. We meet them where they are — with or without an instrument in hand."
     >
-      <Reveal className="grid md:grid-cols-2">
-        <Panel program={programs[0]} className="pb-12 md:pb-0 md:pr-12" />
-        <Panel
-          program={programs[1]}
-          className="border-t pt-12 hairline md:border-l md:border-t-0 md:pl-12 md:pt-0"
-        />
+      <Reveal className="grid gap-6 md:grid-cols-2">
+        <Panel program={programs[0]} />
+        <Panel program={programs[1]} />
       </Reveal>
     </RailSection>
   );

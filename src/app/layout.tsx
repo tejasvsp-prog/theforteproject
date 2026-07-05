@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Newsreader } from "next/font/google";
+import { Fraunces, Newsreader } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Display voice — engineered grotesque, used expanded (font-stretch: 125%)
-// via the width axis for the Swiss / concert-program headline register.
-const display = Archivo({
+// Display voice — Fraunces, a warm, high-contrast "old-style" serif with real
+// optical character. Human and editorial rather than machined/Swiss.
+const display = Fraunces({
   subsets: ["latin"],
-  axes: ["wdth"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "opsz", "WONK"],
   display: "swap",
   variable: "--font-display",
 });

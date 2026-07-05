@@ -24,13 +24,13 @@ export default function ImpactBand({
   actions,
 }: ImpactBandProps) {
   return (
-    <section className="bg-accent text-ink">
+    <section className="bg-accent text-paper">
       <div className="wrap py-16 md:py-24 lg:py-28">
         <Reveal>
           {eyebrow ? (
-            <p className="t-kicker mb-6 text-paper">{eyebrow}</p>
+            <p className="t-kicker mb-6 text-paper/80">{eyebrow}</p>
           ) : null}
-          <p className="t-display max-w-[18ch] text-ink">{children}</p>
+          <p className="t-display max-w-[18ch] text-paper">{children}</p>
           {actions && actions.length ? (
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               {actions.map((a) => (

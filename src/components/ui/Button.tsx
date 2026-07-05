@@ -20,7 +20,7 @@ type AsButton = Common &
   };
 
 const base =
-  "group relative inline-flex select-none items-center justify-center gap-2.5 overflow-hidden px-8 py-4 t-button transition-colors duration-300 ease-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "group relative inline-flex select-none items-center justify-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 t-button shadow-soft transition-all duration-300 ease-signal hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<
   Variant,
@@ -32,22 +32,21 @@ const variants: Record<
     label: "text-paper",
   },
   secondary: {
-    box: "border-[1.5px] border-ink text-ink focus-visible:outline-accent",
-    panel: "bg-ink",
+    box: "bg-cream text-ink ring-1 ring-ink/15 shadow-none hover:ring-accent/40 focus-visible:outline-accent",
+    panel: "bg-transparent",
+    label: "text-ink",
+  },
+  // On the ink footer.
+  onDark: {
+    box: "bg-paper text-ink focus-visible:outline-paper",
+    panel: "bg-accent",
     label: "text-ink group-hover:text-paper",
   },
-  // On the ink footer: paper outline, fills paper on hover.
-  onDark: {
-    box: "border-[1.5px] border-paper/70 text-paper focus-visible:outline-paper",
-    panel: "bg-paper",
-    label: "text-paper group-hover:text-ink",
-  },
-  // On the vermilion band: solid ink (small ink-on-accent text would fail AA),
-  // ink focus ring offset onto the accent field so it stays visible.
+  // On the terracotta band: a warm light fill.
   onAccent: {
-    box: "bg-ink text-paper focus-visible:outline-ink",
-    panel: "bg-paper",
-    label: "text-paper group-hover:text-ink",
+    box: "bg-paper text-ink focus-visible:outline-paper",
+    panel: "bg-ink",
+    label: "text-ink group-hover:text-paper",
   },
 };
 
