@@ -46,11 +46,12 @@
 }
 
 @layer components {
-  /* Page gutter: 40px mobile → 64px tablet → 104px desktop, capped column. */
+  /* Page gutter: scales from 24px on phones to 104px on wide screens.
+     The mid-range term is kept modest so the nav never outgrows the column. */
   .wrap {
     @apply mx-auto w-full max-w-wrap;
-    padding-left: clamp(1.5rem, 5.5vw, 6.5rem);
-    padding-right: clamp(1.5rem, 5.5vw, 6.5rem);
+    padding-left: clamp(1.25rem, 3.5vw, 6.5rem);
+    padding-right: clamp(1.25rem, 3.5vw, 6.5rem);
   }
 
   /* ── Type scale (Bone & Signal) ─────────────────────────────── */
@@ -58,8 +59,10 @@
     font-family: var(--font-display);
     font-weight: 800;
     font-stretch: 125%;
-    font-size: clamp(3.25rem, 8.5vw, 7rem);
-    line-height: 0.92;
+    /* vw-led so the longest phrase ("without borders.") always fits the
+       viewport down to ~300px without clipping the reveal masks. */
+    font-size: clamp(1.5rem, 7.4vw, 7rem);
+    line-height: 0.94;
     letter-spacing: -0.03em;
   }
   .t-display {

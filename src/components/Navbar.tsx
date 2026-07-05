@@ -24,7 +24,7 @@ function NavLink({
       href={href}
       onClick={onClick}
       aria-current={active ? "page" : undefined}
-      className="group relative t-button text-ink/70 transition-colors duration-200 hover:text-ink"
+      className="group relative t-button whitespace-nowrap text-[0.8125rem] text-ink/70 transition-colors duration-200 hover:text-ink"
     >
       {label}
       <span
@@ -99,7 +99,7 @@ export default function Navbar() {
           <Logo />
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-center gap-6 md:flex lg:gap-9">
           {nav.map((item) => (
             <NavLink
               key={item.href}
@@ -108,7 +108,7 @@ export default function Navbar() {
               active={pathname.startsWith(item.href)}
             />
           ))}
-          <Button href="/contact" className="px-6 py-3">
+          <Button href="/contact" className="whitespace-nowrap px-5 py-2.5 text-[0.8125rem]">
             Contact Us
           </Button>
         </div>

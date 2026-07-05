@@ -53,15 +53,17 @@ export default function Hero() {
           transition={t(0.15, 0.6)}
         />
 
-        {/* Hero headline — masked line reveal */}
-        <h1 className="t-hero mt-8 max-w-[16ch]">
+        {/* Hero headline — masked line reveal. Phrases stay on one line
+            (nowrap) and the vw-led font keeps them inside the viewport, so a
+            wrapped line can never be clipped by the reveal mask. */}
+        <h1 className="t-hero mt-8 max-w-full">
           <span className="block overflow-hidden pb-[0.08em]">
-            <motion.span data-anim className="block" {...line(0.3)}>
+            <motion.span data-anim className="block whitespace-nowrap" {...line(0.3)}>
               Music education,
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-[0.08em]">
-            <motion.span data-anim className="block" {...line(0.4)}>
+            <motion.span data-anim className="block whitespace-nowrap" {...line(0.4)}>
               without{" "}
               <span className="relative inline-block">
                 borders.
