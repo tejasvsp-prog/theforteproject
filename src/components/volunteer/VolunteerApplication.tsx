@@ -1,5 +1,5 @@
 import Reveal from "@/components/ui/Reveal";
-import GoogleFormEmbed from "@/components/ui/GoogleFormEmbed";
+import TallyEmbed from "@/components/ui/TallyEmbed";
 import Button from "@/components/ui/Button";
 import { forms } from "@/lib/site";
 
@@ -22,7 +22,7 @@ export default function VolunteerApplication() {
           </div>
         </Reveal>
         <Reveal id="volunteer-form" className="mt-12 max-w-3xl scroll-mt-28">
-          <GoogleFormEmbed formKey="volunteer" height={760} />
+          <TallyEmbed formKey="volunteer" height={760} />
         </Reveal>
       </div>
     </section>

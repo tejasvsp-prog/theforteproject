@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import ImpactBand from "@/components/ui/ImpactBand";
-import GoogleFormEmbed from "@/components/ui/GoogleFormEmbed";
+import TallyEmbed from "@/components/ui/TallyEmbed";
 import ApplyOptions from "@/components/apply/ApplyOptions";
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function ApplyPage() {
             </p>
           </Reveal>
           <Reveal className="mt-10 max-w-3xl">
-            <GoogleFormEmbed formKey="student" height={760} />
+            <TallyEmbed formKey="student" height={760} />
           </Reveal>
         </div>
       </section>

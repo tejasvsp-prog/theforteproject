@@ -38,8 +38,8 @@ export default function ContactInfo() {
         </div>
       ))}
       <p className="t-caption max-w-sm text-ink/55">
-        Have a different question? Leave it on the form and we&apos;ll get back
-        to you.
+        Not sure which fits? Pick whichever is closest — there&apos;s a spot on
+        every form to tell us more, and we&apos;ll get back to you.
       </p>
     </div>
   );

@@ -4,9 +4,10 @@
  * Everything here is authentic — based only on what the organization has
  * confirmed. No invented statistics, dates, names, testimonials, or claims.
  *
- * Forms: every sign-up points at an interest form. Paste a real Google Form
- * "embed" URL into `embedUrl` (and the shareable link into `shareUrl`) below
- * and the whole site updates — no component changes needed.
+ * Forms: every sign-up points at a Tally interest form. The `embedUrl` is the
+ * Tally "embed" link (tally.so/embed/…); `shareUrl` is the public link
+ * (tally.so/r/…) used by plain CTA buttons. Empty strings fall back to a
+ * placeholder, so the site never breaks before a form exists.
  */
 
 export const siteConfig = {
@@ -131,15 +132,25 @@ export type FormKey = "student" | "volunteer" | "contact";
 
 export interface FormConfig {
   label: string;
-  /** iframe embed URL from the Google Form "embed" tab. Empty = placeholder. */
+  /** Tally embed URL (tally.so/embed/…). Empty = placeholder. */
   embedUrl: string;
-  /** Public shareable link used by CTA buttons. Empty = placeholder. */
+  /** Public shareable link (tally.so/r/…) used by plain CTA buttons. */
   shareUrl: string;
 }
 
+const tallyParams = "alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+
 export const forms: Record<FormKey, FormConfig> = {
-  student: { label: "Student interest form", embedUrl: "", shareUrl: "" },
-  volunteer: { label: "Volunteer interest form", embedUrl: "", shareUrl: "" },
+  student: {
+    label: "Student interest form",
+    embedUrl: `https://tally.so/embed/0Q5ELZ?${tallyParams}`,
+    shareUrl: "https://tally.so/r/0Q5ELZ",
+  },
+  volunteer: {
+    label: "Volunteer interest form",
+    embedUrl: `https://tally.so/embed/RGlzJp?${tallyParams}`,
+    shareUrl: "https://tally.so/r/RGlzJp",
+  },
   contact: { label: "Contact form", embedUrl: "", shareUrl: "" },
 };
 
