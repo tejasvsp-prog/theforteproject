@@ -12,7 +12,7 @@ export default function Requirements() {
         <Reveal className="lg:col-span-4">
           <p className="t-kicker text-accent">What we ask</p>
           <h2 className="t-h2 mt-5">Two things, really.</h2>
-          <p className="t-body mt-6 max-w-xs text-ink/70">
+          <p className="t-body mt-6 max-w-xs text-mute">
             If both are true, you&apos;re exactly who we&apos;re looking for.
           </p>
         </Reveal>
@@ -28,13 +28,13 @@ export default function Requirements() {
             <motion.div
               key={r.title}
               variants={reveal}
-              className="rounded-3xl border border-ink/10 bg-cream p-8 shadow-soft"
+              className="card-panel rounded-3xl p-8 shadow-card transition-[transform,border-color] duration-500 ease-signal hover:-translate-y-1 hover:border-accent/40"
             >
-              <span className="t-numeral text-[2.4rem] leading-none">
+              <span className="t-numeral text-[2.4rem] leading-none text-accent">
                 {String(i + 1)}
               </span>
               <h3 className="t-h3 mt-4">{r.title}</h3>
-              <p className="t-body mt-2.5 text-ink/70">{r.body}</p>
+              <p className="t-body mt-2.5 text-mute">{r.body}</p>
             </motion.div>
           ))}
         </motion.div>

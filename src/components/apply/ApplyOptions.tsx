@@ -25,33 +25,27 @@ export default function ApplyOptions() {
             <motion.div
               key={track.id}
               variants={reveal}
-              className={`group relative overflow-hidden rounded-3xl p-8 shadow-card sm:p-10 ${
-                i === 0
-                  ? "border border-ink/10 bg-cream"
-                  : "bg-ink text-paper"
+              className={`card-panel group relative overflow-hidden rounded-3xl p-8 shadow-card transition-[transform,border-color] duration-500 ease-signal hover:-translate-y-1 sm:p-10 ${
+                i === 0 ? "hover:border-accent/40" : "hover:border-volt/40"
               }`}
             >
-              <p className={`t-kicker ${i === 0 ? "text-accent" : "text-honey"}`}>
+              <span
+                aria-hidden
+                className="spotlight pointer-events-none absolute -right-8 -top-12 h-52 w-52 rounded-full opacity-60"
+              />
+              <p className={`relative t-kicker ${i === 0 ? "text-accent" : "text-volt"}`}>
                 {track.label}
               </p>
-              <h2
-                className={`t-display mt-4 text-[2rem] sm:text-[2.4rem] ${
-                  i === 0 ? "" : "text-paper"
-                }`}
-              >
+              <h2 className="relative t-display mt-4 text-[2rem] sm:text-[2.4rem]">
                 {track.title}
               </h2>
-              <p
-                className={`t-body mt-4 max-w-md ${
-                  i === 0 ? "text-ink/75" : "text-paper/75"
-                }`}
-              >
+              <p className="relative t-body mt-4 max-w-md text-mute">
                 {track.blurb}
               </p>
               <Link
                 href="#form"
-                className={`group/link mt-8 inline-flex items-center gap-2 t-button ${
-                  i === 0 ? "text-accent" : "text-honey"
+                className={`group/link relative mt-8 inline-flex items-center gap-2 t-button ${
+                  i === 0 ? "text-accent" : "text-volt"
                 }`}
               >
                 Fill out the form

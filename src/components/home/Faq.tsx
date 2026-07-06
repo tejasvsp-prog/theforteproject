@@ -15,7 +15,7 @@ export default function Faq() {
         <Reveal className="lg:col-span-4">
           <p className="t-kicker text-accent">Questions</p>
           <h2 className="t-h2 mt-5">Good to know.</h2>
-          <p className="t-body mt-6 max-w-xs text-ink/70">
+          <p className="t-body mt-6 max-w-xs text-mute">
             Can&apos;t find what you&apos;re looking for? Just say so on the
             interest form and we&apos;ll answer.
           </p>
@@ -40,7 +40,7 @@ export default function Faq() {
                       aria-hidden
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: signal }}
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-accent"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-accent transition-colors group-hover:border-accent/40"
                     >
                       <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none">
                         <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -57,7 +57,7 @@ export default function Faq() {
                         transition={{ duration: 0.32, ease: signal }}
                         className="overflow-hidden"
                       >
-                        <p className="t-body max-w-prose pb-6 pr-12 text-ink/75">
+                        <p className="t-body max-w-prose pb-6 pr-12 text-mute">
                           {f.a}
                         </p>
                       </motion.div>

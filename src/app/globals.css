@@ -5,8 +5,8 @@
 @layer base {
   :root {
     scroll-behavior: smooth;
-    --hairline: rgba(42, 35, 32, 0.16);
-    --wash: rgba(42, 35, 32, 0.05);
+    --hairline: rgba(255, 255, 255, 0.1);
+    --wash: rgba(255, 255, 255, 0.04);
   }
 
   html {
@@ -16,38 +16,36 @@
   }
 
   body {
-    font-family: var(--font-text), Georgia, serif;
-    color: #2a2320;
-    /* Warm ivory with a soft glow pooled toward the top — hand-mixed, not flat. */
-    background-color: #f6efe1;
-    background-image: radial-gradient(
-      120% 60% at 50% -10%,
-      rgba(200, 151, 63, 0.1) 0%,
-      rgba(246, 239, 225, 0) 60%
-    );
+    font-family: var(--font-text), system-ui, sans-serif;
+    color: #f4f3f6;
+    background-color: #08080b;
+    /* Warm amber stage-light pooled high, cool violet drifting low — the room
+       is dark but lit, never a flat black rectangle. */
+    background-image:
+      radial-gradient(70% 50% at 78% -8%, rgba(255, 159, 69, 0.16) 0%, rgba(8, 8, 11, 0) 60%),
+      radial-gradient(60% 45% at 8% 8%, rgba(124, 124, 255, 0.1) 0%, rgba(8, 8, 11, 0) 55%);
     background-attachment: fixed;
   }
 
-  /* Faint paper grain over everything — reads as stock/tactile, not a flat
-     screen. Fixed so it doesn't swim while scrolling. */
+  /* Fine film grain so the dark surfaces read as a photographed room. */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
 
   ::selection {
-    background-color: #b44a2c;
-    color: #f6efe1;
+    background-color: #ff9f45;
+    color: #08080b;
   }
 
   :focus-visible {
-    outline: 2px solid #b44a2c;
+    outline: 2px solid #ff9f45;
     outline-offset: 2px;
   }
 
@@ -72,128 +70,117 @@
     padding-right: clamp(1.25rem, 3.5vw, 6rem);
   }
 
-  /* ── Warm editorial type scale ──────────────────────────────
-     Display voice is Fraunces (soft, high-contrast old-style serif). */
+  /* ── Modern sans type scale — Space Grotesk display, Inter text ──────── */
   .t-hero {
     font-family: var(--font-display);
     font-weight: 500;
-    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0;
-    font-size: clamp(2.5rem, 7vw, 5.75rem);
-    line-height: 1.0;
-    letter-spacing: -0.015em;
+    font-size: clamp(2.75rem, 8vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
   }
   .t-display {
     font-family: var(--font-display);
     font-weight: 500;
-    font-variation-settings: "opsz" 120, "SOFT" 40, "WONK" 0;
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    line-height: 1.04;
-    letter-spacing: -0.012em;
+    font-size: clamp(2.25rem, 5vw, 3.9rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
   }
   .t-h2 {
     font-family: var(--font-display);
     font-weight: 500;
-    font-variation-settings: "opsz" 80, "SOFT" 40, "WONK" 0;
-    font-size: clamp(1.85rem, 3.6vw, 2.85rem);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
   .t-h3 {
     font-family: var(--font-display);
-    font-weight: 600;
-    font-variation-settings: "opsz" 40, "SOFT" 50, "WONK" 0;
-    font-size: clamp(1.375rem, 2vw, 1.75rem);
-    line-height: 1.18;
+    font-weight: 500;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
   .t-numeral {
     font-family: var(--font-display);
     font-weight: 500;
-    font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
-    font-variant-numeric: lining-nums;
-    font-style: italic;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 0.95;
-    color: #b44a2c;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
   }
   .t-lead {
     font-family: var(--font-text);
     font-weight: 400;
-    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-    line-height: 1.5;
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: #c9c8d2;
   }
   .t-body {
     font-family: var(--font-text);
     font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    letter-spacing: -0.006em;
   }
   .t-quote {
     font-family: var(--font-display);
     font-weight: 400;
-    font-style: italic;
-    font-variation-settings: "opsz" 60, "SOFT" 50, "WONK" 0;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    line-height: 1.28;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
   }
-  /* Eyebrow — a small, warm, tracked label. */
+  /* Eyebrow — small, tracked, technical. */
   .t-kicker {
     font-family: var(--font-text);
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
     line-height: 1;
   }
-  /* Buttons/links are sentence-case and friendly — no shouty tracked caps. */
   .t-button {
-    font-family: var(--font-text);
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.005em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
     line-height: 1;
   }
   .t-caption {
     font-family: var(--font-text);
     font-weight: 400;
-    font-style: italic;
     font-size: 0.85rem;
-    line-height: 1.45;
-  }
-  /* Margin-note voice — a person's handwriting, used sparingly as an aside. */
-  .t-script {
-    font-family: var(--font-script), "Segoe Script", cursive;
-    font-weight: 600;
-    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
-    line-height: 1;
-    color: #b44a2c;
+    line-height: 1.5;
+    color: #9a99a6;
   }
 
   .hairline {
     border-color: var(--hairline);
   }
 
-  /* A warm layered wash — soft honey + terracotta light pooling, used behind
-     hero and feature sections to give the flat field real depth. */
-  .wash-warm {
-    background-image:
-      radial-gradient(60% 80% at 12% 0%, rgba(200, 151, 63, 0.14) 0%, rgba(246, 239, 225, 0) 55%),
-      radial-gradient(50% 70% at 100% 30%, rgba(180, 74, 44, 0.1) 0%, rgba(246, 239, 225, 0) 55%);
+  /* Amber→ember→violet gradient text for hero accents. */
+  .text-gradient {
+    background-image: linear-gradient(100deg, #ffb673 0%, #ff7a4d 45%, #9a8cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  /* Gentle top-lit gradient for raised cream cards so they read as objects
-     with a light source, not flat rectangles. */
-  .card-cream {
-    background-image: linear-gradient(180deg, #fffaf0 0%, #fcf8ef 42%, #f8f1e2 100%);
+
+  /* Glass panel — the Linear/Vercel raised surface. */
+  .glass {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%),
+      rgba(16, 16, 21, 0.6);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
-  /* Depth for the espresso panels — a subtle vertical sheen. */
-  .card-ink {
-    background-image: linear-gradient(165deg, #362d28 0%, #2a2320 55%, #241d1a 100%);
+  /* Solid raised card. */
+  .card-panel {
+    background-image: linear-gradient(180deg, #1a1a22 0%, #131319 100%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
-  /* Terracotta band gets a lit corner instead of a flat fill. */
-  .band-accent {
-    background-color: #b44a2c;
-    background-image:
-      radial-gradient(70% 120% at 88% -20%, rgba(200, 151, 63, 0.5) 0%, rgba(180, 74, 44, 0) 55%),
-      radial-gradient(60% 100% at 0% 120%, rgba(42, 35, 32, 0.28) 0%, rgba(180, 74, 44, 0) 55%);
+  /* A soft radial spotlight, dropped behind hero/section focal points. */
+  .spotlight {
+    background: radial-gradient(circle, rgba(255, 159, 69, 0.22) 0%, rgba(8, 8, 11, 0) 70%);
   }
 }
 

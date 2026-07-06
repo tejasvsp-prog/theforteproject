@@ -16,18 +16,13 @@ export default function Mission() {
           <p className="t-kicker text-accent">Why we started</p>
           <p className="t-display mt-7 max-w-[16ch]">
             Music lessons cost money a lot of families don&apos;t have.{" "}
-            <span className="relative text-accent">
-              Talent doesn&apos;t.
-              <span className="t-script absolute -bottom-7 left-0 whitespace-nowrap text-[1.35rem] text-ink/45">
-                that&apos;s the whole idea.
-              </span>
-            </span>
+            <span className="text-gradient">Talent doesn&apos;t.</span>
           </p>
         </Reveal>
         {/* Supporting line hangs lower-right, threaded onto a hairline. */}
         <Reveal className="self-end lg:col-span-4">
-          <div className="border-t hairline pt-6">
-            <p className="t-lead max-w-prose text-ink/75">
+          <div className="border-t border-white/10 pt-6">
+            <p className="t-lead max-w-prose">
               Our mission is simple: make sure every student can learn music —
               regardless of what their family can afford. We&apos;re students
               ourselves, and we teach for free.

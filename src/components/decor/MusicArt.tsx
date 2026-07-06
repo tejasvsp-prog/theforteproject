@@ -45,7 +45,7 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
       {/* Simplified treble clef */}
       <motion.path
         d="M64 96c-7-2-10-9-7-15 3-8 13-12 17-25 3-11-1-22-9-22-8 0-12 8-10 17 2 10 10 18 20 28 8 8 12 14 10 22-2 8-9 12-16 10-5-2-8-7-6-11 2-4 6-5 9-3"
-        stroke="#b44a2c"
+        stroke="#FF9F45"
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -110,7 +110,7 @@ export function KeysArc({ className = "" }: { className?: string }) {
           width={14}
           height={78}
           rx={2}
-          fill="#b44a2c"
+          fill="#FF9F45"
           fillOpacity="0.85"
         />
       ))}

@@ -20,56 +20,26 @@ type AsButton = Common &
   };
 
 const base =
-  "group relative inline-flex select-none items-center justify-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 t-button shadow-soft transition-all duration-300 ease-signal hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "group relative inline-flex select-none items-center justify-center gap-2.5 rounded-full px-7 py-3.5 t-button transition-all duration-300 ease-signal hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
-const variants: Record<
-  Variant,
-  { box: string; panel: string; label: string }
-> = {
-  primary: {
-    box: "bg-accent text-paper focus-visible:outline-ink",
-    panel: "bg-ink",
-    label: "text-paper",
-  },
-  secondary: {
-    box: "bg-cream text-ink ring-1 ring-ink/15 shadow-none hover:ring-accent/40 focus-visible:outline-accent",
-    panel: "bg-transparent",
-    label: "text-ink",
-  },
-  // On the ink footer.
-  onDark: {
-    box: "bg-paper text-ink focus-visible:outline-paper",
-    panel: "bg-accent",
-    label: "text-ink group-hover:text-paper",
-  },
-  // On the terracotta band: a warm light fill.
-  onAccent: {
-    box: "bg-paper text-ink focus-visible:outline-paper",
-    panel: "bg-ink",
-    label: "text-ink group-hover:text-paper",
-  },
+const variants: Record<Variant, string> = {
+  // Amber pill with a warm glow — the primary call to action.
+  primary:
+    "bg-accent text-night shadow-[0_10px_40px_-12px_rgba(255,159,69,0.6)] hover:bg-honey hover:shadow-[0_16px_50px_-12px_rgba(255,159,69,0.8)] focus-visible:outline-accent",
+  // Glassy outline on the dark field.
+  secondary:
+    "glass text-ink hover:border-accent/50 hover:text-accent focus-visible:outline-accent",
+  // Same glass treatment, used on already-dark panels/footer.
+  onDark:
+    "glass text-ink hover:border-accent/50 hover:text-accent focus-visible:outline-accent",
+  // On the amber band: a solid dark pill.
+  onAccent:
+    "bg-night text-ink hover:bg-surface focus-visible:outline-night",
 };
-
-function Inner({ variant, children }: { variant: Variant; children: ReactNode }) {
-  const v = variants[variant];
-  return (
-    <>
-      <span
-        aria-hidden
-        className={`absolute inset-0 origin-left scale-x-0 transition-transform duration-[350ms] ease-signal group-hover:scale-x-100 ${v.panel}`}
-      />
-      <span
-        className={`relative z-10 inline-flex items-center gap-2.5 transition-colors duration-200 ${v.label}`}
-      >
-        {children}
-      </span>
-    </>
-  );
-}
 
 export default function Button(props: AsLink | AsButton) {
   const { variant = "primary", className = "" } = props;
-  const cls = `${base} ${variants[variant].box} ${className}`;
+  const cls = `${base} ${variants[variant]} ${className}`;
 
   if ("href" in props && props.href !== undefined) {
     const { href, external, variant: _v, className: _c, children, ...rest } =
@@ -77,13 +47,13 @@ export default function Button(props: AsLink | AsButton) {
     if (external) {
       return (
         <a href={href} target="_blank" rel="noopener noreferrer" className={cls} {...rest}>
-          <Inner variant={variant}>{children}</Inner>
+          {children}
         </a>
       );
     }
     return (
       <Link href={href} className={cls} {...rest}>
-        <Inner variant={variant}>{children}</Inner>
+        {children}
       </Link>
     );
   }
@@ -91,7 +61,7 @@ export default function Button(props: AsLink | AsButton) {
   const { variant: _v, className: _c, children, ...rest } = props as AsButton;
   return (
     <button className={cls} {...rest}>
-      <Inner variant={variant}>{children}</Inner>
+      {children}
     </button>
   );
 }

@@ -86,7 +86,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink bg-paper">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-night/70 backdrop-blur-xl">
       <nav
         className="wrap flex h-[72px] items-center justify-between"
         aria-label="Primary"

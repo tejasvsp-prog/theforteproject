@@ -6,26 +6,40 @@ const config: Config = {
     "./src/components/**/*.{ts,tsx}",
   ],
   theme: {
-    // Warm editorial — an inviting ivory field, soft espresso ink, and warm
-    // clay + honey accents. Human and hand-mixed, not machined spot-ink.
+    // Dark, modern, "concert-stage" system — a deep near-black room lit by
+    // warm amber stage light and a cool electric edge. Sleek like Linear /
+    // Vercel / Raycast, warm because it's about music.
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      paper: "#F6EFE1", // warm ivory field
-      cream: "#FCF8EF", // lighter raised card surface
-      ink: "#2A2320", // warm espresso (not pure black)
-      accent: "#B44A2C", // terracotta — primary accent (keeps token name)
-      honey: "#C8973F", // muted gold — secondary warm accent
-      sage: "#3F5647", // deep muted green — occasional cool relief
+      // Surfaces (dark → light lift). NB: avoid the name "base" — it collides
+      // with Tailwind's built-in text-base font-size utility.
+      night: "#08080B",    // page background, deepest
+      surface: "#0F0F14",  // section background
+      panel: "#16161D",    // raised card
+      line: "#26262F",     // hairline / border base
+      // Text
+      ink: "#F4F3F6",      // primary text (near-white)
+      mute: "#9A99A6",     // secondary text
+      faint: "#6A6A76",    // tertiary / captions
+      // Accents
+      accent: "#FF9F45",   // warm amber — primary (stage light)
+      ember: "#FF6A3D",    // coral-ember — hot secondary
+      volt: "#7C7CFF",     // electric violet — cool edge
+      // Legacy aliases kept so any stragglers still resolve to sane values
+      paper: "#08080B",
+      cream: "#16161D",
+      honey: "#FFC978",
+      sage: "#7C7CFF",
     },
     extend: {
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        text: ["var(--font-text)", "Georgia", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        text: ["var(--font-text)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         wrap: "1440px",
-        prose: "64ch",
+        prose: "62ch",
         measure: "52ch",
       },
       borderRadius: {
@@ -34,10 +48,11 @@ const config: Config = {
         "3xl": "1.75rem",
       },
       boxShadow: {
-        soft: "0 18px 48px -24px rgba(42, 35, 32, 0.35)",
-        card: "0 1px 0 rgba(255,255,255,0.5) inset, 0 2px 0 rgba(42,35,32,0.04), 0 24px 60px -32px rgba(42, 35, 32, 0.4)",
-        lift: "0 1px 0 rgba(255,255,255,0.5) inset, 0 40px 90px -40px rgba(42, 35, 32, 0.55)",
-        ring: "0 0 0 1px rgba(42,35,32,0.06), 0 30px 70px -34px rgba(42,35,32,0.45)",
+        // Depth in the dark: a soft ambient drop plus a faint top highlight.
+        soft: "0 24px 60px -28px rgba(0,0,0,0.8)",
+        card: "0 1px 0 rgba(255,255,255,0.06) inset, 0 30px 70px -34px rgba(0,0,0,0.85)",
+        lift: "0 1px 0 rgba(255,255,255,0.08) inset, 0 48px 100px -40px rgba(0,0,0,0.9)",
+        glow: "0 0 0 1px rgba(255,159,69,0.25), 0 20px 60px -18px rgba(255,159,69,0.35)",
       },
       spacing: {
         13: "3.25rem",

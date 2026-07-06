@@ -21,7 +21,7 @@ const points = [
 
 export default function ProcessTimeline() {
   return (
-    <section id="how" className="relative bg-cream py-20 md:py-28">
+    <section id="how" className="relative border-y border-white/6 bg-surface py-20 md:py-28">
       <div className="wrap">
         <Reveal className="max-w-2xl">
           <p className="t-kicker text-accent">What it looks like</p>
@@ -30,13 +30,13 @@ export default function ProcessTimeline() {
 
         <div className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2">
           {points.map((p, i) => (
-            <Reveal key={p.title} className="flex gap-5 border-t hairline pt-6">
-              <span className="t-numeral text-[1.8rem] leading-none">
+            <Reveal key={p.title} className="flex gap-5 border-t border-white/10 pt-6">
+              <span className="t-numeral text-[1.8rem] leading-none text-accent">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="t-h3">{p.title}</h3>
-                <p className="t-body mt-2 max-w-sm text-ink/70">{p.body}</p>
+                <p className="t-body mt-2 max-w-sm text-mute">{p.body}</p>
               </div>
             </Reveal>
           ))}

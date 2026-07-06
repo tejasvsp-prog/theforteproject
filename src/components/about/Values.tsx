@@ -29,7 +29,7 @@ const beliefs = [
 
 export default function Values() {
   return (
-    <section id="beliefs" className="relative bg-cream py-20 md:py-28">
+    <section id="beliefs" className="relative border-y border-white/6 bg-surface py-20 md:py-28">
       <div className="wrap">
         <Reveal className="max-w-2xl">
           <p className="t-kicker text-accent">What we believe</p>
@@ -45,12 +45,12 @@ export default function Values() {
         >
           {beliefs.map((b) => (
             <motion.div key={b.n} variants={reveal} className="flex gap-6">
-              <span className="t-numeral shrink-0 text-[2.4rem] leading-none">
+              <span className="t-numeral shrink-0 text-[2.4rem] leading-none text-accent">
                 {b.n}
               </span>
               <div>
                 <h3 className="t-h3">{b.title}</h3>
-                <p className="t-body mt-2.5 max-w-sm text-ink/70">{b.body}</p>
+                <p className="t-body mt-2.5 max-w-sm text-mute">{b.body}</p>
               </div>
             </motion.div>
           ))}

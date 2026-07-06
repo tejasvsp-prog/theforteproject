@@ -7,7 +7,7 @@ import { steps } from "@/lib/site";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative bg-cream py-20 md:py-28">
+    <section id="how-it-works" className="relative border-y border-white/6 bg-surface py-20 md:py-28">
       <div className="wrap">
         <Reveal className="max-w-2xl">
           <p className="t-kicker text-accent">How it works</p>
@@ -24,15 +24,15 @@ export default function HowItWorks() {
           {/* connecting line on desktop */}
           <span
             aria-hidden
-            className="absolute left-0 right-0 top-[26px] hidden h-px bg-ink/15 md:block"
+            className="absolute left-0 right-0 top-[28px] hidden h-px bg-gradient-to-r from-accent/40 via-white/10 to-transparent md:block"
           />
           {steps.map((s) => (
             <motion.li key={s.n} variants={reveal} className="relative">
-              <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-accent/30 bg-paper t-numeral text-[1.6rem] leading-none text-accent shadow-soft">
+              <span className="glass relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl t-numeral text-[1.5rem] leading-none text-accent shadow-glow">
                 {s.n.replace(/^0/, "")}
               </span>
               <h3 className="t-h3 mt-6">{s.title}</h3>
-              <p className="t-body mt-2.5 max-w-xs text-ink/70">{s.body}</p>
+              <p className="t-body mt-2.5 max-w-xs text-mute">{s.body}</p>
             </motion.li>
           ))}
         </motion.ol>

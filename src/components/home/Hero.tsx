@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { signal } from "@/lib/motion";
 import { siteConfig } from "@/lib/site";
-import { StaffPhrase, KeysArc, FloatingNotes } from "@/components/decor/MusicArt";
+import { StaffPhrase, FloatingNotes } from "@/components/decor/MusicArt";
 
 const facts = ["Always free", "K–12", "Virtual", "30 min · twice a month"];
 
@@ -33,37 +33,37 @@ export default function Hero() {
         };
 
   return (
-    <section className="wash-warm relative overflow-hidden pt-32 md:pt-36 lg:pt-40">
-      {/* Layered warm background */}
+    <section className="relative overflow-hidden pt-36 md:pt-40 lg:pt-44">
+      {/* Stage-light spotlights */}
       <div
-        className="pointer-events-none absolute -right-40 -top-24 h-[42rem] w-[42rem] rounded-full opacity-70 blur-[2px]"
         aria-hidden
-        style={{
-          background:
-            "radial-gradient(circle, rgba(200,151,63,0.18) 0%, rgba(180,74,44,0.08) 45%, rgba(246,239,225,0) 70%)",
-        }}
+        className="spotlight pointer-events-none absolute -right-32 -top-40 h-[46rem] w-[46rem] rounded-full"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-40 top-24 h-[34rem] w-[34rem] rounded-full opacity-70"
+        style={{ background: "radial-gradient(circle, rgba(124,124,255,0.16), rgba(8,8,11,0) 70%)" }}
       />
       <FloatingNotes />
 
-      <div className="wrap relative grid items-center gap-12 pb-16 lg:grid-cols-12 lg:gap-8 lg:pb-24">
+      <div className="wrap relative grid items-center gap-14 pb-20 lg:grid-cols-12 lg:gap-8 lg:pb-28">
         {/* Copy */}
         <div className="lg:col-span-7">
-          <motion.p
-            data-anim
-            className="t-kicker text-accent"
-            {...fade(0)}
-          >
-            The Forte Project · {siteConfig.location}
-          </motion.p>
+          <motion.div data-anim {...fade(0)}>
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(255,159,69,0.7)]" aria-hidden />
+              <span className="t-kicker text-mute">{siteConfig.location}</span>
+            </span>
+          </motion.div>
 
-          <h1 className="t-hero mt-6">
-            <span className="block overflow-hidden pb-[0.08em]">
-              <motion.span data-anim className="block" {...line(0.25)}>
+          <h1 className="t-hero mt-7">
+            <span className="block overflow-hidden pb-[0.06em]">
+              <motion.span data-anim className="block" {...line(0.2)}>
                 Free music lessons,
               </motion.span>
             </span>
-            <span className="block overflow-hidden pb-[0.08em]">
-              <motion.span data-anim className="block italic text-accent" {...line(0.35)}>
+            <span className="block overflow-hidden pb-[0.06em]">
+              <motion.span data-anim className="block text-gradient" {...line(0.32)}>
                 taught by students.
               </motion.span>
             </span>
@@ -71,18 +71,19 @@ export default function Hero() {
 
           <motion.p
             data-anim
-            className="t-lead mt-7 max-w-measure text-ink/80"
-            {...fade(0.7)}
+            className="t-lead mt-8 max-w-measure"
+            {...fade(0.66)}
           >
-            We're a student-run group in {siteConfig.location}. If you're a K–12
-            student who can't afford music lessons — whether you already play or
-            you're starting from scratch — we'll teach you, for free.
+            We&apos;re a student-run group in {siteConfig.location}. If you&apos;re
+            a K–12 student who can&apos;t afford music lessons — whether you
+            already play or you&apos;re starting from scratch — we&apos;ll teach
+            you, for free.
           </motion.p>
 
           <motion.div
             data-anim
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
-            {...fade(0.82)}
+            className="mt-10 flex flex-col gap-3 sm:flex-row"
+            {...fade(0.8)}
           >
             <Button href="/apply">
               Sign up for lessons
@@ -93,63 +94,43 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Honest fact chips — no invented numbers */}
+          {/* Honest fact chips */}
           <motion.ul
             data-anim
-            className="mt-10 flex flex-wrap gap-x-6 gap-y-3"
-            {...fade(0.95)}
+            className="mt-12 flex flex-wrap gap-2.5"
+            {...fade(0.92)}
           >
             {facts.map((f) => (
-              <li key={f} className="flex items-center gap-2 t-caption not-italic text-ink/60">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+              <li
+                key={f}
+                className="glass rounded-full px-3.5 py-2 t-caption text-mute"
+              >
                 {f}
               </li>
             ))}
           </motion.ul>
         </div>
 
-        {/* Layered illustration — un-boxed, drawn straight onto the page like
-            a margin sketch, not dropped into a card. */}
+        {/* Glowing staff illustration */}
         <motion.div
           className="relative hidden lg:col-span-5 lg:block"
           initial={reduce ? { opacity: 1 } : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: signal }}
         >
-          <div className="relative">
-            {/* Soft layered glow discs give the composition real depth */}
+          <div className="glass relative rounded-3xl p-8 shadow-card">
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-10 -top-16 h-72 w-72 rounded-full opacity-80 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(200,151,63,0.22), rgba(246,239,225,0) 70%)" }}
+              className="spotlight pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full"
             />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-24 left-6 h-64 w-64 rounded-full opacity-70 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(63,86,71,0.16), rgba(246,239,225,0) 70%)" }}
-            />
-            {/* Staff phrase, drawn large and tilted a touch off-square */}
-            <div className="relative -rotate-2 text-ink">
+            <p className="t-kicker text-faint">Now playing</p>
+            <div className="relative mt-5 text-ink drop-shadow-[0_0_18px_rgba(255,159,69,0.25)]">
               <StaffPhrase className="h-auto w-full" />
             </div>
-
-            {/* Keyboard sketch, overlapping and running off the bottom-right */}
-            <div className="absolute -bottom-16 right-2 w-40 -rotate-3 text-accent/70 sm:w-48">
-              <KeysArc className="h-auto w-full" />
-            </div>
-
-            {/* A handwritten aside, angled like a note in the margin */}
-            <p className="t-script absolute -bottom-4 left-2 max-w-[14ch] -rotate-3 text-[1.5rem] leading-tight">
-              every kid deserves this.
+            <p className="t-caption mt-6 border-t border-white/8 pt-5 text-mute">
+              Every kid deserves the chance to make music — not just the ones who
+              can pay for it.
             </p>
-
-            {/* floating accent dot */}
-            <motion.span
-              aria-hidden
-              className="absolute -left-2 top-2 h-7 w-7 rounded-full bg-accent/90 shadow-soft"
-              animate={reduce ? {} : { y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            />
           </div>
         </motion.div>
       </div>

@@ -1,35 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Newsreader, Caveat } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Display voice — Fraunces, a warm, high-contrast "old-style" serif with real
-// optical character. Human and editorial rather than machined/Swiss.
-const display = Fraunces({
+// Display voice — Space Grotesk: a modern geometric grotesk with real
+// character. Reads sleek and technical, not generic Inter-everywhere.
+const display = Space_Grotesk({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["SOFT", "opsz", "WONK"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-display",
 });
 
-// Text voice — humanist literary serif for body, lead, and pull-quotes.
-const text = Newsreader({
+// Text voice — Inter: the crisp, neutral workhorse behind Linear/Vercel.
+const text = Inter({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   display: "swap",
   variable: "--font-text",
-});
-
-// Hand voice — used sparingly for margin notes and asides, the way a real
-// person would scribble in the margin. Never for anything load-bearing.
-const script = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  display: "swap",
-  variable: "--font-script",
 });
 
 export const metadata: Metadata = {
@@ -66,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#141210",
+  themeColor: "#08080B",
   width: "device-width",
   initialScale: 1,
 };
@@ -77,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${text.variable} ${script.variable}`}>
-      <body className="min-h-screen bg-paper text-ink">
+    <html lang="en" className={`${display.variable} ${text.variable}`}>
+      <body className="min-h-screen bg-night text-ink antialiased">
         {/* Without JS, framer never runs — force all animated content visible. */}
         <noscript>
           <style>{`[data-anim]{opacity:1 !important;transform:none !important;}`}</style>
