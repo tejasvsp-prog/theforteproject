@@ -8,7 +8,7 @@ export default function StudentPrograms() {
     <section id="tracks" className="border-t hairline">
       <div className="wrap py-16 md:py-24">
         <Reveal className="max-w-2xl">
-          <p className="t-kicker text-accent">Programs</p>
+          <p className="t-kicker text-navy">Programs</p>
           <h2 className="t-h2 mt-5">
             With an instrument, or without one.
           </h2>

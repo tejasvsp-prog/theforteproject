@@ -66,7 +66,7 @@ export default function VolunteerPage() {
       <section className="py-14 md:py-20">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
-            <h2 className="t-kicker text-accent">Eligibility</h2>
+            <h2 className="t-kicker text-navy">Eligibility</h2>
             <p className="t-h2 mt-5 max-w-[14ch]">Two requirements.</p>
           </Reveal>
           <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
@@ -86,7 +86,7 @@ export default function VolunteerPage() {
       <section className="py-14 md:py-20">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
-            <h2 className="t-kicker text-accent">What to expect</h2>
+            <h2 className="t-kicker text-navy">What to expect</h2>
           </Reveal>
           <Reveal as="ul" className="lg:col-span-7 lg:col-start-6">
             {expectations.map(([label, value]) => (
@@ -106,7 +106,7 @@ export default function VolunteerPage() {
       <section className="border-t hairline bg-surface">
         <div className="wrap grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
-            <h2 className="t-kicker text-accent">The process</h2>
+            <h2 className="t-kicker text-navy">The process</h2>
           </Reveal>
           <Reveal as="ol" className="lg:col-span-7 lg:col-start-6">
             {process.map((p, i) => (
@@ -114,7 +114,7 @@ export default function VolunteerPage() {
                 key={p.title}
                 className="grid gap-3 border-t hairline py-6 first:border-t-2 first:border-t-ink sm:grid-cols-[5rem_1fr] sm:gap-6"
               >
-                <span className="font-display italic text-accent">
+                <span className="font-display italic text-navy">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -131,7 +131,7 @@ export default function VolunteerPage() {
       <section className="border-t hairline">
         <div className="wrap grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
-            <h2 className="t-kicker text-accent">Questions</h2>
+            <h2 className="t-kicker text-navy">Questions</h2>
           </Reveal>
           <Reveal as="ul" className="lg:col-span-7 lg:col-start-6">
             {volunteerFaqs.map((f) => (

@@ -14,7 +14,7 @@ export default function ImpactBanner() {
       <div className="wrap relative grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-8">
           <p className="t-display max-w-[16ch]">
-            Ready? <em className="text-accent">It&apos;s free.</em>
+            Ready? <em className="text-navy">It&apos;s free.</em>
           </p>
           <div className="mt-9">
             <Button href="/apply">

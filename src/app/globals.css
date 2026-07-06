@@ -5,7 +5,7 @@
 @layer base {
   :root {
     scroll-behavior: smooth;
-    --hairline: #dbd5c9;
+    --hairline: #e4c9c7;
   }
 
   html {
@@ -19,8 +19,8 @@
     font-family: var(--font-text), system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    color: #232019;
-    background-color: #f7f4ee;
+    color: #1e1d24;
+    background-color: #f6e2e0;
   }
 
   /* A whisper of paper grain. Print stock, not a screen. */
@@ -36,12 +36,12 @@
   }
 
   ::selection {
-    background-color: #a34a2a;
-    color: #f7f4ee;
+    background-color: #e97862;
+    color: #1e1d24;
   }
 
   :focus-visible {
-    outline: 2px solid #a34a2a;
+    outline: 2px solid #2e3a66;
     outline-offset: 2px;
   }
 
@@ -112,14 +112,14 @@
     font-variant-numeric: lining-nums;
     font-size: clamp(1.6rem, 2.4vw, 2.1rem);
     line-height: 1;
-    color: #a34a2a;
+    color: #2e3a66;
   }
   .t-lead {
     font-family: var(--font-text);
     font-weight: 400;
     font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
     line-height: 1.6;
-    color: #232019;
+    color: #1e1d24;
   }
   .t-body {
     font-family: var(--font-text);
@@ -145,7 +145,7 @@
     font-family: var(--font-text);
     font-size: 0.85rem;
     line-height: 1.5;
-    color: #6e6759;
+    color: #7a6a6e;
   }
 
   .hairline {
@@ -159,8 +159,8 @@
       to bottom,
       transparent 0,
       transparent 9px,
-      rgba(35, 32, 25, 0.055) 9px,
-      rgba(35, 32, 25, 0.055) 10px
+      rgba(46, 58, 102, 0.10) 9px,
+      rgba(46, 58, 102, 0.10) 10px
     );
     background-size: 100% 50px;
     background-repeat: repeat-x;
@@ -169,7 +169,7 @@
   /* Underlined editorial link — ink text, terracotta rule that thickens. */
   .link-rule {
     @apply t-button relative inline-flex items-center gap-1.5 pb-1 text-ink;
-    background-image: linear-gradient(#a34a2a, #a34a2a);
+    background-image: linear-gradient(#e97862, #e97862);
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 1px;

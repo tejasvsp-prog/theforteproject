@@ -24,13 +24,13 @@ const solid =
   "group inline-flex select-none items-center justify-center gap-2.5 px-6 py-3.5 t-button transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<Variant, string> = {
-  // Charcoal block that warms to terracotta.
-  primary: `${solid} bg-ink text-paper hover:bg-accent focus-visible:outline-accent`,
+  // Record-navy block that warms to coral.
+  primary: `${solid} bg-navy text-paper hover:bg-accent hover:text-ink focus-visible:outline-accent`,
   // Outlined companion to primary.
-  secondary: `${solid} border border-ink/30 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper focus-visible:outline-accent`,
-  // On the ink footer: paper block.
-  onDark: `${solid} bg-paper text-ink hover:bg-accent hover:text-paper focus-visible:outline-paper`,
-  onAccent: `${solid} bg-paper text-ink hover:bg-ink hover:text-paper focus-visible:outline-paper`,
+  secondary: `${solid} border border-navy/40 bg-transparent text-navy hover:border-navy hover:bg-navy hover:text-paper focus-visible:outline-accent`,
+  // On the navy footer: pink block.
+  onDark: `${solid} bg-paper text-navy hover:bg-accent hover:text-ink focus-visible:outline-paper`,
+  onAccent: `${solid} bg-paper text-navy hover:bg-navy hover:text-paper focus-visible:outline-paper`,
 };
 
 export default function Button(props: AsLink | AsButton) {

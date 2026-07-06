@@ -46,7 +46,7 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
       ))}
       <motion.path
         d="M64 96c-7-2-10-9-7-15 3-8 13-12 17-25 3-11-1-22-9-22-8 0-12 8-10 17 2 10 10 18 20 28 8 8 12 14 10 22-2 8-9 12-16 10-5-2-8-7-6-11 2-4 6-5 9-3"
-        stroke="#A34A2A"
+        stroke="#E97862"
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -99,8 +99,8 @@ export function StaffDivider({ className = "" }: { className?: string }) {
             y1={y}
             x2="1200"
             y2={y}
-            stroke="#232019"
-            strokeOpacity="0.12"
+            stroke="#2E3A66"
+            strokeOpacity="0.18"
             strokeWidth="1"
             vectorEffect="non-scaling-stroke"
           />
@@ -139,7 +139,7 @@ export function KeysArc({ className = "" }: { className?: string }) {
           y={24}
           width={14}
           height={78}
-          fill="#A34A2A"
+          fill="#E97862"
           fillOpacity="0.85"
           initial={undefined}
           whileInView={reduce ? undefined : { y: [0, 5, 0] }}

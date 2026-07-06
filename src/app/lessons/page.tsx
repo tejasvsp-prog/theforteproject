@@ -34,7 +34,7 @@ export default function LessonsPage() {
       <section className="py-14 md:py-20">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-3">
-            <h2 className="t-kicker text-accent">The format</h2>
+            <h2 className="t-kicker text-navy">The format</h2>
           </Reveal>
           <Reveal as="ul" className="lg:col-span-7">
             {details.map(([label, value]) => (
@@ -56,7 +56,7 @@ export default function LessonsPage() {
       <section className="py-14 md:py-20">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
-            <p className="t-kicker text-accent">Matching</p>
+            <p className="t-kicker text-navy">Matching</p>
             <h2 className="t-h2 mt-5 max-w-[16ch]">
               You tell us what you want to learn. We find your teacher.
             </h2>
@@ -67,7 +67,7 @@ export default function LessonsPage() {
                 key={s.n}
                 className="grid gap-3 border-t hairline py-6 first:border-t-2 first:border-t-ink sm:grid-cols-[5rem_1fr] sm:gap-6"
               >
-                <span className="font-display italic text-accent">
+                <span className="font-display italic text-navy">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -84,7 +84,7 @@ export default function LessonsPage() {
       <section className="border-t hairline bg-surface">
         <div className="wrap py-14 md:py-20">
           <Reveal>
-            <p className="t-kicker text-accent">Two tracks</p>
+            <p className="t-kicker text-navy">Two tracks</p>
           </Reveal>
           <Reveal stagger className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-8">
             {tracks.map((track, i) => (

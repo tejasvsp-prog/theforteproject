@@ -10,7 +10,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="border-t hairline bg-surface">
       <div className="wrap grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-4">
-          <p className="t-kicker text-accent">How it works</p>
+          <p className="t-kicker text-navy">How it works</p>
           <h2 className="t-h2 mt-5 max-w-[14ch]">
             Signing up takes a minute.
           </h2>
@@ -26,7 +26,7 @@ export default function HowItWorks() {
               key={s.n}
               className="grid gap-3 border-t hairline py-6 first:border-t-2 first:border-t-ink sm:grid-cols-[5rem_1fr] sm:gap-6"
             >
-              <span className="font-display italic text-accent">
+              <span className="font-display italic text-navy">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>

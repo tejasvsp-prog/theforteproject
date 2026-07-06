@@ -12,7 +12,7 @@ export default function PageHero({ eyebrow, title, description }: PageHeroProps)
     <section className="pt-28 md:pt-32">
       <div className="wrap">
         <div className="border-b-2 border-ink pb-4">
-          <p className="t-kicker text-accent">{eyebrow}</p>
+          <p className="t-kicker text-navy">{eyebrow}</p>
         </div>
         <Reveal className="grid gap-8 pb-12 pt-10 md:pb-16 lg:grid-cols-12 lg:gap-8">
           <h1 className="t-hero max-w-[16ch] lg:col-span-8">{title}</h1>

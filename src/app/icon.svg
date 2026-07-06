@@ -1,5 +1,18 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" fill="#141210"/>
-  <rect x="16" y="16" width="20" height="20" fill="#C7300B"/>
-  <rect x="40" y="14" width="4" height="36" fill="#F4EFE6"/>
+  <rect width="64" height="64" fill="#F6E2E0"/>
+  <circle cx="32" cy="32" r="28" fill="#2E3A66"/>
+  <g stroke="#A5C3DE" stroke-width="1.4" fill="none">
+    <circle cx="32" cy="32" r="17" stroke-dasharray="15 92" transform="rotate(15 32 32)"/>
+    <circle cx="32" cy="32" r="20" stroke-dasharray="18 108" transform="rotate(15 32 32)"/>
+    <circle cx="32" cy="32" r="23" stroke-dasharray="21 124" transform="rotate(15 32 32)"/>
+    <circle cx="32" cy="32" r="17" stroke-dasharray="15 92" transform="rotate(135 32 32)"/>
+    <circle cx="32" cy="32" r="20" stroke-dasharray="18 108" transform="rotate(135 32 32)"/>
+    <circle cx="32" cy="32" r="23" stroke-dasharray="21 124" transform="rotate(135 32 32)"/>
+    <circle cx="32" cy="32" r="17" stroke-dasharray="15 92" transform="rotate(255 32 32)"/>
+    <circle cx="32" cy="32" r="20" stroke-dasharray="18 108" transform="rotate(255 32 32)"/>
+    <circle cx="32" cy="32" r="23" stroke-dasharray="21 124" transform="rotate(255 32 32)"/>
+  </g>
+  <circle cx="32" cy="32" r="12" fill="#D95F6A"/>
+  <circle cx="32" cy="32" r="10" fill="#E97862"/>
+  <circle cx="32" cy="32" r="2.2" fill="#F6E2E0"/>
 </svg>

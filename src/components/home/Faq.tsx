@@ -17,7 +17,7 @@ export default function Faq() {
     <section id="faq" className="border-t hairline bg-surface">
       <div className="wrap grid gap-12 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-4">
-          <p className="t-kicker text-accent">Questions</p>
+          <p className="t-kicker text-navy">Questions</p>
           <h2 className="t-h2 mt-5">Good to know.</h2>
           <p className="t-body mt-6 max-w-xs text-stone">
             Can&apos;t find what you&apos;re looking for? Just say so on the
@@ -42,7 +42,7 @@ export default function Faq() {
                     </span>
                     <span
                       aria-hidden
-                      className="font-display text-xl italic leading-none text-accent"
+                      className="font-display text-xl italic leading-none text-navy"
                     >
                       {isOpen ? "–" : "+"}
                     </span>

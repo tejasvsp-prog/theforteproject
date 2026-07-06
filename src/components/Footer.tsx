@@ -12,7 +12,7 @@ const involved = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-ink text-paper">
+    <footer className="bg-navy text-paper">
       <div className="wrap py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Mission */}
@@ -39,7 +39,7 @@ export default function Footer() {
                 <li key={link.href} className="border-b border-paper/15 py-2.5">
                   <Link
                     href={link.href}
-                    className="t-body text-paper/75 transition-colors duration-200 hover:text-accent"
+                    className="t-body text-paper/75 transition-colors duration-200 hover:text-sky"
                   >
                     {link.label}
                   </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
                 <li key={link.href} className="border-b border-paper/15 py-2.5">
                   <Link
                     href={link.href}
-                    className="t-body text-paper/75 transition-colors duration-200 hover:text-accent"
+                    className="t-body text-paper/75 transition-colors duration-200 hover:text-sky"
                   >
                     {link.label}
                   </Link>

@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="flex min-h-[70vh] items-center pt-32">
       <div className="wrap">
-        <p className="t-kicker text-accent">Page not found</p>
+        <p className="t-kicker text-navy">Page not found</p>
         <p className="t-numeral mt-6">404</p>
         <h1 className="t-h2 mt-6 max-w-[20ch]">
           This page has changed its tune.

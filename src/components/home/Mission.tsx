@@ -7,7 +7,7 @@ export default function Mission() {
       <StaffDivider />
       <div className="wrap grid gap-8 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-3">
-          <h2 className="t-kicker text-accent">Our mission</h2>
+          <h2 className="t-kicker text-navy">Our mission</h2>
         </Reveal>
         <Reveal className="lg:col-span-7">
           <p className="t-display max-w-[26ch]">

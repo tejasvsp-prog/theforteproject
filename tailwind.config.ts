@@ -6,29 +6,28 @@ const config: Config = {
     "./src/components/**/*.{ts,tsx}",
   ],
   theme: {
-    // Editorial palette — 2 primaries (charcoal ink on warm paper) and 3
-    // supporting tones (terracotta accent, warm stone gray, hairline sand).
-    // Contrast comes from deep charcoal against muted terracotta, not from
-    // flat "app" colors.
+    // Brand palette, sampled from the Forte Project logo: a dusty-pink field,
+    // deep record-navy, coral label, light-blue grooves, and near-black type.
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      paper: "#F7F4EE", // warm paper field
-      ink: "#232019", // deep charcoal
-      accent: "#A34A2A", // muted terracotta
-      stone: "#6E6759", // warm secondary text
-      line: "#DBD5C9", // hairline sand
-      // Aliases so no stray class ever renders un-themed; they resolve into
-      // the same five tones above.
-      night: "#232019",
-      surface: "#F1EDE2",
-      panel: "#F1EDE2",
-      cream: "#F1EDE2",
-      mute: "#6E6759",
-      faint: "#8A8271",
-      volt: "#A34A2A",
-      honey: "#A34A2A",
-      ember: "#A34A2A",
+      paper: "#F6E2E0", // dusty pink field (logo background)
+      ink: "#1E1D24", // near-black, like the forte "f"
+      navy: "#2E3A66", // the record
+      accent: "#E97862", // coral label
+      sky: "#A5C3DE", // groove highlights — use sparingly
+      stone: "#7A6A6E", // muted mauve-gray text
+      line: "#E4C9C7", // pink hairline
+      // Aliases so no stray class renders un-themed.
+      night: "#1E1D24",
+      surface: "#F1D6D3",
+      panel: "#F1D6D3",
+      cream: "#F1D6D3",
+      mute: "#7A6A6E",
+      faint: "#938184",
+      volt: "#2E3A66",
+      honey: "#E97862",
+      ember: "#E97862",
     },
     extend: {
       fontFamily: {

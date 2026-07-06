@@ -89,7 +89,7 @@ export default function TallyEmbed({
       className={`flex flex-col items-start justify-center border ${borderCls} px-8 py-14 md:px-12 ${className}`}
       style={{ minHeight: Math.min(height, 360) }}
     >
-      <p className="t-kicker text-accent">{form.label}</p>
+      <p className="t-kicker text-navy">{form.label}</p>
       <p className={`t-body mt-5 max-w-prose ${muted}`}>
         This form isn&apos;t ready just yet — check back soon.
       </p>

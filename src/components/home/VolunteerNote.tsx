@@ -18,7 +18,7 @@ export default function VolunteerNote() {
           </div>
         </Reveal>
         <Reveal className="lg:col-span-7 lg:col-start-5">
-          <p className="t-kicker text-accent">Volunteer</p>
+          <p className="t-kicker text-navy">Volunteer</p>
           <p className="t-h2 mt-5 max-w-[22ch]">
             Play in your school&apos;s top ensemble? Teach someone who
             can&apos;t afford lessons.

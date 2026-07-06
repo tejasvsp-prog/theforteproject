@@ -27,7 +27,7 @@ export default function ImpactBand({
       <div className="wrap py-14 md:py-20">
         <Reveal>
           {eyebrow ? (
-            <p className="t-kicker mb-6 text-accent">{eyebrow}</p>
+            <p className="t-kicker mb-6 text-navy">{eyebrow}</p>
           ) : null}
           <p className="t-display max-w-[22ch]">{children}</p>
           {actions && actions.length ? (
