@@ -1,22 +1,21 @@
 import { siteConfig } from "@/lib/site";
 
 /**
- * Type-only wordmark with a glowing amber note-dot. Everything sits on a dark
- * field now, so the mark is always light; `tone` is kept for call-site compat.
+ * Hand-set masthead: the name in the display serif with a small terracotta
+ * note-square. `tone` flips it for the ink footer.
  */
 export default function Logo({
+  tone = "dark",
   className = "",
 }: {
   tone?: "light" | "dark";
   className?: string;
 }) {
+  const color = tone === "light" ? "text-paper" : "text-ink";
   return (
-    <span className={`inline-flex items-center gap-2.5 text-ink ${className}`}>
-      <span
-        className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent shadow-[0_0_12px_2px_rgba(255,159,69,0.6)]"
-        aria-hidden
-      />
-      <span className="font-display text-[0.95rem] font-semibold uppercase leading-none tracking-[0.02em] sm:text-base">
+    <span className={`inline-flex items-baseline gap-2 ${color} ${className}`}>
+      <span className="h-2 w-2 shrink-0 self-center bg-accent" aria-hidden />
+      <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[-0.01em]">
         {siteConfig.name}
       </span>
     </span>

@@ -19,27 +19,23 @@ type AsButton = Common &
     href?: undefined;
   };
 
-const base =
-  "group relative inline-flex select-none items-center justify-center gap-2.5 rounded-full px-7 py-3.5 t-button transition-all duration-300 ease-signal hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+// Square-set editorial buttons — no pills, no glows, no drop shadows.
+const solid =
+  "group inline-flex select-none items-center justify-center gap-2.5 px-6 py-3.5 t-button transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<Variant, string> = {
-  // Amber pill with a warm glow — the primary call to action.
-  primary:
-    "bg-accent text-night shadow-[0_10px_40px_-12px_rgba(255,159,69,0.6)] hover:bg-honey hover:shadow-[0_16px_50px_-12px_rgba(255,159,69,0.8)] focus-visible:outline-accent",
-  // Glassy outline on the dark field.
-  secondary:
-    "glass text-ink hover:border-accent/50 hover:text-accent focus-visible:outline-accent",
-  // Same glass treatment, used on already-dark panels/footer.
-  onDark:
-    "glass text-ink hover:border-accent/50 hover:text-accent focus-visible:outline-accent",
-  // On the amber band: a solid dark pill.
-  onAccent:
-    "bg-night text-ink hover:bg-surface focus-visible:outline-night",
+  // Charcoal block that warms to terracotta.
+  primary: `${solid} bg-ink text-paper hover:bg-accent focus-visible:outline-accent`,
+  // Underlined editorial link.
+  secondary: "link-rule focus-visible:outline-accent",
+  // On the ink footer: paper block.
+  onDark: `${solid} bg-paper text-ink hover:bg-accent hover:text-paper focus-visible:outline-paper`,
+  onAccent: `${solid} bg-paper text-ink hover:bg-ink hover:text-paper focus-visible:outline-paper`,
 };
 
 export default function Button(props: AsLink | AsButton) {
   const { variant = "primary", className = "" } = props;
-  const cls = `${base} ${variants[variant]} ${className}`;
+  const cls = `${variants[variant]} ${className}`;
 
   if ("href" in props && props.href !== undefined) {
     const { href, external, variant: _v, className: _c, children, ...rest } =

@@ -86,7 +86,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-night/70 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b hairline bg-paper/95 backdrop-blur-sm">
       <nav
         className="wrap flex h-[72px] items-center justify-between"
         aria-label="Primary"
@@ -108,7 +108,7 @@ export default function Navbar() {
               active={pathname.startsWith(item.href)}
             />
           ))}
-          <Button href="/apply" className="whitespace-nowrap px-5 py-2.5">
+          <Button href="/apply" className="whitespace-nowrap !px-5 !py-2.5">
             Sign up
           </Button>
         </div>

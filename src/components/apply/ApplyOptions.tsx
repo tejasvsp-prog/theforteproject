@@ -1,8 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { reveal, revealStagger } from "@/lib/motion";
 import { tracks } from "@/lib/site";
 
 /**
@@ -14,51 +10,28 @@ export default function ApplyOptions() {
   return (
     <section className="relative py-8 md:py-12">
       <div className="wrap">
-        <motion.div
-          variants={revealStagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+        <div
           className="grid gap-6 md:grid-cols-2 md:gap-8"
         >
           {tracks.map((track, i) => (
-            <motion.div
+            <div
               key={track.id}
-              variants={reveal}
-              className={`card-panel group relative overflow-hidden rounded-3xl p-8 shadow-card transition-[transform,border-color] duration-500 ease-signal hover:-translate-y-1 sm:p-10 ${
-                i === 0 ? "hover:border-accent/40" : "hover:border-volt/40"
-              }`}
+              className={`border-t-2 border-ink pt-6 ${i === 1 ? "lg:mt-14" : ""}`}
             >
-              <span
-                aria-hidden
-                className="spotlight pointer-events-none absolute -right-8 -top-12 h-52 w-52 rounded-full opacity-60"
-              />
-              <p className={`relative t-kicker ${i === 0 ? "text-accent" : "text-volt"}`}>
-                {track.label}
-              </p>
-              <h2 className="relative t-display mt-4 text-[2rem] sm:text-[2.4rem]">
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="t-numeral">No. {i + 1}</span>
+                <p className="t-kicker text-stone">{track.label}</p>
+              </div>
+              <h2 className="t-display mt-5 text-[1.9rem] sm:text-[2.2rem]">
                 {track.title}
               </h2>
-              <p className="relative t-body mt-4 max-w-md text-mute">
-                {track.blurb}
-              </p>
-              <Link
-                href="#form"
-                className={`group/link relative mt-8 inline-flex items-center gap-2 t-button ${
-                  i === 0 ? "text-accent" : "text-volt"
-                }`}
-              >
-                Fill out the form
-                <span
-                  aria-hidden
-                  className="transition-transform duration-300 ease-signal group-hover/link:translate-x-1.5"
-                >
-                  ↓
-                </span>
+              <p className="t-body mt-4 max-w-md text-stone">{track.blurb}</p>
+              <Link href="#form" className="link-rule mt-7 inline-flex">
+                Fill out the form <span aria-hidden>↓</span>
               </Link>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

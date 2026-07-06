@@ -1,33 +1,30 @@
 import Reveal from "@/components/ui/Reveal";
 
+/**
+ * The thesis, set as a magazine pull quote: a heavy rule, an oversized
+ * italic line pushed right of the margin, and a short aside column.
+ */
 export default function Mission() {
   return (
-    <section id="mission" className="relative overflow-hidden py-20 md:py-28 lg:py-32">
-      {/* Oversized decorative quote glyph, bleeding off the top-left — anchors
-          the whitespace so the section reads composed, not empty. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -left-2 -top-8 select-none font-display text-[16rem] italic leading-none text-accent/10 md:-top-16 md:text-[22rem]"
-      >
-        &ldquo;
-      </span>
-      <div className="wrap relative grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <Reveal className="lg:col-span-8">
+    <section id="mission" className="border-t-2 border-ink">
+      <div className="wrap grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
+        <Reveal className="lg:col-span-2">
           <p className="t-kicker text-accent">Why we started</p>
-          <p className="t-display mt-7 max-w-[16ch]">
-            Music lessons cost money a lot of families don&apos;t have.{" "}
-            <span className="text-gradient">Talent doesn&apos;t.</span>
-          </p>
         </Reveal>
-        {/* Supporting line hangs lower-right, threaded onto a hairline. */}
-        <Reveal className="self-end lg:col-span-4">
-          <div className="border-t border-white/10 pt-6">
-            <p className="t-lead max-w-prose">
-              Our mission is simple: make sure every student can learn music —
-              regardless of what their family can afford. We&apos;re students
-              ourselves, and we teach for free.
-            </p>
-          </div>
+
+        <Reveal className="lg:col-span-7">
+          <blockquote className="t-pull">
+            &ldquo;Music lessons cost money a lot of families don&apos;t have.
+            Talent doesn&apos;t.&rdquo;
+          </blockquote>
+        </Reveal>
+
+        <Reveal className="self-end lg:col-span-3">
+          <p className="t-body max-w-measure text-stone">
+            That&apos;s the whole idea. Every student should get to learn music,
+            whatever their family can afford. We&apos;re students ourselves, and
+            we teach for free.
+          </p>
         </Reveal>
       </div>
     </section>

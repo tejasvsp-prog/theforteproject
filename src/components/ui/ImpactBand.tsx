@@ -8,15 +8,14 @@ interface Action {
 }
 
 interface ImpactBandProps {
-  /** The single loud line — ink type set on vermilion. */
   children: ReactNode;
   eyebrow?: string;
   actions?: Action[];
 }
 
 /**
- * The one full-bleed vermilion band per page: ink type on the accent field,
- * breaking the page margins for a single, earned burst of volume.
+ * The page's closing statement: a heavy rule and one oversized serif line.
+ * No band, no fill — volume through scale, not color.
  */
 export default function ImpactBand({
   children,
@@ -24,28 +23,23 @@ export default function ImpactBand({
   actions,
 }: ImpactBandProps) {
   return (
-    <section className="py-6">
-      <div className="wrap">
-        <div
-          className="relative overflow-hidden rounded-[2rem] px-8 py-16 text-night md:px-16 md:py-20"
-          style={{ background: "linear-gradient(135deg, #FFB673 0%, #FF9F45 40%, #FF6A3D 100%)" }}
-        >
+    <section className="border-t-2 border-ink">
+      <div className="wrap py-14 md:py-20">
         <Reveal>
           {eyebrow ? (
-            <p className="t-kicker mb-6 text-night/80">{eyebrow}</p>
+            <p className="t-kicker mb-6 text-accent">{eyebrow}</p>
           ) : null}
-          <p className="t-display max-w-[18ch] text-night">{children}</p>
+          <p className="t-display max-w-[22ch]">{children}</p>
           {actions && actions.length ? (
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               {actions.map((a) => (
-                <Button key={a.href} href={a.href} variant="onAccent">
+                <Button key={a.href} href={a.href}>
                   {a.label}
                 </Button>
               ))}
             </div>
           ) : null}
         </Reveal>
-        </div>
       </div>
     </section>
   );

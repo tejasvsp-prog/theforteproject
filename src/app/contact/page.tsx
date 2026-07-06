@@ -31,18 +31,14 @@ export default function ContactPage() {
           {/* An un-boxed illustration instead of a second form — the two real
               forms live behind the links on the left. */}
           <Reveal className="hidden lg:col-span-6 lg:block">
-            <div className="glass relative mx-auto max-w-sm rounded-3xl p-8 shadow-card">
-              <span
-                aria-hidden
-                className="spotlight pointer-events-none absolute -right-8 -top-10 h-48 w-48 rounded-full"
-              />
-              <div className="relative text-ink drop-shadow-[0_0_18px_rgba(255,159,69,0.25)]">
+            <figure className="mx-auto max-w-sm border-t hairline pt-5">
+              <div className="text-ink">
                 <StaffPhrase className="h-auto w-full" />
               </div>
-              <p className="t-caption mt-6 border-t border-white/8 pt-5 text-center">
+              <figcaption className="t-caption mt-3 font-display italic">
                 We read every one.
-              </p>
-            </div>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </section>

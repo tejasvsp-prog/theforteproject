@@ -1,8 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
-import { reveal, revealStagger } from "@/lib/motion";
 
 const beliefs = [
   {
@@ -29,32 +25,28 @@ const beliefs = [
 
 export default function Values() {
   return (
-    <section id="beliefs" className="relative border-y border-white/6 bg-surface py-20 md:py-28">
+    <section id="beliefs" className="relative border-t hairline bg-surface py-16 md:py-24">
       <div className="wrap">
         <Reveal className="max-w-2xl">
           <p className="t-kicker text-accent">What we believe</p>
           <h2 className="t-h2 mt-5">A few things we hold to.</h2>
         </Reveal>
 
-        <motion.div
-          variants={revealStagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+        <div
           className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2"
         >
           {beliefs.map((b) => (
-            <motion.div key={b.n} variants={reveal} className="flex gap-6">
-              <span className="t-numeral shrink-0 text-[2.4rem] leading-none text-accent">
+            <div key={b.n} className="flex gap-6 border-t hairline pt-5">
+              <span className="font-display shrink-0 italic text-accent">
                 {b.n}
               </span>
               <div>
                 <h3 className="t-h3">{b.title}</h3>
-                <p className="t-body mt-2.5 max-w-sm text-mute">{b.body}</p>
+                <p className="t-body mt-2.5 max-w-sm text-stone">{b.body}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
