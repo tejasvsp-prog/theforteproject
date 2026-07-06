@@ -13,8 +13,12 @@ export default function Logo({
 }) {
   const color = tone === "light" ? "text-paper" : "text-ink";
   return (
-    <span className={`inline-flex items-baseline gap-2 ${color} ${className}`}>
-      <span className="h-2 w-2 shrink-0 self-center bg-accent" aria-hidden />
+    <span className={`group inline-flex items-baseline gap-2 ${color} ${className}`}>
+      {/* The note-head hops on hover — a half-beat of play. */}
+      <span
+        className="h-2 w-2 shrink-0 self-center bg-accent transition-transform duration-300 ease-signal group-hover:-translate-y-1"
+        aria-hidden
+      />
       <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[-0.01em]">
         {siteConfig.name}
       </span>

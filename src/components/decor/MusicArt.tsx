@@ -1,10 +1,19 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+const ease = [0.16, 1, 0.3, 1] as const;
+
 /**
- * Hand-built music figures — static line art, set like engravings in a
- * printed page. No stock imagery, no animation.
+ * Hand-built music figures — line art set like engravings, each with one
+ * quiet piece of motion: the staff draws itself, the divider's note glides
+ * into place, the keys play a soft arpeggio. Everything renders static for
+ * reduced-motion users.
  */
 
-/** A flowing five-line staff with a treble clef and a rising phrase. */
+/** A five-line staff with a treble clef; draws itself in on first view. */
 export function StaffPhrase({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
   const lines = [12, 30, 48, 66, 84];
   const notes = [
     { cx: 150, cy: 66 },
@@ -22,25 +31,38 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
       aria-label="A musical staff with a rising phrase of notes"
       className={className}
     >
-      {lines.map((y) => (
-        <path
+      {lines.map((y, i) => (
+        <motion.path
           key={y}
           d={`M8 ${y} C 140 ${y - 6}, 360 ${y + 6}, 492 ${y}`}
           stroke="currentColor"
           strokeOpacity="0.3"
           strokeWidth="1.2"
+          initial={reduce ? undefined : { pathLength: 0 }}
+          whileInView={reduce ? undefined : { pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease, delay: 0.06 * i }}
         />
       ))}
-      {/* Simplified treble clef, struck in terracotta */}
-      <path
+      <motion.path
         d="M64 96c-7-2-10-9-7-15 3-8 13-12 17-25 3-11-1-22-9-22-8 0-12 8-10 17 2 10 10 18 20 28 8 8 12 14 10 22-2 8-9 12-16 10-5-2-8-7-6-11 2-4 6-5 9-3"
         stroke="#A34A2A"
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        initial={reduce ? undefined : { pathLength: 0, opacity: 0 }}
+        whileInView={reduce ? undefined : { pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease, delay: 0.2 }}
       />
       {notes.map((n, i) => (
-        <g key={i}>
+        <motion.g
+          key={i}
+          initial={reduce ? undefined : { opacity: 0, y: 6 }}
+          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease, delay: 0.55 + i * 0.12 }}
+        >
           <ellipse
             cx={n.cx}
             cy={n.cy}
@@ -55,19 +77,20 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
             strokeWidth="1.6"
             strokeLinecap="round"
           />
-        </g>
+        </motion.g>
       ))}
     </svg>
   );
 }
 
 /**
- * Section divider drawn as a five-line staff with a single terracotta
- * note-head resting on it — the site's recurring musical rule.
+ * Section divider: a five-line staff with a terracotta note-head that
+ * glides onto the staff as the divider scrolls into view.
  */
 export function StaffDivider({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
   return (
-    <div aria-hidden className={`w-full ${className}`}>
+    <div aria-hidden className={`w-full overflow-hidden ${className}`}>
       <svg viewBox="0 0 1200 28" preserveAspectRatio="none" className="h-6 w-full">
         {[4, 9, 14, 19, 24].map((y) => (
           <line
@@ -83,13 +106,23 @@ export function StaffDivider({ className = "" }: { className?: string }) {
           />
         ))}
       </svg>
-      <span className="relative -mt-[1.35rem] mb-2 ml-[8%] block h-[9px] w-[13px] -rotate-[18deg] rounded-[50%] bg-accent" />
+      <motion.span
+        className="relative -mt-[1.35rem] mb-2 ml-[8%] block h-[9px] w-[13px] -rotate-[18deg] rounded-[50%] bg-accent"
+        initial={reduce ? undefined : { x: -80, opacity: 0 }}
+        whileInView={reduce ? undefined : { x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease }}
+      />
     </div>
   );
 }
 
-/** Abstract upright-piano silhouette in line-art. */
+/**
+ * Upright-piano silhouette; the terracotta keys dip once in sequence when
+ * the figure enters view — a quiet arpeggio.
+ */
 export function KeysArc({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
   return (
     <svg viewBox="0 0 260 180" fill="none" aria-hidden className={className}>
       <g stroke="currentColor" strokeOpacity="0.55" strokeWidth="1.4">
@@ -99,17 +132,52 @@ export function KeysArc({ className = "" }: { className?: string }) {
         <path d="M14 24 H246" />
         <path d="M14 158 H246" />
       </g>
-      {[0, 1, 3, 4, 5].map((i) => (
-        <rect
-          key={i}
-          x={33 + i * 26}
+      {[0, 1, 3, 4, 5].map((k, i) => (
+        <motion.rect
+          key={k}
+          x={33 + k * 26}
           y={24}
           width={14}
           height={78}
           fill="#A34A2A"
           fillOpacity="0.85"
+          initial={undefined}
+          whileInView={reduce ? undefined : { y: [0, 5, 0] }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.45, ease: "easeInOut", delay: 0.5 + i * 0.14 }}
         />
       ))}
     </svg>
+  );
+}
+
+/**
+ * A few faint note glyphs drifting very slowly — ambient depth for the hero
+ * and the closing spread. Low opacity, long period, never in the way.
+ */
+export function AmbientNotes({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
+  const notes = [
+    { left: "8%", top: "22%", size: "1.6rem", glyph: "♪", dur: 9, delay: 0 },
+    { left: "86%", top: "16%", size: "2rem", glyph: "♩", dur: 11, delay: 1.5 },
+    { left: "72%", top: "70%", size: "1.4rem", glyph: "♫", dur: 10, delay: 0.8 },
+  ];
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+    >
+      {notes.map((n, i) => (
+        <motion.span
+          key={i}
+          className="absolute select-none font-display italic text-accent/15"
+          style={{ left: n.left, top: n.top, fontSize: n.size }}
+          animate={reduce ? undefined : { y: [-4, -16, -4], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: n.dur, delay: n.delay, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {n.glyph}
+        </motion.span>
+      ))}
+    </div>
   );
 }

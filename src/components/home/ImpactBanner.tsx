@@ -1,5 +1,6 @@
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import { AmbientNotes } from "@/components/decor/MusicArt";
 import { roadmap } from "@/lib/site";
 
 /**
@@ -8,8 +9,9 @@ import { roadmap } from "@/lib/site";
  */
 export default function ImpactBanner() {
   return (
-    <section className="border-t-2 border-ink">
-      <div className="wrap grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
+    <section className="relative border-t-2 border-ink">
+      <AmbientNotes />
+      <div className="wrap relative grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-8">
           <p className="t-display max-w-[16ch]">
             Ready? <em className="text-accent">It&apos;s free.</em>

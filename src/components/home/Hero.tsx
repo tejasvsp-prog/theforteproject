@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import Reveal, { RevealItem } from "@/components/ui/Reveal";
-import { StaffPhrase } from "@/components/decor/MusicArt";
+import { StaffPhrase, AmbientNotes } from "@/components/decor/MusicArt";
 
 const facts = ["Free", "Virtual", "Student-led", "Based in Michigan"] as const;
 
@@ -9,6 +9,7 @@ export default function Hero() {
     <section className="relative overflow-hidden pt-32 md:pt-36">
       {/* Faint staff lines rising behind the composition */}
       <div aria-hidden className="staff-bg absolute inset-x-0 top-24 h-56 opacity-70" />
+      <AmbientNotes />
 
       <div className="wrap relative">
         <Reveal stagger className="grid gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-8">
