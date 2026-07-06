@@ -34,14 +34,14 @@ export const tracks = [
     label: "Have an instrument",
     title: "Instrument lessons",
     blurb:
-      "You already play, and you want to get better — but private lessons aren't something your family can afford. A volunteer teacher helps you keep growing, for free.",
+      "You already play and want to get better. A volunteer teacher helps you grow — free.",
   },
   {
     id: "theory",
     label: "No instrument",
     title: "Theory & composition",
     blurb:
-      "You don't have an instrument, but you're curious about music. Learn how music actually works — reading it, understanding it, and writing your own.",
+      "No instrument yet? Learn how music works — reading it, hearing it, writing your own.",
   },
 ] as const;
 
@@ -49,18 +49,18 @@ export const tracks = [
 export const steps = [
   {
     n: "01",
-    title: "Fill out the interest form",
-    body: "Tell us who you are and what you'd like to learn. It only takes a minute.",
+    title: "Fill out the form",
+    body: "Takes about a minute.",
   },
   {
     n: "02",
     title: "A teacher reaches out",
-    body: "One of our volunteer teachers gets in touch to find a time that works for you.",
+    body: "We find a time that works.",
   },
   {
     n: "03",
     title: "Start learning",
-    body: "Meet for free, 30-minute virtual lessons, twice a month.",
+    body: "30 minutes, twice a month, on video.",
   },
 ] as const;
 
@@ -100,31 +100,23 @@ export const roadmap = [
 export const faqs = [
   {
     q: "How much does it cost?",
-    a: "Nothing. Every lesson is completely free.",
+    a: "Nothing. Ever.",
   },
   {
     q: "Who is this for?",
-    a: "Any K–12 student who can't afford music lessons. It isn't meant for students who can already pay for private instruction, or who are already advanced musicians — we want to reach the students who'd otherwise go without.",
+    a: "Anyone K–12 can sign up — but we built this for students who can't afford lessons, not for those who can, or who are already advanced. If you're not sure, just ask.",
   },
   {
     q: "Do I need my own instrument?",
-    a: "For instrument lessons, yes — those are for students who already have an instrument and want to improve. If you don't have one, you can sign up for theory & composition instead.",
+    a: "For instrument lessons, yes. Without one, sign up for theory & composition instead.",
   },
   {
-    q: "How often are lessons, and how long?",
-    a: "Lessons are 30 minutes long, twice a month, and fully virtual.",
-  },
-  {
-    q: "Who teaches the lessons?",
-    a: "High school student volunteers. Every teacher is at least a sophomore and a member of their school's highest ensemble.",
+    q: "Who teaches?",
+    a: "High school students — every teacher is at least a sophomore and plays in their school's highest ensemble.",
   },
   {
     q: "Can I join from outside Michigan?",
-    a: "We started in Okemos, Michigan. Because lessons are virtual, any K–12 student can sign up.",
-  },
-  {
-    q: "How do I get started?",
-    a: "Fill out the interest form and a volunteer teacher will reach out to schedule your lessons.",
+    a: "Yes. Lessons are virtual, so any K–12 student can sign up.",
   },
 ] as const;
 

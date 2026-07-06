@@ -13,8 +13,8 @@ export default function StudentPrograms() {
       <div className="wrap py-16 md:py-24">
         <Reveal className="max-w-2xl">
           <p className="t-kicker text-accent">Two ways to learn</p>
-          <h2 className="t-h2 mt-5 max-w-[24ch]">
-            Whether or not you own an instrument, there&apos;s a way in.
+          <h2 className="t-h2 mt-5 max-w-[20ch]">
+            With an instrument, or without one.
           </h2>
         </Reveal>
 

@@ -12,8 +12,12 @@ export default function HowItWorks() {
         <Reveal className="lg:col-span-4">
           <p className="t-kicker text-accent">How it works</p>
           <h2 className="t-h2 mt-5 max-w-[14ch]">
-            Signing up takes about a minute.
+            Signing up takes a minute.
           </h2>
+          <p className="t-body mt-6 max-w-xs text-stone">
+            Built for students who&apos;d otherwise go without — anyone can
+            sign up.
+          </p>
         </Reveal>
 
         <Reveal as="ol" className="lg:col-span-7 lg:col-start-6">

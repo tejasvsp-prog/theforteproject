@@ -3,7 +3,7 @@ import Hero from "@/components/home/Hero";
 import Mission from "@/components/home/Mission";
 import StudentPrograms from "@/components/home/StudentPrograms";
 import HowItWorks from "@/components/home/HowItWorks";
-import Eligibility from "@/components/home/Eligibility";
+import VolunteerNote from "@/components/home/VolunteerNote";
 import Faq from "@/components/home/Faq";
 import ImpactBanner from "@/components/home/ImpactBanner";
 import { siteConfig } from "@/lib/site";
@@ -40,7 +40,7 @@ export default function HomePage() {
       <Mission />
       <StudentPrograms />
       <HowItWorks />
-      <Eligibility />
+      <VolunteerNote />
       <Faq />
       <ImpactBanner />
     </>

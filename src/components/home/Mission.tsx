@@ -21,9 +21,7 @@ export default function Mission() {
 
         <Reveal className="self-end lg:col-span-3">
           <p className="t-body max-w-measure text-stone">
-            That&apos;s the whole idea. Every student should get to learn music,
-            whatever their family can afford. We&apos;re students ourselves, and
-            we teach for free.
+            That&apos;s the whole idea. So we teach for free.
           </p>
         </Reveal>
       </div>
