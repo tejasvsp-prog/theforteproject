@@ -108,8 +108,8 @@ export default function Navbar() {
               active={pathname.startsWith(item.href)}
             />
           ))}
-          <Button href="/contact" className="whitespace-nowrap px-5 py-2.5 text-[0.8125rem]">
-            Contact Us
+          <Button href="/apply" className="whitespace-nowrap px-5 py-2.5">
+            Sign up
           </Button>
         </div>
 
@@ -179,8 +179,8 @@ export default function Navbar() {
                 transition={{ delay: 0.06 * nav.length + 0.05 }}
                 className="mt-8"
               >
-                <Button href="/contact" className="w-full">
-                  Contact Us
+                <Button href="/apply" className="w-full">
+                  Sign up for lessons
                 </Button>
               </motion.div>
             </div>

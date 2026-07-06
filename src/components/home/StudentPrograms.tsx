@@ -1,81 +1,74 @@
+"use client";
+
 import Link from "next/link";
-import RailSection from "@/components/ui/RailSection";
+import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
-
-interface Program {
-  tag: string;
-  title: string;
-  description: string;
-  focus: string[];
-  href: string;
-}
-
-const programs: Program[] = [
-  {
-    tag: "Path A",
-    title: "Performance Lessons",
-    description:
-      "For students who have an instrument but can't afford private instruction.",
-    focus: ["Technique", "Performance", "Practice habits", "Musical growth"],
-    href: "/apply#performance",
-  },
-  {
-    tag: "Path B",
-    title: "Music Theory & Composition",
-    description: "For students who don't yet have access to an instrument.",
-    focus: [
-      "Music theory",
-      "Ear training",
-      "Rhythm",
-      "Composition",
-      "Music appreciation",
-    ],
-    href: "/apply#theory",
-  },
-];
-
-function Panel({ program, className = "" }: { program: Program; className?: string }) {
-  return (
-    <div
-      className={`flex flex-col rounded-3xl border border-ink/10 bg-cream p-8 shadow-card transition-transform duration-300 ease-signal hover:-translate-y-1 sm:p-10 ${className}`}
-    >
-      <p className="t-kicker text-accent">{program.tag}</p>
-      <h3 className="t-h3 mt-4">{program.title}</h3>
-      <p className="t-body mt-3 max-w-prose text-ink/75">
-        {program.description}
-      </p>
-      <ul className="mt-6 space-y-2.5">
-        {program.focus.map((item) => (
-          <li key={item} className="flex items-center gap-3 t-body text-ink/80">
-            <span className="h-1.5 w-1.5 shrink-0 bg-accent" aria-hidden />
-            {item}
-          </li>
-        ))}
-      </ul>
-      <Link
-        href={program.href}
-        className="group relative mt-8 inline-block t-button text-ink"
-      >
-        Learn more &amp; apply <span aria-hidden>→</span>
-        <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-accent transition-transform duration-200 ease-signal group-hover:scale-x-100" />
-      </Link>
-    </div>
-  );
-}
+import { reveal, revealStagger } from "@/lib/motion";
+import { tracks } from "@/lib/site";
+import { StaffPhrase } from "@/components/decor/MusicArt";
 
 export default function StudentPrograms() {
   return (
-    <RailSection
-      id="programs"
-      index="03"
-      kicker="Student Programs"
-      title="Two ways to make music"
-      lead="Every student learns differently. We meet them where they are — with or without an instrument in hand."
-    >
-      <Reveal className="grid gap-6 md:grid-cols-2">
-        <Panel program={programs[0]} />
-        <Panel program={programs[1]} />
-      </Reveal>
-    </RailSection>
+    <section id="tracks" className="relative py-20 md:py-28 lg:py-32">
+      <div className="wrap">
+        <Reveal className="max-w-2xl">
+          <p className="t-kicker text-accent">Two ways to learn</p>
+          <h2 className="t-h2 mt-5">
+            Whether or not you own an instrument, there&apos;s a way in.
+          </h2>
+        </Reveal>
+
+        <motion.div
+          variants={revealStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-14 grid gap-6 lg:grid-cols-12 lg:gap-8"
+        >
+          {/* Track 1 — larger, warm cream panel with illustration */}
+          <motion.article
+            variants={reveal}
+            className="group relative overflow-hidden rounded-3xl border border-ink/10 bg-cream p-8 shadow-card sm:p-10 lg:col-span-7"
+          >
+            <p className="t-kicker text-accent">{tracks[0].label}</p>
+            <h3 className="t-display mt-4 text-[2rem] sm:text-[2.4rem]">
+              {tracks[0].title}
+            </h3>
+            <p className="t-body mt-4 max-w-md text-ink/75">{tracks[0].blurb}</p>
+            <Link
+              href="/apply"
+              className="group/link mt-8 inline-flex items-center gap-2 t-button text-accent"
+            >
+              Sign up
+              <span aria-hidden className="transition-transform duration-300 ease-signal group-hover/link:translate-x-1">→</span>
+            </Link>
+            <div className="pointer-events-none absolute -bottom-6 -right-4 w-64 text-ink/15 transition-transform duration-500 ease-signal group-hover:translate-x-2 sm:w-80">
+              <StaffPhrase className="h-auto w-full" />
+            </div>
+          </motion.article>
+
+          {/* Track 2 — ink panel, offset */}
+          <motion.article
+            variants={reveal}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-8 text-paper shadow-card sm:p-10 lg:col-span-5"
+          >
+            <div>
+              <p className="t-kicker text-honey">{tracks[1].label}</p>
+              <h3 className="t-display mt-4 text-[2rem] text-paper sm:text-[2.4rem]">
+                {tracks[1].title}
+              </h3>
+              <p className="t-body mt-4 text-paper/75">{tracks[1].blurb}</p>
+            </div>
+            <Link
+              href="/apply"
+              className="group/link mt-8 inline-flex items-center gap-2 t-button text-honey"
+            >
+              Sign up
+              <span aria-hidden className="transition-transform duration-300 ease-signal group-hover/link:translate-x-1">→</span>
+            </Link>
+          </motion.article>
+        </motion.div>
+      </div>
+    </section>
   );
 }

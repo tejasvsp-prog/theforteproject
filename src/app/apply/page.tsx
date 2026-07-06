@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import RailSection from "@/components/ui/RailSection";
+import Reveal from "@/components/ui/Reveal";
 import ImpactBand from "@/components/ui/ImpactBand";
 import GoogleFormEmbed from "@/components/ui/GoogleFormEmbed";
 import ApplyOptions from "@/components/apply/ApplyOptions";
 
 export const metadata: Metadata = {
-  title: "Apply for Free Lessons",
+  title: "Sign up for lessons",
   description:
-    "Free virtual music lessons are available to underprivileged students worldwide — whether or not you have access to an instrument.",
+    "Free, virtual music lessons for K–12 students who can't afford private instruction. Fill out the interest form and a volunteer teacher reaches out.",
   alternates: { canonical: "/apply" },
 };
 
@@ -16,41 +16,32 @@ export default function ApplyPage() {
   return (
     <>
       <PageHero
-        eyebrow="For Students"
-        title="Apply for free lessons."
-        description="Free virtual lessons are available to underprivileged students everywhere. Choose the path that fits you — with or without an instrument."
+        eyebrow="Sign up"
+        title="Free lessons, for students who need them."
+        description="Fill out the interest form below and one of our volunteer teachers will reach out to schedule. It's completely free — always."
       />
 
       <ApplyOptions />
 
-      <RailSection
-        id="performance"
-        index="01"
-        kicker="Performance Intake"
-        title="Performance Lessons"
-        lead="For students with access to an instrument who want individualized, performance-focused instruction."
-        className="scroll-mt-20"
-      >
-        <div className="max-w-3xl">
-          <GoogleFormEmbed formKey="performance" height={720} />
+      <section id="form" className="relative py-16 md:py-24 scroll-mt-20">
+        <div className="wrap">
+          <Reveal className="max-w-2xl">
+            <p className="t-kicker text-accent">The interest form</p>
+            <h2 className="t-h2 mt-5">One form — that&apos;s the whole start.</h2>
+            <p className="t-lead mt-6 max-w-prose text-ink/75">
+              Tell us a bit about you and whether you already have an instrument.
+              A volunteer teacher takes it from there.
+            </p>
+          </Reveal>
+          <Reveal className="mt-10 max-w-3xl">
+            <GoogleFormEmbed formKey="student" height={760} />
+          </Reveal>
         </div>
-      </RailSection>
+      </section>
 
-      <RailSection
-        id="theory"
-        index="02"
-        kicker="Theory Intake"
-        title="Music Theory & Composition"
-        lead="For students without an instrument — theory, composition, rhythm, and ear training."
-        className="scroll-mt-20"
-      >
-        <div className="max-w-3xl">
-          <GoogleFormEmbed formKey="theory" height={720} />
-        </div>
-      </RailSection>
-
-      <ImpactBand eyebrow="Questions first?">
-        Every student is welcome. Reach out and we will help you find your path.
+      <ImpactBand eyebrow="Not sure if it's for you?">
+        If you&apos;re a student who can&apos;t afford lessons, you&apos;re
+        exactly who we&apos;re here for.
       </ImpactBand>
     </>
   );

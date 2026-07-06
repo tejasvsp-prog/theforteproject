@@ -1,84 +1,71 @@
 "use client";
 
 import Link from "next/link";
-
-interface Path {
-  tag: string;
-  title: string;
-  description: string;
-  cta: string;
-  anchor: string;
-  tone: "paper" | "ink";
-}
-
-const paths: Path[] = [
-  {
-    tag: "Path A",
-    title: "I have an instrument",
-    description:
-      "Receive individualized, performance-focused instruction from a musician who plays what you play.",
-    cta: "Apply for Performance Lessons",
-    anchor: "#performance",
-    tone: "paper",
-  },
-  {
-    tag: "Path B",
-    title: "I don't have an instrument",
-    description:
-      "Learn music theory, composition, rhythm, and ear training — no instrument required to begin.",
-    cta: "Apply for Theory Lessons",
-    anchor: "#theory",
-    tone: "ink",
-  },
-];
+import { motion } from "framer-motion";
+import { reveal, revealStagger } from "@/lib/motion";
+import { tracks } from "@/lib/site";
 
 /**
- * The two-path selector — one of the two sanctioned ink-inverted moments.
- * On desktop the hovered half expands (~58/42) via a flex-grow transition;
- * on mobile the halves stack full-width.
+ * The two tracks, shown as a choice — both lead to the same single interest
+ * form below. On the form, students note whether they already have an
+ * instrument.
  */
 export default function ApplyOptions() {
   return (
-    <div className="flex flex-col border-y border-ink lg:min-h-[64vh] lg:flex-row">
-      {paths.map((p, i) => {
-        const dark = p.tone === "ink";
-        return (
-          <Link
-            key={p.anchor}
-            href={p.anchor}
-            className={`group relative flex grow flex-col justify-between gap-16 px-8 py-14 transition-[flex-grow] duration-500 ease-signal md:px-12 md:py-20 lg:hover:grow-[1.45] ${
-              dark ? "bg-ink text-paper" : "bg-paper text-ink"
-            } ${i === 1 ? "border-t border-ink lg:border-l lg:border-t-0" : ""}`}
-          >
-            <div>
-              <p className={`t-kicker ${dark ? "text-paper/80" : "text-accent"}`}>
-                {p.tag}
-              </p>
-              <h2 className="t-display mt-6 max-w-[12ch]">{p.title}</h2>
-              <p
-                className={`t-lead mt-6 max-w-measure ${
-                  dark ? "text-paper/75" : "text-ink/75"
-                }`}
-              >
-                {p.description}
-              </p>
-            </div>
-            <span
-              className={`inline-flex items-center gap-3 t-button ${
-                dark ? "text-paper" : "text-accent"
+    <section className="relative py-8 md:py-12">
+      <div className="wrap">
+        <motion.div
+          variants={revealStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid gap-6 md:grid-cols-2 md:gap-8"
+        >
+          {tracks.map((track, i) => (
+            <motion.div
+              key={track.id}
+              variants={reveal}
+              className={`group relative overflow-hidden rounded-3xl p-8 shadow-card sm:p-10 ${
+                i === 0
+                  ? "border border-ink/10 bg-cream"
+                  : "bg-ink text-paper"
               }`}
             >
-              {p.cta}
-              <span
-                aria-hidden
-                className="transition-transform duration-300 ease-signal group-hover:translate-x-1.5"
+              <p className={`t-kicker ${i === 0 ? "text-accent" : "text-honey"}`}>
+                {track.label}
+              </p>
+              <h2
+                className={`t-display mt-4 text-[2rem] sm:text-[2.4rem] ${
+                  i === 0 ? "" : "text-paper"
+                }`}
               >
-                →
-              </span>
-            </span>
-          </Link>
-        );
-      })}
-    </div>
+                {track.title}
+              </h2>
+              <p
+                className={`t-body mt-4 max-w-md ${
+                  i === 0 ? "text-ink/75" : "text-paper/75"
+                }`}
+              >
+                {track.blurb}
+              </p>
+              <Link
+                href="#form"
+                className={`group/link mt-8 inline-flex items-center gap-2 t-button ${
+                  i === 0 ? "text-accent" : "text-honey"
+                }`}
+              >
+                Fill out the form
+                <span
+                  aria-hidden
+                  className="transition-transform duration-300 ease-signal group-hover/link:translate-x-1.5"
+                >
+                  ↓
+                </span>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

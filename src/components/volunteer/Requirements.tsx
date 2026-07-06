@@ -1,34 +1,44 @@
-import RailSection from "@/components/ui/RailSection";
-import Reveal, { RevealItem } from "@/components/ui/Reveal";
+"use client";
 
-const requirements = [
-  "A current high-school student",
-  "Real musical experience in your instrument or discipline",
-  "A genuine passion for teaching and mentoring",
-  "About one hour a week and a reliable internet connection",
-];
+import { motion } from "framer-motion";
+import Reveal from "@/components/ui/Reveal";
+import { reveal, revealStagger } from "@/lib/motion";
+import { volunteerReqs } from "@/lib/site";
 
 export default function Requirements() {
   return (
-    <RailSection
-      id="requirements"
-      index="01"
-      kicker="Who Can Volunteer"
-      title="What we look for"
-      lead="If this sounds like you, we would love to have you on the team."
-    >
-      <Reveal as="ul" stagger className="border-b hairline">
-        {requirements.map((item) => (
-          <RevealItem
-            key={item}
-            as="li"
-            className="flex items-center gap-5 border-t py-6 hairline"
-          >
-            <span className="h-2.5 w-2.5 shrink-0 bg-accent" aria-hidden />
-            <span className="t-lead text-ink/85">{item}</span>
-          </RevealItem>
-        ))}
-      </Reveal>
-    </RailSection>
+    <section id="requirements" className="relative py-20 md:py-28">
+      <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-4">
+          <p className="t-kicker text-accent">What we ask</p>
+          <h2 className="t-h2 mt-5">Two things, really.</h2>
+          <p className="t-body mt-6 max-w-xs text-ink/70">
+            If both are true, you&apos;re exactly who we&apos;re looking for.
+          </p>
+        </Reveal>
+
+        <motion.div
+          variants={revealStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid gap-6 sm:grid-cols-2 lg:col-span-8"
+        >
+          {volunteerReqs.map((r, i) => (
+            <motion.div
+              key={r.title}
+              variants={reveal}
+              className="rounded-3xl border border-ink/10 bg-cream p-8 shadow-soft"
+            >
+              <span className="t-numeral text-[2.4rem] leading-none">
+                {String(i + 1)}
+              </span>
+              <h3 className="t-h3 mt-4">{r.title}</h3>
+              <p className="t-body mt-2.5 text-ink/70">{r.body}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

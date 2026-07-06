@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import Mission from "@/components/home/Mission";
-import HowItWorks from "@/components/home/HowItWorks";
 import StudentPrograms from "@/components/home/StudentPrograms";
+import HowItWorks from "@/components/home/HowItWorks";
+import Eligibility from "@/components/home/Eligibility";
+import Faq from "@/components/home/Faq";
 import ImpactBanner from "@/components/home/ImpactBanner";
 import { siteConfig } from "@/lib/site";
 
@@ -14,19 +16,17 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "NGO",
+  "@type": "EducationalOrganization",
   name: siteConfig.name,
   url: siteConfig.url,
-  email: siteConfig.email,
   description: siteConfig.description,
   slogan: siteConfig.tagline,
-  areaServed: "Worldwide",
-  knowsAbout: [
-    "Music education",
-    "Music theory",
-    "Composition",
-    "Virtual lessons",
-  ],
+  areaServed: { "@type": "Country", name: "United States" },
+  location: {
+    "@type": "Place",
+    address: { "@type": "PostalAddress", addressLocality: "Okemos", addressRegion: "MI", addressCountry: "US" },
+  },
+  knowsAbout: ["Music education", "Music theory", "Music composition"],
 };
 
 export default function HomePage() {
@@ -38,8 +38,10 @@ export default function HomePage() {
       />
       <Hero />
       <Mission />
-      <HowItWorks />
       <StudentPrograms />
+      <HowItWorks />
+      <Eligibility />
+      <Faq />
       <ImpactBanner />
     </>
   );

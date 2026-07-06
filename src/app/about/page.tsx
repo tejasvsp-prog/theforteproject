@@ -5,9 +5,9 @@ import Values from "@/components/about/Values";
 import ImpactBand from "@/components/ui/ImpactBand";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About",
   description:
-    "The Forte Project is a student-led nonprofit expanding access to quality music education worldwide through free virtual lessons.",
+    "The Forte Project is an independent, student-run initiative from Okemos, Michigan offering free virtual music lessons to K–12 students who can't afford private instruction.",
   alternates: { canonical: "/about" },
 };
 
@@ -15,20 +15,20 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Story"
-        title="A student-led movement for musical access."
-        description="The Forte Project expands access to quality music education worldwide — one free lesson at a time."
+        eyebrow="About"
+        title="Free music lessons, run by students."
+        description="An independent, student-led group from Okemos, Michigan — here to make sure cost isn't the reason a student never gets to learn music."
       />
       <Story />
       <Values />
       <ImpactBand
-        eyebrow="Be part of the story"
+        eyebrow="Get involved"
         actions={[
-          { href: "/volunteer", label: "Become a Volunteer" },
-          { href: "/apply", label: "Enroll for Lessons" },
+          { href: "/apply", label: "Sign up for lessons" },
+          { href: "/volunteer", label: "Volunteer to teach" },
         ]}
       >
-        Whether you teach or you learn, there is a place for you here.
+        Learn music, or teach it. Either way, it&apos;s free.
       </ImpactBand>
     </>
   );

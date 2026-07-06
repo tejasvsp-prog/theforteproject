@@ -1,28 +1,22 @@
-import RailSection from "@/components/ui/RailSection";
+import Reveal from "@/components/ui/Reveal";
 
 export default function Mission() {
   return (
-    <RailSection
-      id="mission"
-      index="01"
-      kicker="Our Mission"
-      title="Every student deserves the chance to make music."
-    >
-      <div className="max-w-prose">
-        <p className="t-lead text-ink/85">
-          The Forte Project is a{" "}
-          <span className="text-accent">student-led</span> initiative expanding
-          access to quality music education worldwide. By pairing high-school
-          musicians with underprivileged students for free virtual lessons, we
-          give every student the opportunity to learn, create, and grow through
-          music — and give young teachers a first taste of what it means to give
-          back.
-        </p>
-        <p className="t-caption mt-8 border-l-2 border-accent pl-4 text-ink/60">
-          Built and run entirely by students — because the people closest to the
-          problem are often the ones ready to solve it.
-        </p>
+    <section id="mission" className="relative py-20 md:py-28 lg:py-32">
+      <div className="wrap">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="t-kicker text-accent">Why we started</p>
+          <p className="t-display mt-7">
+            Music lessons cost money a lot of families don&apos;t have.{" "}
+            <span className="text-accent">Talent doesn&apos;t.</span>
+          </p>
+          <p className="t-lead mx-auto mt-8 max-w-prose text-ink/75">
+            Our mission is simple: make sure every student can learn music —
+            regardless of what their family can afford. We&apos;re students
+            ourselves, and we teach for free.
+          </p>
+        </Reveal>
       </div>
-    </RailSection>
+    </section>
   );
 }

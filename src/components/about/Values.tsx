@@ -1,54 +1,61 @@
-import RailSection from "@/components/ui/RailSection";
-import Ledger, { type LedgerRow } from "@/components/ui/Ledger";
-import Reveal from "@/components/ui/Reveal";
-import { stats } from "@/lib/site";
+"use client";
 
-const values: LedgerRow[] = [
+import { motion } from "framer-motion";
+import Reveal from "@/components/ui/Reveal";
+import { reveal, revealStagger } from "@/lib/motion";
+
+const beliefs = [
   {
     n: "01",
-    title: "Access",
-    text: "Music education should never depend on a family's income or postal code.",
+    title: "Cost shouldn't decide who learns",
+    body: "Talent and interest are everywhere. The ability to pay for lessons isn't. We teach the students who'd otherwise miss out.",
   },
   {
     n: "02",
-    title: "Excellence",
-    text: "Free does not mean lesser. Every lesson is prepared, personal, and taken seriously.",
+    title: "Students teaching students",
+    body: "Every teacher is a high schooler who still remembers what it's like to start — and who plays at the top of their own program.",
   },
   {
     n: "03",
-    title: "Mentorship",
-    text: "Near-peer teachers who inspire students as much as they instruct them.",
+    title: "Free, and it stays free",
+    body: "No fees, no catch. Signing up takes a form, and a teacher takes it from there.",
   },
   {
     n: "04",
-    title: "Reach",
-    text: "A model that travels — anywhere with an internet connection is within reach.",
+    title: "Meet you where you are",
+    body: "Already play an instrument, or don't own one yet — either way there's a way in, with lessons or with theory and composition.",
   },
 ];
 
 export default function Values() {
   return (
-    <RailSection
-      id="values"
-      index="02"
-      kicker="What We Believe"
-      title="The values behind every lesson"
-    >
-      <Ledger rows={values} />
+    <section id="beliefs" className="relative bg-cream py-20 md:py-28">
+      <div className="wrap">
+        <Reveal className="max-w-2xl">
+          <p className="t-kicker text-accent">What we believe</p>
+          <h2 className="t-h2 mt-5">A few things we hold to.</h2>
+        </Reveal>
 
-      <Reveal className="mt-14 grid grid-cols-2 sm:grid-cols-4">
-        {stats.map((s) => (
-          <div
-            key={s.label}
-            className="border-l py-4 pl-5 pr-4 hairline [&:nth-child(n+3)]:border-t [&:nth-child(odd)]:border-l-0 sm:[&:nth-child(n+2)]:border-l sm:[&:nth-child(n+3)]:border-t-0"
-          >
-            <p className="t-numeral text-ink text-[clamp(2rem,4vw,3.25rem)]">
-              {s.value}
-            </p>
-            <p className="t-kicker mt-3 text-ink/70">{s.label}</p>
-          </div>
-        ))}
-      </Reveal>
-    </RailSection>
+        <motion.div
+          variants={revealStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2"
+        >
+          {beliefs.map((b) => (
+            <motion.div key={b.n} variants={reveal} className="flex gap-6">
+              <span className="t-numeral shrink-0 text-[2.4rem] leading-none">
+                {b.n}
+              </span>
+              <div>
+                <h3 className="t-h3">{b.title}</h3>
+                <p className="t-body mt-2.5 max-w-sm text-ink/70">{b.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }
