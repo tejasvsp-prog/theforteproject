@@ -50,7 +50,7 @@ export default function AboutPage() {
         description={`An independent, student-led organization from ${siteConfig.location}.`}
       />
 
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7 lg:col-start-4">
             {sections.map((s) => (

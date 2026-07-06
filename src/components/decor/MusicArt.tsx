@@ -1,8 +1,24 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { RecordMark } from "@/components/ui/Logo";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+
+/** The brand's vinyl record, turning slowly — like a lesson in progress. */
+export function SpinningRecord({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      aria-hidden
+      className={className}
+      animate={reduce ? undefined : { rotate: 360 }}
+      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+    >
+      <RecordMark className="h-full w-full" />
+    </motion.div>
+  );
+}
 
 /**
  * Hand-built music figures — line art set like engravings, each with one
@@ -107,12 +123,19 @@ export function StaffDivider({ className = "" }: { className?: string }) {
         ))}
       </svg>
       <motion.span
-        className="relative -mt-[1.35rem] mb-2 ml-[8%] block h-[9px] w-[13px] -rotate-[18deg] rounded-[50%] bg-accent"
+        className="relative -mt-[1.35rem] mb-2 ml-[8%] block h-[9px] w-[13px]"
         initial={reduce ? undefined : { x: -80, opacity: 0 }}
         whileInView={reduce ? undefined : { x: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, ease }}
-      />
+      >
+        {/* …then keeps a gentle bob, like a note holding its beat. */}
+        <motion.span
+          className="block h-full w-full -rotate-[18deg] rounded-[50%] bg-accent"
+          animate={reduce ? undefined : { y: [0, -2.5, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.span>
     </div>
   );
 }

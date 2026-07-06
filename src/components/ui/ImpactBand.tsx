@@ -24,7 +24,7 @@ export default function ImpactBand({
 }: ImpactBandProps) {
   return (
     <section className="border-t-2 border-ink">
-      <div className="wrap py-14 md:py-20">
+      <div className="wrap py-16 md:py-24">
         <Reveal>
           {eyebrow ? (
             <p className="t-kicker mb-6 text-navy">{eyebrow}</p>

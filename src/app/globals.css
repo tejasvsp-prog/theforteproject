@@ -178,6 +178,18 @@
   .link-rule:hover {
     background-size: 100% 2px;
   }
+  /* Arrows inside rule-links step forward on hover. */
+  .link-rule span[aria-hidden] {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-rule:hover span[aria-hidden] {
+    transform: translateX(4px);
+  }
+
+  /* Bordered info card: lifts a breath and deepens its border on hover. */
+  .card-line {
+    @apply border hairline transition-[transform,border-color] duration-300 ease-signal hover:-translate-y-0.5 hover:border-navy/50;
+  }
 }
 
 @layer utilities {

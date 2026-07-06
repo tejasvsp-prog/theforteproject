@@ -35,11 +35,11 @@ export default function ContactPage() {
         description="We're a small student team — the forms are the fastest way to reach us, and we read every submission."
       />
 
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:col-span-8 lg:col-start-3">
             {routes.map((r) => (
-              <Reveal key={r.href} className="flex flex-col border hairline p-7">
+              <Reveal key={r.href} className="card-line flex flex-col p-7">
                 <h2 className="t-h3">{r.label}</h2>
                 <p className="t-body mt-3 flex-1 text-stone">{r.body}</p>
                 <Link href={r.href} className="link-rule mt-6 inline-flex self-start">

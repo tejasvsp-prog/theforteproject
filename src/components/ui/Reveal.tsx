@@ -65,19 +65,27 @@ export default function Reveal({
   );
 }
 
-/** A staggered child for use inside a `stagger` Reveal. */
+/**
+ * A staggered child for use inside a `stagger` Reveal. Accepts custom
+ * variants (e.g. a masked rise); it animates when its PARENT enters view,
+ * which keeps masked/clipped children working — IntersectionObserver
+ * measures post-transform boxes, so a child translated out of its clip
+ * would otherwise never register as visible.
+ */
 export function RevealItem({
   children,
   className,
   as = "div",
+  variants,
 }: {
   children: React.ReactNode;
   className?: string;
   as?: Tag;
+  variants?: Variants;
 }) {
   const Tag = motion[as];
   return (
-    <Tag data-anim className={className} variants={rise}>
+    <Tag data-anim className={className} variants={variants ?? rise}>
       {children}
     </Tag>
   );

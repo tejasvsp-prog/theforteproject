@@ -63,7 +63,7 @@ export default function VolunteerPage() {
       />
 
       {/* Eligibility */}
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <h2 className="t-kicker text-navy">Eligibility</h2>
@@ -71,7 +71,7 @@ export default function VolunteerPage() {
           </Reveal>
           <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
             {volunteerReqs.map((r) => (
-              <Reveal key={r.title} className="border hairline p-7">
+              <Reveal key={r.title} className="card-line p-7">
                 <h3 className="t-h3">{r.title}</h3>
                 <p className="t-body mt-2.5 text-stone">{r.body}</p>
               </Reveal>
@@ -83,7 +83,7 @@ export default function VolunteerPage() {
       <StaffDivider />
 
       {/* Expectations */}
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <h2 className="t-kicker text-navy">What to expect</h2>
@@ -104,7 +104,7 @@ export default function VolunteerPage() {
 
       {/* Application process */}
       <section className="border-t hairline bg-surface">
-        <div className="wrap grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
+        <div className="wrap grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <h2 className="t-kicker text-navy">The process</h2>
           </Reveal>
@@ -129,7 +129,7 @@ export default function VolunteerPage() {
 
       {/* Volunteer FAQ */}
       <section className="border-t hairline">
-        <div className="wrap grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
+        <div className="wrap grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <h2 className="t-kicker text-navy">Questions</h2>
           </Reveal>
@@ -149,7 +149,7 @@ export default function VolunteerPage() {
 
       {/* Application form */}
       <section id="apply" className="scroll-mt-24 border-t-2 border-ink">
-        <div className="wrap py-14 md:py-20">
+        <div className="wrap py-16 md:py-24">
           <Reveal className="max-w-2xl">
             <h2 className="t-display">Apply to teach.</h2>
             <p className="t-body mt-4 text-stone">

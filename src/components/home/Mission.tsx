@@ -5,7 +5,7 @@ export default function Mission() {
   return (
     <section id="mission">
       <StaffDivider />
-      <div className="wrap grid gap-8 py-14 md:py-20 lg:grid-cols-12 lg:gap-8">
+      <div className="wrap grid gap-8 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-3">
           <h2 className="t-kicker text-navy">Our mission</h2>
         </Reveal>

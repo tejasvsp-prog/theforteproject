@@ -31,7 +31,7 @@ export default function LessonsPage() {
       />
 
       {/* Program details — set like a concert program's fact table */}
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-3">
             <h2 className="t-kicker text-navy">The format</h2>
@@ -53,7 +53,7 @@ export default function LessonsPage() {
       <StaffDivider />
 
       {/* Matching */}
-      <section className="py-14 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <p className="t-kicker text-navy">Matching</p>
@@ -82,7 +82,7 @@ export default function LessonsPage() {
 
       {/* Tracks */}
       <section className="border-t hairline bg-surface">
-        <div className="wrap py-14 md:py-20">
+        <div className="wrap py-16 md:py-24">
           <Reveal>
             <p className="t-kicker text-navy">Two tracks</p>
           </Reveal>

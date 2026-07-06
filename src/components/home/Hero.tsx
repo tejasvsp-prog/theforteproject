@@ -1,8 +1,18 @@
 import Button from "@/components/ui/Button";
 import Reveal, { RevealItem } from "@/components/ui/Reveal";
-import { StaffPhrase, AmbientNotes } from "@/components/decor/MusicArt";
+import {
+  StaffPhrase,
+  AmbientNotes,
+  SpinningRecord,
+} from "@/components/decor/MusicArt";
 
 const facts = ["Free", "Virtual", "Student-led", "Based in Michigan"] as const;
+
+// Masked line: the headline rises out of its own baseline.
+const maskRise = {
+  hidden: { y: "110%" },
+  show: { y: "0%", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+} as const;
 
 export default function Hero() {
   return (
@@ -14,9 +24,11 @@ export default function Hero() {
       <div className="wrap relative">
         <Reveal stagger className="grid gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
-            <RevealItem>
-              <h1 className="t-hero">The Forte Project</h1>
-            </RevealItem>
+            <div className="overflow-hidden">
+              <RevealItem variants={maskRise}>
+                <h1 className="t-hero">The Forte Project</h1>
+              </RevealItem>
+            </div>
             <RevealItem>
               <p className="t-lead mt-6 max-w-measure text-stone">
                 Student volunteers providing free music lessons to K–12
@@ -45,13 +57,12 @@ export default function Hero() {
             </RevealItem>
           </div>
 
-          {/* The staff engraving, hung quietly in the right margin */}
-          <RevealItem className="hidden self-center lg:col-span-4 lg:col-start-9 lg:block">
-            <div className="group overflow-hidden text-ink">
-              <div className="transition-transform duration-700 ease-signal group-hover:scale-[1.03]">
-                <StaffPhrase className="h-auto w-full" />
-              </div>
+          {/* The staff engraving with the record spinning over its edge */}
+          <RevealItem className="relative hidden self-center lg:col-span-4 lg:col-start-9 lg:block">
+            <div className="text-ink">
+              <StaffPhrase className="h-auto w-full" />
             </div>
+            <SpinningRecord className="absolute -right-4 -top-14 h-24 w-24 drop-shadow-none" />
           </RevealItem>
         </Reveal>
       </div>

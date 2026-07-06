@@ -44,7 +44,7 @@ export default function ApplyPage() {
         <div className="wrap">
           <Reveal stagger className="grid gap-6 md:grid-cols-3">
             {flows.map((f) => (
-              <Reveal key={f.who} className="flex flex-col border hairline p-7">
+              <Reveal key={f.who} className="card-line flex flex-col p-7">
                 <h2 className="t-h3">{f.who}</h2>
                 <p className="t-body mt-3 flex-1 text-stone">{f.what}</p>
                 <Link href={f.cta.href} className="link-rule mt-6 inline-flex self-start">
@@ -59,7 +59,7 @@ export default function ApplyPage() {
       <StaffDivider />
 
       {/* The form */}
-      <section id="form" className="scroll-mt-24 py-14 md:py-20">
+      <section id="form" className="scroll-mt-24 py-16 md:py-24">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <h2 className="t-display max-w-[12ch]">The interest form.</h2>
