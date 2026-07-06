@@ -48,7 +48,7 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Get involved + contact note */}
+          {/* Get involved + contact */}
           <div className="lg:col-span-2 lg:col-start-11">
             <h3 className="t-kicker text-paper/50">Get involved</h3>
             <ul className="mt-5">
@@ -63,9 +63,27 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="t-caption mt-6 !text-paper/50">
-              Email and socials coming soon.
-            </p>
+            <h3 className="t-kicker mt-8 text-paper/50">Contact</h3>
+            <ul className="mt-5">
+              <li className="border-b border-paper/15 py-2.5">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="t-body break-all text-paper/75 transition-colors duration-200 hover:text-sky"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li className="border-b border-paper/15 py-2.5">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="t-body text-paper/75 transition-colors duration-200 hover:text-sky"
+                >
+                  Instagram
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

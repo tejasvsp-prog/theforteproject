@@ -17,11 +17,10 @@ export const siteConfig = {
   location: "Okemos, Michigan",
   description:
     "The Forte Project is an independent, student-run initiative from Okemos, Michigan offering free, virtual music lessons to K–12 students who can't afford private instruction.",
-  url: "https://theforteproject.org",
-  // No public email or social accounts yet — leave blank so nothing fake shows.
-  email: "",
+  url: "https://theforteproject.us",
+  email: "theforteproject.mi@gmail.com",
   social: {
-    instagram: "",
+    instagram: "https://www.instagram.com/theforteproject/",
     youtube: "",
     linkedin: "",
   },
