@@ -28,7 +28,7 @@ export default function StudentPrograms() {
           {/* Track 1 — larger, warm cream panel with illustration */}
           <motion.article
             variants={reveal}
-            className="group relative overflow-hidden rounded-3xl border border-ink/10 bg-cream p-8 shadow-card sm:p-10 lg:col-span-7"
+            className="card-cream group relative overflow-hidden rounded-3xl border border-ink/10 p-8 shadow-card transition-[transform,box-shadow] duration-500 ease-signal hover:-translate-y-1 hover:shadow-lift sm:p-10 lg:col-span-7"
           >
             <p className="t-kicker text-accent">{tracks[0].label}</p>
             <h3 className="t-display mt-4 text-[2rem] sm:text-[2.4rem]">
@@ -50,8 +50,14 @@ export default function StudentPrograms() {
           {/* Track 2 — ink panel, offset */}
           <motion.article
             variants={reveal}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-8 text-paper shadow-card sm:p-10 lg:col-span-5"
+            className="card-ink group relative flex flex-col justify-between overflow-hidden rounded-3xl p-8 text-paper shadow-card transition-[transform,box-shadow] duration-500 ease-signal hover:-translate-y-1 hover:shadow-lift sm:p-10 lg:col-span-5"
           >
+            {/* faint honey glow in the corner for depth */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-2xl"
+              style={{ background: "radial-gradient(circle, rgba(200,151,63,0.5), rgba(42,35,32,0) 70%)" }}
+            />
             <div>
               <p className="t-kicker text-honey">{tracks[1].label}</p>
               <h3 className="t-display mt-4 text-[2rem] text-paper sm:text-[2.4rem]">

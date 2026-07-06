@@ -9,7 +9,7 @@ import { FloatingNotes } from "@/components/decor/MusicArt";
 
 export default function ImpactBanner() {
   return (
-    <section className="relative overflow-hidden bg-accent text-paper">
+    <section className="band-accent relative overflow-hidden text-paper">
       <FloatingNotes className="opacity-60" />
       <div className="wrap relative py-20 md:py-28">
         <Reveal className="max-w-3xl">

@@ -35,7 +35,9 @@ const config: Config = {
       },
       boxShadow: {
         soft: "0 18px 48px -24px rgba(42, 35, 32, 0.35)",
-        card: "0 2px 0 rgba(42,35,32,0.04), 0 24px 60px -32px rgba(42, 35, 32, 0.4)",
+        card: "0 1px 0 rgba(255,255,255,0.5) inset, 0 2px 0 rgba(42,35,32,0.04), 0 24px 60px -32px rgba(42, 35, 32, 0.4)",
+        lift: "0 1px 0 rgba(255,255,255,0.5) inset, 0 40px 90px -40px rgba(42, 35, 32, 0.55)",
+        ring: "0 0 0 1px rgba(42,35,32,0.06), 0 30px 70px -34px rgba(42,35,32,0.45)",
       },
       spacing: {
         13: "3.25rem",

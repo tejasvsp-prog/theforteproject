@@ -33,7 +33,7 @@ export default function Hero() {
         };
 
   return (
-    <section className="relative overflow-hidden pt-32 md:pt-36 lg:pt-40">
+    <section className="wash-warm relative overflow-hidden pt-32 md:pt-36 lg:pt-40">
       {/* Layered warm background */}
       <div
         className="pointer-events-none absolute -right-40 -top-24 h-[42rem] w-[42rem] rounded-full opacity-70 blur-[2px]"
@@ -117,8 +117,19 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.9, ease: signal }}
         >
           <div className="relative">
+            {/* Soft layered glow discs give the composition real depth */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-10 -top-16 h-72 w-72 rounded-full opacity-80 blur-2xl"
+              style={{ background: "radial-gradient(circle, rgba(200,151,63,0.22), rgba(246,239,225,0) 70%)" }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-24 left-6 h-64 w-64 rounded-full opacity-70 blur-2xl"
+              style={{ background: "radial-gradient(circle, rgba(63,86,71,0.16), rgba(246,239,225,0) 70%)" }}
+            />
             {/* Staff phrase, drawn large and tilted a touch off-square */}
-            <div className="-rotate-2 text-ink">
+            <div className="relative -rotate-2 text-ink">
               <StaffPhrase className="h-auto w-full" />
             </div>
 
