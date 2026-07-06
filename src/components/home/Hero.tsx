@@ -108,33 +108,38 @@ export default function Hero() {
           </motion.ul>
         </div>
 
-        {/* Layered illustration */}
+        {/* Layered illustration — un-boxed, drawn straight onto the page like
+            a margin sketch, not dropped into a card. */}
         <motion.div
-          className="relative lg:col-span-5"
-          initial={reduce ? { opacity: 1 } : { opacity: 0, scale: 0.96, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.9, ease: signal }}
+          className="relative hidden lg:col-span-5 lg:block"
+          initial={reduce ? { opacity: 1 } : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.9, ease: signal }}
         >
-          <div className="relative mx-auto max-w-md rounded-3xl border border-ink/10 bg-cream/80 p-8 shadow-card backdrop-blur-sm sm:p-10">
-            <div className="text-ink">
+          <div className="relative">
+            {/* Staff phrase, drawn large and tilted a touch off-square */}
+            <div className="-rotate-2 text-ink">
               <StaffPhrase className="h-auto w-full" />
             </div>
-            <div className="mt-6 flex items-end justify-between">
-              <p className="t-caption max-w-[16ch] text-ink/60">
-                Every student deserves the chance to make music.
-              </p>
-              <div className="w-24 text-accent/80">
-                <KeysArc className="h-auto w-full" />
-              </div>
+
+            {/* Keyboard sketch, overlapping and running off the bottom-right */}
+            <div className="absolute -bottom-16 right-2 w-40 -rotate-3 text-accent/70 sm:w-48">
+              <KeysArc className="h-auto w-full" />
             </div>
+
+            {/* A handwritten aside, angled like a note in the margin */}
+            <p className="t-script absolute -bottom-4 left-2 max-w-[14ch] -rotate-3 text-[1.5rem] leading-tight">
+              every kid deserves this.
+            </p>
+
+            {/* floating accent dot */}
+            <motion.span
+              aria-hidden
+              className="absolute -left-2 top-2 h-7 w-7 rounded-full bg-accent/90 shadow-soft"
+              animate={reduce ? {} : { y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
-          {/* floating accent dot */}
-          <motion.span
-            aria-hidden
-            className="absolute -left-4 top-10 h-8 w-8 rounded-full bg-accent/90 shadow-soft"
-            animate={reduce ? {} : { y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
         </motion.div>
       </div>
     </section>

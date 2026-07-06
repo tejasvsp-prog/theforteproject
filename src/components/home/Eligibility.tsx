@@ -31,8 +31,9 @@ export default function Eligibility() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <Reveal className="rounded-3xl border border-accent/20 bg-paper p-8 shadow-soft sm:p-10">
+        <div className="mt-14 grid items-start gap-6 lg:grid-cols-12 lg:gap-10">
+          {/* The one that matters — larger, brought forward. */}
+          <Reveal className="rounded-3xl border border-accent/25 bg-paper p-8 shadow-card sm:p-10 lg:col-span-7">
             <h3 className="t-h3">This is for you if…</h3>
             <ul className="mt-6 space-y-4">
               {eligibility.forItems.map((item) => (
@@ -44,16 +45,21 @@ export default function Eligibility() {
             </ul>
           </Reveal>
 
-          <Reveal className="rounded-3xl border border-ink/10 bg-paper/60 p-8 sm:p-10">
-            <h3 className="t-h3 text-ink/70">It&apos;s probably not the right fit if…</h3>
+          {/* The caveat — smaller, quieter, dropped down so the pair reads
+              as a note beside the main point rather than a matching twin. */}
+          <Reveal className="rounded-3xl border border-ink/10 p-8 sm:p-10 lg:col-span-5 lg:mt-16">
+            <h3 className="t-h3 text-ink/60">Maybe not the right fit if…</h3>
             <ul className="mt-6 space-y-4">
               {eligibility.notItems.map((item) => (
-                <li key={item} className="flex gap-3 t-body text-ink/60">
+                <li key={item} className="flex gap-3 t-body text-ink/55">
                   <Dash />
                   {item}
                 </li>
               ))}
             </ul>
+            <p className="t-script mt-8 text-[1.35rem] text-ink/40">
+              …but honestly, just ask.
+            </p>
           </Reveal>
         </div>
       </div>

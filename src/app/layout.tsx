@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Newsreader } from "next/font/google";
+import { Fraunces, Newsreader, Caveat } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
@@ -21,6 +21,15 @@ const text = Newsreader({
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-text",
+});
+
+// Hand voice — used sparingly for margin notes and asides, the way a real
+// person would scribble in the margin. Never for anything load-bearing.
+const script = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+  variable: "--font-script",
 });
 
 export const metadata: Metadata = {
@@ -68,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${text.variable}`}>
+    <html lang="en" className={`${display.variable} ${text.variable} ${script.variable}`}>
       <body className="min-h-screen bg-paper text-ink">
         {/* Without JS, framer never runs — force all animated content visible. */}
         <noscript>

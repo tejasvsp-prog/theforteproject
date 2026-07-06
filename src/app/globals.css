@@ -28,6 +28,19 @@
     background-attachment: fixed;
   }
 
+  /* Faint paper grain over everything — reads as stock/tactile, not a flat
+     screen. Fixed so it doesn't swim while scrolling. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
   ::selection {
     background-color: #b44a2c;
     color: #f6efe1;
@@ -145,6 +158,14 @@
     font-style: italic;
     font-size: 0.85rem;
     line-height: 1.45;
+  }
+  /* Margin-note voice — a person's handwriting, used sparingly as an aside. */
+  .t-script {
+    font-family: var(--font-script), "Segoe Script", cursive;
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1;
+    color: #b44a2c;
   }
 
   .hairline {
