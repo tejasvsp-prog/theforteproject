@@ -26,8 +26,8 @@ const solid =
 const variants: Record<Variant, string> = {
   // Charcoal block that warms to terracotta.
   primary: `${solid} bg-ink text-paper hover:bg-accent focus-visible:outline-accent`,
-  // Underlined editorial link.
-  secondary: "link-rule focus-visible:outline-accent",
+  // Outlined companion to primary.
+  secondary: `${solid} border border-ink/30 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper focus-visible:outline-accent`,
   // On the ink footer: paper block.
   onDark: `${solid} bg-paper text-ink hover:bg-accent hover:text-paper focus-visible:outline-paper`,
   onAccent: `${solid} bg-paper text-ink hover:bg-ink hover:text-paper focus-visible:outline-paper`,

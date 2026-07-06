@@ -4,7 +4,6 @@ import Mission from "@/components/home/Mission";
 import StudentPrograms from "@/components/home/StudentPrograms";
 import HowItWorks from "@/components/home/HowItWorks";
 import VolunteerNote from "@/components/home/VolunteerNote";
-import Faq from "@/components/home/Faq";
 import ImpactBanner from "@/components/home/ImpactBanner";
 import { siteConfig } from "@/lib/site";
 
@@ -41,7 +40,6 @@ export default function HomePage() {
       <StudentPrograms />
       <HowItWorks />
       <VolunteerNote />
-      <Faq />
       <ImpactBanner />
     </>
   );

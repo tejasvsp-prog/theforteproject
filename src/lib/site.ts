@@ -149,6 +149,7 @@ export const forms: Record<FormKey, FormConfig> = {
 /** Primary links shown in the center of the navbar (logo covers Home). */
 export const nav = [
   { href: "/about", label: "About" },
+  { href: "/lessons", label: "Lessons" },
   { href: "/volunteer", label: "Volunteer" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -157,7 +158,8 @@ export const nav = [
 export const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/lessons", label: "Lessons" },
   { href: "/volunteer", label: "Volunteer" },
-  { href: "/apply", label: "Sign up for lessons" },
+  { href: "/apply", label: "Sign up" },
   { href: "/contact", label: "Contact" },
 ] as const;

@@ -39,10 +39,19 @@ function NavLink({
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  // Subtle scroll effect: the bar tightens once the page moves.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -86,9 +95,13 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b hairline bg-paper/95 backdrop-blur-sm">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-paper/95 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
+        scrolled ? "border-ink/20 shadow-[0_1px_0_rgba(35,32,25,0.06)]" : "hairline"
+      }`}
+    >
       <nav
-        className="wrap flex h-[72px] items-center justify-between"
+        className="wrap flex h-[68px] items-center justify-between"
         aria-label="Primary"
       >
         <Link

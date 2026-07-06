@@ -72,23 +72,23 @@
   .t-hero {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(2.6rem, 5.5vw, 4rem); /* → 64px on desktop */
-    letter-spacing: -1px;
-    line-height: 1.04;
+    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+    letter-spacing: -0.75px;
+    line-height: 1.08;
   }
   .t-display {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(2.1rem, 4.2vw, 3.25rem);
-    letter-spacing: -0.75px;
-    line-height: 1.08;
+    font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+    letter-spacing: -0.5px;
+    line-height: 1.12;
   }
   .t-h2 {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(1.75rem, 3vw, 2.4rem);
-    letter-spacing: -0.5px;
-    line-height: 1.12;
+    font-size: clamp(1.6rem, 2.6vw, 2.15rem);
+    letter-spacing: -0.4px;
+    line-height: 1.15;
   }
   .t-h3 {
     font-family: var(--font-display);
@@ -150,6 +150,20 @@
 
   .hairline {
     border-color: var(--hairline);
+  }
+
+  /* Five faint staff lines as a background texture — the page's quiet
+     musical undertone. Use sparingly, behind one section per page. */
+  .staff-bg {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 9px,
+      rgba(35, 32, 25, 0.055) 9px,
+      rgba(35, 32, 25, 0.055) 10px
+    );
+    background-size: 100% 50px;
+    background-repeat: repeat-x;
   }
 
   /* Underlined editorial link — ink text, terracotta rule that thickens. */

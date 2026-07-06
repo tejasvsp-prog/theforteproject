@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
-import ContactInfo from "@/components/contact/ContactInfo";
-import { StaffPhrase } from "@/components/decor/MusicArt";
+import { StaffDivider } from "@/components/decor/MusicArt";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -11,37 +11,52 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
+const routes = [
+  {
+    label: "Students & parents",
+    body: "Questions about lessons go on the interest form — there's room to ask anything.",
+    href: "/apply",
+    cta: "Interest form",
+  },
+  {
+    label: "Volunteers",
+    body: "Questions about teaching go on the volunteer application.",
+    href: "/volunteer#apply",
+    cta: "Volunteer form",
+  },
+] as const;
+
 export default function ContactPage() {
   return (
     <>
       <PageHero
         eyebrow="Contact"
         title="Get in touch."
-        description="We're a small student group, so the fastest way to reach us is through a form — pick the one that fits and we'll take it from there."
+        description="We're a small student team — the forms are the fastest way to reach us, and we read every submission."
       />
 
-      <section className="py-16 md:py-24">
-        <div className="wrap grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-6">
-            <p className="t-kicker text-accent">Where to start</p>
-            <div className="mt-8">
-              <ContactInfo />
-            </div>
+      <section className="py-14 md:py-20">
+        <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
+          <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:col-span-8 lg:col-start-3">
+            {routes.map((r) => (
+              <Reveal key={r.href} className="flex flex-col border hairline p-7">
+                <h2 className="t-h3">{r.label}</h2>
+                <p className="t-body mt-3 flex-1 text-stone">{r.body}</p>
+                <Link href={r.href} className="link-rule mt-6 inline-flex self-start">
+                  {r.cta} <span aria-hidden>→</span>
+                </Link>
+              </Reveal>
+            ))}
           </Reveal>
-          {/* An un-boxed illustration instead of a second form — the two real
-              forms live behind the links on the left. */}
-          <Reveal className="hidden lg:col-span-6 lg:block">
-            <figure className="mx-auto max-w-sm border-t hairline pt-5">
-              <div className="text-ink">
-                <StaffPhrase className="h-auto w-full" />
-              </div>
-              <figcaption className="t-caption mt-3 font-display italic">
-                We read every one.
-              </figcaption>
-            </figure>
+          <Reveal className="lg:col-span-8 lg:col-start-3">
+            <p className="t-caption border-t hairline pt-5">
+              A public email address and social accounts are coming soon.
+            </p>
           </Reveal>
         </div>
       </section>
+
+      <StaffDivider className="mb-14 md:mb-20" />
     </>
   );
 }

@@ -31,9 +31,9 @@ export default function ImpactBand({
           ) : null}
           <p className="t-display max-w-[22ch]">{children}</p>
           {actions && actions.length ? (
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              {actions.map((a) => (
-                <Button key={a.href} href={a.href}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              {actions.map((a, i) => (
+                <Button key={a.href} href={a.href} variant={i === 0 ? "primary" : "secondary"}>
                   {a.label}
                 </Button>
               ))}

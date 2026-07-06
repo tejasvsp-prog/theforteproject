@@ -61,6 +61,33 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * Section divider drawn as a five-line staff with a single terracotta
+ * note-head resting on it — the site's recurring musical rule.
+ */
+export function StaffDivider({ className = "" }: { className?: string }) {
+  return (
+    <div aria-hidden className={`w-full ${className}`}>
+      <svg viewBox="0 0 1200 28" preserveAspectRatio="none" className="h-6 w-full">
+        {[4, 9, 14, 19, 24].map((y) => (
+          <line
+            key={y}
+            x1="0"
+            y1={y}
+            x2="1200"
+            y2={y}
+            stroke="#232019"
+            strokeOpacity="0.12"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+      </svg>
+      <span className="relative -mt-[1.35rem] mb-2 ml-[8%] block h-[9px] w-[13px] -rotate-[18deg] rounded-[50%] bg-accent" />
+    </div>
+  );
+}
+
 /** Abstract upright-piano silhouette in line-art. */
 export function KeysArc({ className = "" }: { className?: string }) {
   return (
