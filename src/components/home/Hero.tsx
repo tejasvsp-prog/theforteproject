@@ -4,6 +4,7 @@ import {
   StaffPhrase,
   AmbientNotes,
   SpinningRecord,
+  Equalizer,
 } from "@/components/decor/MusicArt";
 
 const facts = ["Free", "Virtual", "Student-led", "Based in Michigan"] as const;
@@ -37,6 +38,9 @@ export default function Hero() {
             </RevealItem>
             <RevealItem>
               <ul className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+                <li className="mr-1 flex items-end">
+                  <Equalizer />
+                </li>
                 {facts.map((f, i) => (
                   <li key={f} className="flex items-center gap-3 t-body text-ink">
                     {i > 0 && (

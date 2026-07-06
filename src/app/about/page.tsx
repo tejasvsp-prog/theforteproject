@@ -27,7 +27,7 @@ const sections = [
   {
     heading: "How lessons work",
     body: "Students fill out an interest form and a volunteer teacher reaches out to schedule. Lessons are one-on-one, 30 minutes, twice a month, over video — instrument lessons for students who already play, or theory and composition for those without an instrument.",
-    link: { href: "/lessons", label: "About lessons" },
+    link: { href: "/apply", label: "How lessons work" },
   },
   {
     heading: "Where we are today",

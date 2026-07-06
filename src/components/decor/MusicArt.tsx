@@ -175,6 +175,45 @@ export function KeysArc({ className = "" }: { className?: string }) {
 }
 
 /**
+ * A tiny five-bar equalizer, pulsing like a track playing softly. Coral on
+ * light surfaces, pass `light` for navy bands. Static for reduced motion.
+ */
+export function Equalizer({
+  className = "",
+  light = false,
+}: {
+  className?: string;
+  light?: boolean;
+}) {
+  const reduce = useReducedMotion();
+  const bars = [
+    { h: 10, d: 0 },
+    { h: 16, d: 0.15 },
+    { h: 8, d: 0.3 },
+    { h: 14, d: 0.45 },
+    { h: 11, d: 0.6 },
+  ];
+  return (
+    <span aria-hidden className={`inline-flex items-end gap-[3px] ${className}`}>
+      {bars.map((b, i) => (
+        <motion.span
+          key={i}
+          className={`w-[3px] rounded-full ${light ? "bg-sky" : "bg-accent"}`}
+          style={{ height: b.h }}
+          animate={reduce ? undefined : { scaleY: [1, 0.45, 1] }}
+          transition={{
+            duration: 1.1,
+            delay: b.d,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </span>
+  );
+}
+
+/**
  * A few faint note glyphs drifting very slowly — ambient depth for the hero
  * and the closing spread. Low opacity, long period, never in the way.
  */

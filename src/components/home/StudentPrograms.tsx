@@ -26,7 +26,7 @@ export default function StudentPrograms() {
               <p className="t-kicker text-stone">{track.label}</p>
               <h3 className="t-display mt-4">{track.title}</h3>
               <p className="t-body mt-4 max-w-prose text-stone">{track.blurb}</p>
-              <Link href="/lessons" className="link-rule mt-6 inline-flex">
+              <Link href="/apply" className="link-rule mt-6 inline-flex">
                 About lessons <span aria-hidden>→</span>
               </Link>
             </Reveal>
