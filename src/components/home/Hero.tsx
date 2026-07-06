@@ -2,7 +2,7 @@ import Button from "@/components/ui/Button";
 import Reveal, { RevealItem } from "@/components/ui/Reveal";
 import {
   StaffPhrase,
-  AmbientNotes,
+  NotesField,
   SpinningRecord,
   Equalizer,
 } from "@/components/decor/MusicArt";
@@ -17,17 +17,18 @@ const maskRise = {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 md:pt-36">
+    <section className="relative overflow-hidden pt-36 md:pt-44">
       {/* Faint staff lines rising behind the composition */}
-      <div aria-hidden className="staff-bg absolute inset-x-0 top-24 h-56 opacity-70" />
-      <AmbientNotes />
+      <div aria-hidden className="staff-bg absolute inset-x-0 top-24 h-64 opacity-70" />
+      {/* Notes floating around the whole composition */}
+      <NotesField />
 
       <div className="wrap relative">
-        <Reveal stagger className="grid gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-8">
+        <Reveal stagger className="grid gap-12 pb-20 md:pb-32 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <div className="overflow-hidden">
               <RevealItem variants={maskRise}>
-                <h1 className="t-hero">The Forte Project</h1>
+                <h1 className="t-hero-xl">The Forte Project</h1>
               </RevealItem>
             </div>
             <RevealItem>
@@ -66,7 +67,7 @@ export default function Hero() {
             <div className="text-ink">
               <StaffPhrase className="h-auto w-full" />
             </div>
-            <SpinningRecord className="absolute -right-4 -top-14 h-24 w-24 drop-shadow-none" />
+            <SpinningRecord className="absolute -right-6 -top-20 h-32 w-32 drop-shadow-none" />
           </RevealItem>
         </Reveal>
       </div>

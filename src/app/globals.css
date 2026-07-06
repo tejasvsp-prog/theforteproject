@@ -76,6 +76,14 @@
     letter-spacing: -0.75px;
     line-height: 1.08;
   }
+  /* The front page only — a full-voice headline. */
+  .t-hero-xl {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.9rem, 6vw, 4.75rem);
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
   .t-display {
     font-family: var(--font-display);
     font-weight: 500;

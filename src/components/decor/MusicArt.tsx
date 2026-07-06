@@ -214,6 +214,59 @@ export function Equalizer({
 }
 
 /**
+ * A fuller field of floating notes for the hero — coral and navy glyphs of
+ * varied size drifting, swaying, and slowly turning around the composition.
+ * Still restrained: low opacity, long periods, static under reduced motion.
+ */
+export function NotesField({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
+  const notes = [
+    { left: "4%", top: "16%", size: "2.1rem", glyph: "♪", dur: 10, delay: 0, navy: false },
+    { left: "13%", top: "70%", size: "1.4rem", glyph: "♬", dur: 12, delay: 2.2, navy: true },
+    { left: "30%", top: "8%", size: "1.2rem", glyph: "♩", dur: 9, delay: 1.1, navy: true },
+    { left: "46%", top: "78%", size: "1.7rem", glyph: "♫", dur: 11, delay: 0.6, navy: false },
+    { left: "60%", top: "12%", size: "1.4rem", glyph: "♬", dur: 13, delay: 3.1, navy: false },
+    { left: "72%", top: "64%", size: "2.4rem", glyph: "♪", dur: 10.5, delay: 1.8, navy: true },
+    { left: "84%", top: "26%", size: "1.3rem", glyph: "♩", dur: 9.5, delay: 0.3, navy: false },
+    { left: "93%", top: "58%", size: "1.8rem", glyph: "♫", dur: 12.5, delay: 2.7, navy: false },
+  ];
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+    >
+      {notes.map((n, i) => (
+        <motion.span
+          key={i}
+          className={`absolute select-none font-display italic ${
+            n.navy ? "text-navy/20" : "text-accent/25"
+          }`}
+          style={{ left: n.left, top: n.top, fontSize: n.size }}
+          animate={
+            reduce
+              ? undefined
+              : {
+                  y: [-6, -26, -6],
+                  x: [0, i % 2 === 0 ? 8 : -8, 0],
+                  rotate: [0, i % 2 === 0 ? 7 : -7, 0],
+                  opacity: [0.55, 1, 0.55],
+                }
+          }
+          transition={{
+            duration: n.dur,
+            delay: n.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {n.glyph}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+/**
  * A few faint note glyphs drifting very slowly — ambient depth for the hero
  * and the closing spread. Low opacity, long period, never in the way.
  */
