@@ -186,9 +186,22 @@
     transform: translateX(4px);
   }
 
-  /* Bordered info card: lifts a breath and deepens its border on hover. */
+  /* Bordered info card on a frost panel: lifts a breath on hover. */
   .card-line {
-    @apply border hairline transition-[transform,border-color] duration-300 ease-signal hover:-translate-y-0.5 hover:border-navy/50;
+    @apply border hairline bg-surface transition-[transform,border-color] duration-300 ease-signal hover:-translate-y-0.5 hover:border-navy/50;
+  }
+
+  /* Staff lines for the navy footer — pale, barely-there. */
+  .staff-bg-light {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 9px,
+      rgba(246, 226, 224, 0.07) 9px,
+      rgba(246, 226, 224, 0.07) 10px
+    );
+    background-size: 100% 50px;
+    background-repeat: repeat-x;
   }
 }
 

@@ -12,7 +12,7 @@ const involved = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-navy text-paper">
+    <footer className="staff-bg-light border-t border-paper/15 bg-navy text-paper">
       <div className="wrap py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Mission */}

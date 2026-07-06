@@ -20,9 +20,9 @@ const config: Config = {
       line: "#E4C9C7", // pink hairline
       // Aliases so no stray class renders un-themed.
       night: "#1E1D24",
-      surface: "#F1D6D3",
-      panel: "#F1D6D3",
-      cream: "#F1D6D3",
+      surface: "#FBF4F2",
+      panel: "#FBF4F2",
+      cream: "#FBF4F2",
       mute: "#7A6A6E",
       faint: "#938184",
       volt: "#2E3A66",

@@ -20,7 +20,7 @@ export default function StudentPrograms() {
               key={track.id}
               as="section"
               className={`border-t-2 border-ink pt-6 ${
-                i === 0 ? "lg:col-span-6" : "lg:col-span-4 lg:col-start-9 lg:mt-14"
+                i === 0 ? "lg:col-span-6" : "lg:col-span-4 lg:col-start-9 lg:mt-10"
               }`}
             >
               <p className="t-kicker text-stone">{track.label}</p>
