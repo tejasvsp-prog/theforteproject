@@ -44,7 +44,7 @@ export default function ApplyPage() {
       <PageHero
         eyebrow="Sign up"
         title="Start here."
-        description="Lessons are free, virtual, and open to any K–12 student. Pick your path."
+        description="Lessons are free, virtual, and open to students in grades 5–12. Pick your path."
       />
 
       {/* Three clear flows */}

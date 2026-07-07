@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
+import Ticker from "@/components/decor/Ticker";
 import Mission from "@/components/home/Mission";
 import StudentPrograms from "@/components/home/StudentPrograms";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -36,6 +37,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <Ticker />
       <Mission />
       <StudentPrograms />
       <HowItWorks />

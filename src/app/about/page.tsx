@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The Forte Project is an independent, student-run organization in Okemos, Michigan providing free virtual music lessons to K–12 students.",
+    "The Forte Project is an independent, student-run organization in Okemos, Michigan providing free virtual music lessons to students in grades 5–12.",
   alternates: { canonical: "/about" },
 };
 

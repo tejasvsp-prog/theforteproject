@@ -16,7 +16,7 @@ export const siteConfig = {
   tagline: "Free music lessons, taught by students",
   location: "Okemos, Michigan",
   description:
-    "The Forte Project is an independent, student-run initiative from Okemos, Michigan offering free, virtual music lessons to K–12 students who can't afford private instruction.",
+    "The Forte Project is an independent, student-run initiative from Okemos, Michigan offering free, virtual music lessons to students in grades 5–12 who can't afford private instruction.",
   url: "https://theforteproject.us",
   email: "theforteproject.mi@gmail.com",
   social: {
@@ -66,7 +66,7 @@ export const steps = [
 /** Honest eligibility — who this is (and isn't) for. */
 export const eligibility = {
   forItems: [
-    "You're a K–12 student.",
+    "You're a student in grades 5–12.",
     "Private music lessons aren't something you can afford.",
     "You want to learn — whether you already play or you're starting with theory.",
   ],
@@ -103,7 +103,7 @@ export const faqs = [
   },
   {
     q: "Who is this for?",
-    a: "Anyone K–12 can sign up — but we built this for students who can't afford lessons, not for those who can, or who are already advanced. If you're not sure, just ask.",
+    a: "Any student in grades 5–12 — middle school through high school — can sign up. But we built this for students who can't afford lessons, not for those who can, or who are already advanced. If you're not sure, just ask.",
   },
   {
     q: "Do I need my own instrument?",
@@ -115,7 +115,7 @@ export const faqs = [
   },
   {
     q: "Can I join from outside Michigan?",
-    a: "Yes. Lessons are virtual, so any K–12 student can sign up.",
+    a: "Yes. Lessons are virtual, so any student in grades 5–12 can sign up.",
   },
 ] as const;
 

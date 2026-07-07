@@ -7,7 +7,7 @@ import {
   Equalizer,
 } from "@/components/decor/MusicArt";
 
-const facts = ["Free", "Virtual", "Student-led", "Based in Michigan"] as const;
+const facts = ["Free", "Virtual", "Grades 5–12", "Student-led"] as const;
 
 // Masked line: the headline rises out of its own baseline.
 const maskRise = {
@@ -20,6 +20,17 @@ export default function Hero() {
     <section className="relative overflow-hidden pt-36 md:pt-44">
       {/* Faint staff lines rising behind the composition */}
       <div aria-hidden className="staff-bg absolute inset-x-0 top-24 h-64 opacity-70" />
+      {/* Soft colour washes for depth — sky upper-right, coral lower-left */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -top-20 h-[30rem] w-[30rem] rounded-full opacity-50"
+        style={{ background: "radial-gradient(circle, rgba(165,195,222,0.35), rgba(246,226,224,0) 68%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(233,120,98,0.28), rgba(246,226,224,0) 68%)" }}
+      />
       {/* Notes floating around the whole composition */}
       <NotesField />
 
@@ -33,8 +44,8 @@ export default function Hero() {
             </div>
             <RevealItem>
               <p className="t-lead mt-6 max-w-measure text-stone">
-                Student volunteers providing free music lessons to K–12
-                students.
+                Student volunteers providing free music lessons to students in
+                grades 5–12 — middle school through high school.
               </p>
             </RevealItem>
             <RevealItem>

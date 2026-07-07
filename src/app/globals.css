@@ -218,6 +218,17 @@
     writing-mode: vertical-rl;
   }
 
+  /* Seamless slow marquee: the track holds two copies of its content and
+     slides one full copy per cycle. */
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 36s linear infinite;
+  }
+
   /* One slow, quiet drift for background accents. */
   @keyframes drift {
     0%,

@@ -21,7 +21,7 @@ export default function Footer() {
               <Logo tone="light" />
             </Link>
             <p className="t-body mt-6 max-w-measure text-paper/70">
-              Free, virtual music lessons for K–12 students, taught by student
+              Free, virtual music lessons for students in grades 5–12, taught by student
               volunteers in {siteConfig.location}.
             </p>
             <div className="mt-8">

@@ -24,7 +24,7 @@ export default function HowItWorks() {
           {steps.map((s, i) => (
             <li
               key={s.n}
-              className="grid gap-3 border-t hairline py-6 first:border-t-2 first:border-t-ink sm:grid-cols-[5rem_1fr] sm:gap-6"
+              className="grid gap-3 border-t hairline py-6 transition-colors duration-300 first:border-t-2 first:border-t-ink hover:bg-paper/60 sm:grid-cols-[5rem_1fr] sm:gap-6"
             >
               <span className="font-display italic text-navy">
                 {String(i + 1).padStart(2, "0")}
