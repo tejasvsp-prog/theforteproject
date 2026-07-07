@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Mission */}
           <div className="max-w-md lg:col-span-6">
             <Link href="/" className="inline-flex transition-opacity hover:opacity-70">
-              <Logo tone="light" />
+              <Logo tone="light" spin />
             </Link>
             <p className="t-body mt-6 max-w-measure text-paper/70">
               Free, virtual music lessons for students in grades 5–12, taught by student

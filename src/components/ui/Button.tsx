@@ -21,7 +21,7 @@ type AsButton = Common &
 
 // Square-set editorial buttons — no pills, no glows, no drop shadows.
 const solid =
-  "group inline-flex select-none items-center justify-center gap-2.5 rounded-[4px] px-6 py-3.5 t-button transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 [&_span[aria-hidden]]:transition-transform [&_span[aria-hidden]]:duration-300 [&_span[aria-hidden]]:ease-signal hover:[&_span[aria-hidden]]:translate-x-1";
+  "group inline-flex select-none items-center justify-center gap-2.5 rounded-[4px] px-6 py-3.5 t-button transition-[color,background-color,border-color,transform] duration-200 active:translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 [&_span[aria-hidden]]:transition-transform [&_span[aria-hidden]]:duration-300 [&_span[aria-hidden]]:ease-signal hover:[&_span[aria-hidden]]:translate-x-1";
 
 const variants: Record<Variant, string> = {
   // Record-navy block that warms to coral.

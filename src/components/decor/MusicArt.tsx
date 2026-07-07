@@ -79,20 +79,31 @@ export function StaffPhrase({ className = "" }: { className?: string }) {
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease, delay: 0.55 + i * 0.12 }}
         >
-          <ellipse
-            cx={n.cx}
-            cy={n.cy}
-            rx="8"
-            ry="5.6"
-            transform={`rotate(-22 ${n.cx} ${n.cy})`}
-            fill="currentColor"
-          />
-          <path
-            d={`M${n.cx + 7} ${n.cy - 1} L${n.cx + 7} ${n.cy - 34}`}
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-          />
+          {/* After landing, each note keeps breathing on its own phase. */}
+          <motion.g
+            animate={reduce ? undefined : { y: [0, -1.8, 0] }}
+            transition={{
+              duration: 4.5 + i * 0.4,
+              delay: 1.6 + i * 0.3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ellipse
+              cx={n.cx}
+              cy={n.cy}
+              rx="8"
+              ry="5.6"
+              transform={`rotate(-22 ${n.cx} ${n.cy})`}
+              fill="currentColor"
+            />
+            <path
+              d={`M${n.cx + 7} ${n.cy - 1} L${n.cx + 7} ${n.cy - 34}`}
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+          </motion.g>
         </motion.g>
       ))}
     </svg>
@@ -166,6 +177,7 @@ export function KeysArc({ className = "" }: { className?: string }) {
           fillOpacity="0.85"
           initial={undefined}
           whileInView={reduce ? undefined : { y: [0, 5, 0] }}
+          whileHover={reduce ? undefined : { y: 5, fillOpacity: 1 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.45, ease: "easeInOut", delay: 0.5 + i * 0.14 }}
         />

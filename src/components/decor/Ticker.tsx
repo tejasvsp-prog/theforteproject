@@ -31,7 +31,7 @@ function Sequence() {
 export default function Ticker() {
   return (
     <div className="overflow-hidden border-y hairline bg-surface py-4">
-      <div className="animate-marquee flex w-max" aria-hidden="false">
+      <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="false">
         <div className="flex items-center">
           <Sequence />
         </div>

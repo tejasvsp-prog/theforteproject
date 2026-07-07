@@ -37,15 +37,23 @@ export function RecordMark({ className = "" }: { className?: string }) {
 export default function Logo({
   tone = "dark",
   className = "",
+  spin = false,
 }: {
   tone?: "light" | "dark";
   className?: string;
+  /** Keep the record turning continuously (footer); default spins on hover. */
+  spin?: boolean;
 }) {
   const color = tone === "light" ? "text-paper" : "text-ink";
   return (
     <span className={`group inline-flex items-center gap-2.5 ${color} ${className}`}>
-      {/* The record spins a half-turn on hover. */}
-      <RecordMark className="h-7 w-7 shrink-0 transition-transform duration-700 ease-signal group-hover:rotate-180" />
+      <RecordMark
+        className={`h-7 w-7 shrink-0 ${
+          spin
+            ? "animate-[spin_16s_linear_infinite]"
+            : "transition-transform duration-700 ease-signal group-hover:rotate-180"
+        }`}
+      />
       <span className="font-display text-[1.05rem] leading-none tracking-[-0.01em]">
         The <b className="font-bold">forte</b> Project
       </span>

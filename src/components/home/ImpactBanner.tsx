@@ -1,6 +1,10 @@
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
-import { AmbientNotes, Equalizer } from "@/components/decor/MusicArt";
+import {
+  AmbientNotes,
+  Equalizer,
+  SpinningRecord,
+} from "@/components/decor/MusicArt";
 import { roadmap } from "@/lib/site";
 
 /**
@@ -9,8 +13,10 @@ import { roadmap } from "@/lib/site";
  */
 export default function ImpactBanner() {
   return (
-    <section className="staff-bg-light relative bg-navy text-paper">
+    <section className="staff-bg-light relative overflow-hidden bg-navy text-paper">
       <AmbientNotes className="opacity-60" />
+      {/* The record, half off the page, keeps turning through the finale */}
+      <SpinningRecord className="pointer-events-none absolute -right-16 top-1/2 hidden h-56 w-56 -translate-y-1/2 opacity-25 md:block" />
       <div className="wrap relative grid gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-8">
           <p className="flex items-center gap-3 t-kicker text-sky">
